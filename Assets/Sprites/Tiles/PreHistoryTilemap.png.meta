@@ -279,8 +279,8 @@ TextureImporter:
       name: PreHistoryTilemap_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 32
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -301,8 +301,8 @@ TextureImporter:
       name: PreHistoryTilemap_9
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 48
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -323,7 +323,7 @@ TextureImporter:
       name: PreHistoryTilemap_10
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 0
         width: 16
         height: 16
@@ -337,6 +337,50 @@ TextureImporter:
       bones: []
       spriteID: bed626ad6e273bf48ac076405b4908fc
       internalID: 1251707148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PreHistoryTilemap_11
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4415c20fe6b4e9044af53460fffaf48f
+      internalID: -404267903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PreHistoryTilemap_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7603cdbdba0d92341b3421aea1874892
+      internalID: 279602807
       vertices: []
       indices: 
       edges: []
@@ -358,6 +402,8 @@ TextureImporter:
       PreHistoryTilemap_0: -8707421336626531251
       PreHistoryTilemap_1: 40957690
       PreHistoryTilemap_10: 1251707148
+      PreHistoryTilemap_11: -404267903
+      PreHistoryTilemap_12: 279602807
       PreHistoryTilemap_2: 1958511565
       PreHistoryTilemap_3: 982427279
       PreHistoryTilemap_4: -679527904
