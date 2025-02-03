@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     public Camera mainCamera;
 
+    public GameObject enemy;
+
     void Start()
     {
         // Instantiate the player at the spawn position
@@ -24,5 +26,16 @@ public class GameManager : MonoBehaviour
                 cameraFollow.player = player;  // Assign the player to the camera follow script
             }
         }
+
+        // Ensure the enemy follows the player
+        if (enemy != null)
+        {
+            DinoBossAI enemyAI = enemy.GetComponent<DinoBossAI>();
+            if (enemyAI != null)
+            {
+                enemyAI.player = player.transform;  // Assign the player reference to the enemy AI script
+            }
+        }
+
     }
 }
