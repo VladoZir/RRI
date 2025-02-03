@@ -42,6 +42,13 @@ public class DinoBossAI : MonoBehaviour
         // Check if the boss collides with the player
         if (collision.gameObject.CompareTag("Player"))
         {
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                // Apply damage to the player
+                playerHealth.TakeDamage(10);  // You can adjust the damage value
+            }
+
             // Start the cooldown timer and stop chasing the player
             isCoolingDown = true;
             cooldownTimer = cooldownDuration;

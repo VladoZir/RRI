@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5761615922955273410}
   - component: {fileID: 9139958113063204397}
   - component: {fileID: -7364569626357008438}
+  - component: {fileID: 2416727227840019448}
   m_Layer: 0
   m_Name: Astronaut
   m_TagString: Player
@@ -177,3 +178,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 10
+--- !u!114 &2416727227840019448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690309508665500485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d81e5ba7fcbdd4eb967cf1a0c30c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0

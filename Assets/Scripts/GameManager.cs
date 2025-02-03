@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject enemy;
 
+    public Slider healthSlider;
+
     void Start()
     {
         // Instantiate the player at the spawn position
@@ -16,6 +19,15 @@ public class GameManager : MonoBehaviour
 
         // Set the player's tag to "Player" for the CameraFollow script to work
         player.tag = "Player";
+
+        // Initialize the player's health (optional, but ensures player health is set up)
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null && healthSlider != null)
+        {
+            playerHealth.maxHealth = 100; // Set max health (can be done through the inspector too)
+            playerHealth.currentHealth = playerHealth.maxHealth;  // Set initial health to max
+            playerHealth.healthSlider = healthSlider;
+        }
 
         // If you have the CameraFollow script, set the player reference in the camera follow script
         if (mainCamera != null)
