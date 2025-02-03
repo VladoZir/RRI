@@ -103,9 +103,9 @@ TextureImporter:
       name: Astronaut_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 16
-        width: 16
+        width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -117,6 +117,50 @@ TextureImporter:
       bones: []
       spriteID: ea3564ceb04deb7d0800000000000000
       internalID: -2900647962306260050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c206c1ce01f3c304abc21ae2e102c1fa
+      internalID: -732074612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 578dbe6b025da5441aeee4e440859c87
+      internalID: 1064844626
       vertices: []
       indices: 
       edges: []
@@ -136,6 +180,8 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Astronaut_0: -2900647962306260050
+      Astronaut_1: -732074612
+      Astronaut_2: 1064844626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
