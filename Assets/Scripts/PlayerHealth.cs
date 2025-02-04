@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +9,9 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;  // Max health value
     public int currentHealth;    // Current health value
     public Slider healthSlider;
+    public Image healthImage;
+    public List<Sprite> healthSprites = new List<Sprite>();
+    public GameObject healthContainer;
 
     void Start()
     {
@@ -16,12 +22,15 @@ public class PlayerHealth : MonoBehaviour
             healthSlider.maxValue = maxHealth;  // Set the slider max value to match max health
             healthSlider.value = currentHealth; // Initialize slider value with the current health
         }
+        healthContainer = GameObject.Find("HealthBar");
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         if (currentHealth < 0) currentHealth = 0;
+
+        changeHealthSprite(currentHealth);
 
         // Update the slider value when the player takes damage
         if (healthSlider != null)
@@ -33,6 +42,48 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+        }
+    }
+
+    public void changeHealthSprite(int curHealth)
+    {
+        if(curHealth==100)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[9];
+        }else if(curHealth==90) {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[8];
+        }
+        if (curHealth == 80)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[7];
+        }
+        else if (curHealth == 70)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[6];
+        }
+        if (curHealth == 60)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[5];
+        }
+        else if (curHealth == 50)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[4];
+        }
+        if (curHealth == 40)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[3];
+        }
+        else if (curHealth == 30)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[2];
+        }
+        if (curHealth == 20)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[1];
+        }
+        else if (curHealth == 10)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[0];
         }
     }
 
