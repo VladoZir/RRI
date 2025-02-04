@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool isGrounded;
+    private Animator anim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -20,6 +22,9 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+        // Update Animator parameters
+        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x)); // Use absolute value for movement speed
+        anim.SetBool("IsGrounded", isGrounded);
     }
 
     void Move()

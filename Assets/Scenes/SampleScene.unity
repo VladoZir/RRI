@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c71946afcf0cf4fb2b503ddabbfef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3690309508665500485, guid: 90e962433e794694c8838e347e51dfbe, type: 3}
+  player: {fileID: 6585168501074367420, guid: 55ebea176b382a04aad0b2cdae1cd634, type: 3}
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &519420034
 MonoBehaviour:
@@ -1300,7 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751ee53396fc9d344b114a28cc85c8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 3690309508665500485, guid: 90e962433e794694c8838e347e51dfbe, type: 3}
+  playerPrefab: {fileID: 6585168501074367420, guid: 55ebea176b382a04aad0b2cdae1cd634, type: 3}
   spawnPosition: {x: 0, y: 1, z: 0}
   mainCamera: {fileID: 519420031}
   enemy: {fileID: 556007505}
