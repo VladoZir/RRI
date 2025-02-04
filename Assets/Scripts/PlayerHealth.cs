@@ -47,11 +47,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void changeHealthSprite(int curHealth)
     {
-        if(curHealth==100)
+        if (curHealth == 100)
         {
             healthContainer.GetComponent<Image>().sprite = healthSprites[10];
 
-        }else if(curHealth==90) {
+        }
+        else if (curHealth == 90)
+        {
             healthContainer.GetComponent<Image>().sprite = healthSprites[9];
         }
         if (curHealth == 80)
@@ -98,5 +100,19 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player has died!");
         // Optionally you can disable the player or restart the scene here
         gameObject.SetActive(false);
+    }
+
+    public void Heal(int amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth); // Prevent overhealing
+
+        // Update the UI slider
+        if (healthSlider != null)
+        {
+            healthSlider.value = currentHealth;
+        }
+
+        // Update health sprite
+        changeHealthSprite(currentHealth);
     }
 }
