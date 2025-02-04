@@ -218,6 +218,7 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   healthImage: {fileID: 0}
   healthSprites:
+  - {fileID: 3891034975967117877, guid: dc194504b8b3cd34885cd19a33adb330, type: 3}
   - {fileID: -4271092032554199521, guid: c88119d9eaf020941b00424a9a4ee0f7, type: 3}
   - {fileID: -3128869350068196958, guid: edd0e86afb2bb274c930427c14ae0adb, type: 3}
   - {fileID: -5283185718816611481, guid: 0aef3631afcc51c4fb999707553418de, type: 3}
@@ -228,4 +229,4 @@ MonoBehaviour:
   - {fileID: 6158050195936809500, guid: 3c167c2156564c240b8394f27be18447, type: 3}
   - {fileID: 5910531354226070042, guid: 28e87efa352b70d4c8760e615ff48980, type: 3}
   - {fileID: 3182712424331773086, guid: 45796216bdbd6214d961ef798c82b26b, type: 3}
-  healthContainer: {fileID: 0}
+  healthContainer: {fileID: 6585168501074367420}

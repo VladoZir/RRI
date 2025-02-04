@@ -49,39 +49,44 @@ public class PlayerHealth : MonoBehaviour
     {
         if(curHealth==100)
         {
-            healthContainer.GetComponent<Image>().sprite = healthSprites[9];
+            healthContainer.GetComponent<Image>().sprite = healthSprites[10];
+
         }else if(curHealth==90) {
-            healthContainer.GetComponent<Image>().sprite = healthSprites[8];
+            healthContainer.GetComponent<Image>().sprite = healthSprites[9];
         }
         if (curHealth == 80)
         {
-            healthContainer.GetComponent<Image>().sprite = healthSprites[7];
+            healthContainer.GetComponent<Image>().sprite = healthSprites[8];
         }
         else if (curHealth == 70)
         {
-            healthContainer.GetComponent<Image>().sprite = healthSprites[6];
+            healthContainer.GetComponent<Image>().sprite = healthSprites[7];
         }
         if (curHealth == 60)
         {
-            healthContainer.GetComponent<Image>().sprite = healthSprites[5];
+            healthContainer.GetComponent<Image>().sprite = healthSprites[6];
         }
         else if (curHealth == 50)
         {
-            healthContainer.GetComponent<Image>().sprite = healthSprites[4];
+            healthContainer.GetComponent<Image>().sprite = healthSprites[5];
         }
         if (curHealth == 40)
         {
-            healthContainer.GetComponent<Image>().sprite = healthSprites[3];
+            healthContainer.GetComponent<Image>().sprite = healthSprites[4];
         }
         else if (curHealth == 30)
         {
-            healthContainer.GetComponent<Image>().sprite = healthSprites[2];
+            healthContainer.GetComponent<Image>().sprite = healthSprites[3];
         }
         if (curHealth == 20)
         {
-            healthContainer.GetComponent<Image>().sprite = healthSprites[1];
+            healthContainer.GetComponent<Image>().sprite = healthSprites[2];
         }
         else if (curHealth == 10)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[1];
+        }
+        else if (curHealth == 0)
         {
             healthContainer.GetComponent<Image>().sprite = healthSprites[0];
         }
