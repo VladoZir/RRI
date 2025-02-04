@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0c7616c5abdb7804da48da2543b7a05e
+guid: 651156bac066aa34c86f761dc394ed44
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5310052314282603557
-    second: Health_Pot_0
+      213: -5593108013676766002
+    second: first_aid_kit_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Health_Pot_0
+      name: first_aid_kit_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 12
-        height: 16
+        x: 0
+        y: 2
+        width: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bdbc174dd87ee46b0800000000000000
-      internalID: -5310052314282603557
+      spriteID: eccd76625e94162b0800000000000000
+      internalID: -5593108013676766002
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Health_Pot_0: -5310052314282603557
+      first_aid_kit_0: -5593108013676766002
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
