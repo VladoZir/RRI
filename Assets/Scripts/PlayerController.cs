@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         }
         // Update Animator parameters
         anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x)); // Use absolute value for movement speed
-        anim.SetBool("IsGrounded", isGrounded);
+        anim.SetBool("IsJumping", !isGrounded); // IsJumping is true while in the air
     }
 
     void Move()
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+            anim.SetBool("IsJumping", false);
         }
     }
 }
