@@ -433,8 +433,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4756368035747483249, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
   m_PrefabInstance: {fileID: 3581551344852036986}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &556007512
-BoxCollider2D:
+--- !u!60 &556007512
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -463,11 +463,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.14431334, y: -0.19655567}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 2.9375, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -477,8 +477,22 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.7290487, y: 1.7603747}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.50138855, y: 0.4314322}
+      - {x: -1.0822859, y: 0.74178857}
+      - {x: -2.1104755, y: 0.07319963}
+      - {x: -1.5097647, y: -0.45176077}
+      - {x: -0.69729805, y: -0.1837467}
+      - {x: -0.18042755, y: -0.8659334}
+      - {x: -0.01992035, y: -0.7825388}
+      - {x: 0.6367359, y: -0.83785045}
+      - {x: 0.6857233, y: -0.7870451}
+      - {x: 0.7266922, y: -0.05659932}
+      - {x: 0.97147274, y: 0.18746883}
+      - {x: 1.9686327, y: 0.3285054}
+      - {x: 0.39374828, y: 0.4518972}
+  m_UseDelaunayMesh: 0
 --- !u!1 &592933573
 GameObject:
   m_ObjectHideFlags: 0
@@ -3500,6 +3514,18 @@ PrefabInstance:
     - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_Offset.y
       value: -0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.6875
       objectReference: {fileID: 0}
     - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
