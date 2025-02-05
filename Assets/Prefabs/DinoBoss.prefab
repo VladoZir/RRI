@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 215105945863222079}
   - component: {fileID: 3537416977830576002}
   - component: {fileID: 6735446782489743470}
+  - component: {fileID: -2895726126985323716}
   m_Layer: 0
   m_Name: DinoBoss
   m_TagString: Untagged
@@ -153,9 +154,9 @@ PolygonCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0, y: 2.9375, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
+    oldSize: {x: 2.4375, y: 2.9375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -189,5 +190,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   detectionRange: 5
+  dashSpeed: 8
+  dashCooldown: 3
+  dashDuration: 0.5
   player: {fileID: 2449243646438328459, guid: 90e962433e794694c8838e347e51dfbe, type: 3}
-  cooldownDuration: 2
+--- !u!95 &-2895726126985323716
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756368035747483249}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4a613978239a83e4ebbdc7d538784152, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -1,57 +1,104 @@
 using UnityEngine;
+using System.Collections;
 
 public class DinoBossAI : MonoBehaviour
 {
-    public float speed = 3f;         // Movement speed of the enemy
-    public float detectionRange = 5f; // Distance at which the enemy starts to follow the player
-    public Transform player;         // Reference to the player's transform
+    public float speed = 3f;            // Normal movement speed
+    public float detectionRange = 25f;   // Range to detect the player
+    public float dashSpeed = 8f;        // Speed during dash
+    public float dashCooldown = 3f;     // Time before the dino can dash again
+    public float dashDuration = 0.5f;   // Duration of the dash
+    private bool isDashing = false;     // Flag to check if dashing
+    private bool isCoolingDown = false; // Flag for cooldown
+    private float cooldownTimer = 0f;   // Timer for cooldown
 
-    private bool isCoolingDown = false; // Flag to check if the enemy is in cooldown
-    private float cooldownTimer = 0f;   // Timer to track the cooldown duration
-    public float cooldownDuration = 2f; // Duration for which the enemy stops chasing the player after a collision
+    public Transform player;            // Player reference
+    private Animator animator;          // Animator reference
+    private Rigidbody2D rb;             // Rigidbody for physics-based movement
 
-    private void Update()
+    // Collider reference
+    private Collider2D originalCollider;
+    public Collider2D dashCollider;     // Collider to use during dash
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();  // Get animator component
+        rb = GetComponent<Rigidbody2D>();    // Get rigidbody component
+        originalCollider = GetComponent<Collider2D>(); // Get the original collider
+    }
+
+    void Update()
     {
         if (player == null) return;  // Ensure the player is set
 
-        // If the enemy is cooling down, skip the movement logic
         if (isCoolingDown)
         {
             cooldownTimer -= Time.deltaTime;
             if (cooldownTimer <= 0f)
             {
-                isCoolingDown = false;  // Reset cooldown and allow following again
+                isCoolingDown = false;  // Reset cooldown
             }
             return; // Exit the update loop if the enemy is in cooldown
         }
 
-        // Calculate the distance between the enemy and the player
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        // If the player is within the detection range, move towards the player
-        if (distanceToPlayer <= detectionRange)
+        // If player is within range and not dashing, start dash
+        if (distanceToPlayer <= detectionRange && !isDashing)
         {
-            // Move towards the player
-            Vector2 direction = (player.position - transform.position).normalized;
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            StartCoroutine(DashTowardsPlayer());
         }
+    }
+
+    private IEnumerator DashTowardsPlayer()
+    {
+        isDashing = true;
+        isCoolingDown = true; // Start cooldown
+
+        animator.SetTrigger("Dash"); // Play dash animation
+
+        // Switch to dash collider
+        if (dashCollider != null)
+        {
+            originalCollider.enabled = false; // Disable original collider
+            dashCollider.enabled = true; // Enable dash collider
+        }
+
+        Vector2 dashDirection = (player.position - transform.position).normalized;
+        float dashEndTime = Time.time + dashDuration;
+
+        // Move the dino quickly towards the player
+        while (Time.time < dashEndTime)
+        {
+            rb.linearVelocity = dashDirection * dashSpeed; // Move the dino during the dash
+            yield return null;
+        }
+
+        rb.linearVelocity = Vector2.zero; // Stop movement after dash
+
+        // Switch back to original collider
+        if (dashCollider != null)
+        {
+            dashCollider.enabled = false; // Disable dash collider
+            originalCollider.enabled = true; // Enable original collider
+        }
+
+        isDashing = false;
+        cooldownTimer = dashCooldown; // Set cooldown timer
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the boss collides with the player
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                // Apply damage to the player
-                playerHealth.TakeDamage(10);  // You can adjust the damage value
+                playerHealth.TakeDamage(20); // Dino deals 20 damage on hit
             }
 
-            // Start the cooldown timer and stop chasing the player
             isCoolingDown = true;
-            cooldownTimer = cooldownDuration;
+            cooldownTimer = dashCooldown;
         }
     }
 }
