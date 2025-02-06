@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject enemy;
 
-    public Slider healthSlider;
-
     void Start()
     {
         // Instantiate the player at the spawn position
@@ -22,11 +20,10 @@ public class GameManager : MonoBehaviour
 
         // Initialize the player's health (optional, but ensures player health is set up)
         PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        if (playerHealth != null && healthSlider != null)
+        if (playerHealth != null)
         {
             playerHealth.maxHealth = 100; // Set max health (can be done through the inspector too)
             playerHealth.currentHealth = playerHealth.maxHealth;  // Set initial health to max
-            playerHealth.healthSlider = healthSlider;
         }
 
         // If you have the CameraFollow script, set the player reference in the camera follow script
