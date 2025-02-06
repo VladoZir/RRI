@@ -192,7 +192,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  healthSlider: {fileID: 0}
-  healthImage: {fileID: 0}
   healthSprites: []
   healthContainer: {fileID: 0}
+  maxShield: 50
+  currentShield: 0
+  shieldSprites: []
+  shieldContainer: {fileID: 0}

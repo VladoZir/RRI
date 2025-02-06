@@ -1,42 +1,25 @@
 using UnityEngine;
 
-public class ParallaxBackground : MonoBehaviour
+public class ParallaxElement : MonoBehaviour
 {
-    public Transform cam; // Assign the Camera Transform
-    public float parallaxEffectMultiplier = 0.5f; // Adjust per layer for different speeds
-    public bool isForeground = false; // Enable this for the front 3 layers
-
-    private float textureUnitSizeX;
-    private Vector3 lastCameraPosition;
+    public float parallaxSpeed = 1.0f; // Speed of the parallax effect
+    private Vector3 previousCameraPosition;
 
     void Start()
     {
-        lastCameraPosition = cam.position;
-
-        // Get the width of the sprite
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        textureUnitSizeX = spriteRenderer.bounds.size.x;
+        // Store the initial camera position
+        previousCameraPosition = Camera.main.transform.position;
     }
 
     void Update()
     {
-        // Calculate parallax movement
-        Vector3 deltaMovement = cam.position - lastCameraPosition;
-        transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier, 0, 0);
+        // Get the difference in position between the previous and current camera positions
+        Vector3 cameraMovement = Camera.main.transform.position - previousCameraPosition;
 
-        // If this is a foreground element, apply slight vertical movement
-        if (isForeground)
-        {
-            transform.position += new Vector3(0, -deltaMovement.y * 0.2f, 0); // Adjust vertical effect
-        }
+        // Move the element based on the camera's movement
+        transform.position += new Vector3(cameraMovement.x * parallaxSpeed, 0, 0);
 
-        lastCameraPosition = cam.position;
-
-        // Wrap background when it goes out of bounds
-        if (Mathf.Abs(cam.position.x - transform.position.x) >= textureUnitSizeX)
-        {
-            float offset = (cam.position.x - transform.position.x) > 0 ? textureUnitSizeX * 2 : -textureUnitSizeX * 2;
-            transform.position += new Vector3(offset, 0, 0);
-        }
+        // Update the previous camera position for the next frame
+        previousCameraPosition = Camera.main.transform.position;
     }
 }
