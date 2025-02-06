@@ -571,10 +571,10 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.78}
   m_SpriteTilingProperty:
     border: {x: 0, y: 2.9375, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 2.4375, y: 2.9375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -4277,7 +4277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_Offset.y
-      value: -0.76
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_SpriteTilingProperty.border.y
@@ -4473,11 +4473,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[22].x
-      value: 0.0379398
+      value: 0.42393088
       objectReference: {fileID: 0}
     - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[22].y
-      value: 0.3972549
+      value: 0.60892737
       objectReference: {fileID: 0}
     - target: {fileID: 3537416977830576002, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[23].x
@@ -4533,11 +4533,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4277556983463015675, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.2
+      value: 14.08
       objectReference: {fileID: 0}
     - target: {fileID: 4277556983463015675, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.48979992
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4277556983463015675, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_LocalPosition.z
