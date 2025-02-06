@@ -135,6 +135,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentShield = Mathf.Min(currentShield + amount, maxShield);
 
-        changeShieldSprite(currentHealth);
+        changeShieldSprite(currentShield);
     }
 }
