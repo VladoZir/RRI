@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6585168501074367420, guid: 55ebea176b382a04aad0b2cdae1cd634, type: 3}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 3, z: 0}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
