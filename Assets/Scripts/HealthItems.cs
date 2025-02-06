@@ -16,18 +16,20 @@ public class HealthItems : MonoBehaviour
 
             if (playerHealth != null)
             {
-                if (playerHealth.currentShield < playerHealth.maxShield)
+                if (CompareTag("ShieldPotion"))
                 {
-                    if (CompareTag("ShieldPotion"))
+                    if (playerHealth.currentShield < playerHealth.maxShield)
                     {
-                        playerHealth.RetoreShield(shieldPotionAmount);
+                        playerHealth.RestoreShield(shieldPotionAmount);
                         Destroy(gameObject);
                         Debug.Log("Shield Potion Used! Current Shield: " + playerHealth.currentShield);
                     }
+                    else
+                    {
+                        Debug.Log("Shield is already full! Item not used.");
+                    }
                 }
-
-                // Provjera da li igračovo zdravlje nije već maksimalno
-                if (playerHealth.currentHealth < playerHealth.maxHealth)
+                else if (playerHealth.currentHealth < playerHealth.maxHealth)
                 {
                     // Provjeriti tip itema i primijeniti odgovarajuće liječenje
                     if (CompareTag("HealthPotion"))
