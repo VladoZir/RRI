@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
@@ -11,25 +11,65 @@ public class PlayerHealth : MonoBehaviour
     public List<Sprite> healthSprites = new List<Sprite>();
     public GameObject healthContainer;
 
+    public int maxShield = 50;
+    public int currentShield;
+    public List<Sprite> shieldSprites = new List<Sprite>();
+    public GameObject shieldContainer;
+
     void Start()
     {
         // Initialize health at the start
         currentHealth = maxHealth;
         healthContainer = GameObject.Find("HealthBar");
+
+        currentShield = 0;
+        shieldContainer = GameObject.Find("ShieldBar");
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        if (currentHealth < 0) currentHealth = 0;
-
-        changeHealthSprite(currentHealth);
-
-        // You can add more behavior here, like triggering death when health reaches 0
-        if (currentHealth <= 0)
+        if (currentShield > 0)
         {
-            Die();
+            currentShield -= damage;
+            if (currentShield < 0)
+            {
+                currentShield = 0;
+            }
+
+            changeShieldSprite(currentShield);
+
         }
+        else
+        {
+            currentHealth -= damage;
+            if (currentHealth < 0)
+            {
+                currentHealth = 0;
+            }
+
+            changeHealthSprite(currentHealth);
+
+            // You can add more behavior here, like triggering death when health reaches 0
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+        }
+    }
+
+    public void changeShieldSprite(int curShield)
+    {
+        // Izračunaj postotak od 50
+        int shieldPercentage = (curShield * 100) / 50;
+
+        // Na temelju postotka, odaberi odgovarajući sprite
+        int spriteIndex = Mathf.FloorToInt(shieldPercentage / 5); // Za svakih 5%
+
+        // Osiguraj da je spriteIndex u granicama (0 do 10 za 11 spriteova)
+        spriteIndex = Mathf.Clamp(spriteIndex, 0, shieldSprites.Count - 1);
+
+        // Postavi sprite za shield
+        shieldContainer.GetComponent<Image>().sprite = shieldSprites[spriteIndex];
     }
 
     public void changeHealthSprite(int curHealth)
@@ -87,5 +127,12 @@ public class PlayerHealth : MonoBehaviour
 
         // Update health sprite
         changeHealthSprite(currentHealth);
+    }
+
+    public void RetoreShield(int amount)
+    {
+        currentShield = Mathf.Min(currentShield + amount, maxShield);
+
+        changeShieldSprite(currentHealth);
     }
 }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3290878437712701599}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,8 +215,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  healthSlider: {fileID: 0}
-  healthImage: {fileID: 0}
   healthSprites:
   - {fileID: 3891034975967117877, guid: dc194504b8b3cd34885cd19a33adb330, type: 3}
   - {fileID: -4271092032554199521, guid: c88119d9eaf020941b00424a9a4ee0f7, type: 3}
@@ -230,3 +228,18 @@ MonoBehaviour:
   - {fileID: 5910531354226070042, guid: 28e87efa352b70d4c8760e615ff48980, type: 3}
   - {fileID: 3182712424331773086, guid: 45796216bdbd6214d961ef798c82b26b, type: 3}
   healthContainer: {fileID: 6585168501074367420}
+  maxShield: 50
+  currentShield: 0
+  shieldSprites:
+  - {fileID: 1487489730931230757, guid: e5e56c3ab418b9643b9ce0d97f162d35, type: 3}
+  - {fileID: -5269697073360046100, guid: 9971c5bcf6029964b99518b6b6166778, type: 3}
+  - {fileID: 7976353980197947509, guid: c36967981aeec4f4d9780d380c377c71, type: 3}
+  - {fileID: 6232167902981424519, guid: b83d3b90fe69c444d8522ef9aaec846a, type: 3}
+  - {fileID: 2702003255452524830, guid: af5c70c0bf3d0d543ad2c50cb81c6a74, type: 3}
+  - {fileID: -7819810611893199297, guid: 287e06bf091f8d14f9cbcee68b24ad86, type: 3}
+  - {fileID: -7075052345752514577, guid: 5d12cba72beacc54993ad8cb9ac42e31, type: 3}
+  - {fileID: 1117922437789945145, guid: 141ba6c58c4984f43b5eab839aab9e9f, type: 3}
+  - {fileID: -8664575237810636151, guid: 483332ac512ce784290faf98bd996bf6, type: 3}
+  - {fileID: -3826812197123554252, guid: a44101ad429b16e4397a7baa32826492, type: 3}
+  - {fileID: -7034277020501658907, guid: a6162e22354860541b57f00264e0afa4, type: 3}
+  shieldContainer: {fileID: 6585168501074367420}

@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
-  - Potion
   - Medkit
+  - HealthPotion
+  - ShieldPotion
   layers:
   - Default
   - TransparentFX
