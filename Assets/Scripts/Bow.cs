@@ -46,12 +46,12 @@ public class Bow : MonoBehaviour
     void Shoot()
     {
         GameObject newArrow = Instantiate(arrow, shotPoint.position, shotPoint.rotation);
-        newArrow.GetComponent<Rigidbody2D>().linearVelocity = transform.right*launchForce;
+        newArrow.GetComponent<Rigidbody2D>().linearVelocity = transform.right * launchForce;
     }
 
     Vector2 PointPosition(float t)
     {
-        Vector2 position = (Vector2)shotPoint.position + (direction.normalized * launchForce * t) + 0.5f * Physics2D.gravity * (t*t);
+        Vector2 position = (Vector2)shotPoint.position + (direction.normalized * launchForce * t) + 0.5f * Physics2D.gravity * (t * t);
         return position;
     }
 

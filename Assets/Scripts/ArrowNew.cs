@@ -26,5 +26,6 @@ public class ArrowNew : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
         Destroy(gameObject, 3f);
+        Debug.Log(collision.transform.name);
     }
 }

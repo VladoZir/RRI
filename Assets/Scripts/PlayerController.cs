@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,6 +16,10 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        bow = new GameObject("Bow").transform;
+        bow.SetParent(transform); // Set the bow as a child of the player
+        bow.localPosition = Vector3.zero;
     }
 
     void Update()
@@ -40,7 +45,7 @@ public class PlayerController : MonoBehaviour
             bow.localScale = new Vector3(1f, 1f, 1f);  // Reset bow's scale when facing right
         }
     }
-    
+
 
     void Move()
     {

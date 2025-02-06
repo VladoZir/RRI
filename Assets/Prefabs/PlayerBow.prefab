@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 949175988831028925}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 0.12, z: -10.09}
+  m_LocalPosition: {x: 0.44, y: 0, z: -10.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -104,6 +104,9 @@ MonoBehaviour:
   arrow: {fileID: 2122637902105190913, guid: d9dda37ff53412d428bf80f6b983ba8c, type: 3}
   launchForce: 13
   shotPoint: {fileID: 6073732249810042796}
+  point: {fileID: 6044654306345731615, guid: 574dde56c9b180746adceccb82e8a10d, type: 3}
+  numberOfPoints: 50
+  spaceBetweenPoints: 0.025
 --- !u!1 &1754321237269034507
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,8 +377,8 @@ Transform:
   m_GameObject: {fileID: 6467288873505173269}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.56, y: -0.38, z: -0.031235695}
-  m_LocalScale: {x: 0.30703, y: 0.30703, z: 0.30703}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1632248077722868962}
