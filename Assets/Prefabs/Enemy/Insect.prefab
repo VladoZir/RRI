@@ -178,3 +178,4 @@ MonoBehaviour:
   speed: 3
   detectionRange: 7
   damageAmount: 10
+  health: 10

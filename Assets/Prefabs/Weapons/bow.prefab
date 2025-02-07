@@ -138,3 +138,4 @@ MonoBehaviour:
   point: {fileID: 0}
   numberOfPoints: 0
   spaceBetweenPoints: 0
+  shootCooldown: 0.5
