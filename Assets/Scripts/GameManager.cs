@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
     public void UpgradePlayer(GameObject newPrefab, GameObject oldPlayer)
     {
         Vector3 position = oldPlayer.transform.position; // Store player position
@@ -63,5 +64,46 @@ public class GameManager : MonoBehaviour
         SpawnPlayer(newPrefab); // Spawn new player at the same position
         currentPlayer.transform.position = position; // Restore position
     }
+    */
+
+    public void UpgradePlayer(GameObject newPrefab, GameObject oldPlayer)
+    {
+        Vector3 position = oldPlayer.transform.position; // Store player position
+        Destroy(oldPlayer); // Remove the old player
+        currentPlayer = Instantiate(newPrefab, position, Quaternion.identity); // Spawn new player at the same position
+
+        // Assign the new player to the camera
+        if (mainCamera != null)
+        {
+            CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
+            if (cameraFollow != null)
+            {
+                cameraFollow.player = currentPlayer;
+            }
+        }
+
+        // Assign player to enemy AI if needed
+        if (enemy != null)
+        {
+            DinoBossAI enemyAI = enemy.GetComponent<DinoBossAI>();
+            if (enemyAI != null)
+            {
+                enemyAI.player = currentPlayer.transform;
+            }
+        }
+
+        // Link the bow to the PlayerController (if the new player prefab has the bow)
+        PlayerController playerController = currentPlayer.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            Transform bowTransform = currentPlayer.transform.Find("Bow"); // Assuming Bow is a child of the player prefab
+            if (bowTransform != null)
+            {
+                Debug.Log("bow found");
+                playerController.bow = bowTransform; // Link the bow to the PlayerController
+            }
+        }
+    }
+
 
 }

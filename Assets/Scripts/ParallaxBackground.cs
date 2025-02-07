@@ -31,7 +31,7 @@ public class SeamlessParallax : MonoBehaviour
         transform.position += parallaxOffset;
 
         // Debug the positions
-        Debug.Log($"Camera Position: {cam.position.x}, Texture Position: {transform.position.x}");
+        //Debug.Log($"Camera Position: {cam.position.x}, Texture Position: {transform.position.x}");
 
         // Check if the texture has moved beyond the threshold
         if (Mathf.Abs(transform.position.x - cam.position.x) >= teleportThreshold)

@@ -10,16 +10,14 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private Animator anim;
 
-    [SerializeField] Transform bow;
+    public Transform bow;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
-        bow = new GameObject("Bow").transform;
-        bow.SetParent(transform); // Set the bow as a child of the player
-        bow.localPosition = Vector3.zero;
+        
     }
 
     void Update()
@@ -35,24 +33,39 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void FlipBow(bool flipLeft)
+    {
+        if (bow != null) 
+        {
+            if (flipLeft)
+            {
+                bow.localScale = new Vector3(-1f, 1f, 1f);  
+            }
+            else
+            {
+                bow.localScale = new Vector3(1f, 1f, 1f);  
+            }
+        }
+    }
+
+
     void Move()
     {
         float moveInput = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y); // Use velocity instead of linearVelocity
+        rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
 
         if (moveInput > 0)
         {
             // Flip sprite to the right (no need to modify local scale)
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-
+            FlipBow(false);
         }
         else if (moveInput < 0)
         {
             // Flip sprite to the left (no need to modify local scale)
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            FlipBow(true);
         }
-
-        bow.localScale = new Vector3(1f, 1f, 1f);
     }
 
     void Jump()

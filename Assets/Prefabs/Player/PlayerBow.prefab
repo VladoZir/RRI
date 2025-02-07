@@ -255,7 +255,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7805736118446520231, guid: 5d8e2b50a7c326f409c0d95d0e26986b, type: 3}
       propertyPath: m_Name
-      value: bow
+      value: Bow
       objectReference: {fileID: 0}
     - target: {fileID: 8636010547027258872, guid: 5d8e2b50a7c326f409c0d95d0e26986b, type: 3}
       propertyPath: m_LocalPosition.x
