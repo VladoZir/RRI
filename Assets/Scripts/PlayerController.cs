@@ -56,13 +56,13 @@ public class PlayerController : MonoBehaviour
         {
             // Flip sprite to the right (no need to modify local scale)
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            FlipBow(false);
+            //FlipBow(false);
         }
         else if (moveInput < 0)
         {
             // Flip sprite to the left (no need to modify local scale)
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            FlipBow(true);
+            //FlipBow(true);
         }
     }
 

@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class InsectAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     private Transform player;
     public float speed = 2f;
     public float detectionRange = 5f;
-    public float attackRange = 1f;
     public int damageAmount = 10;
     private Rigidbody2D rb;
     private bool isFacingRight = true; // Tracks current facing direction
@@ -23,14 +22,14 @@ public class InsectAI : MonoBehaviour
             if (foundPlayer != null)
             {
                 player = foundPlayer.transform;
-                Debug.Log("Insect found the player!");
+                Debug.Log("Enemy found the player!");
             }
             return;
         }
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (distanceToPlayer <= detectionRange && distanceToPlayer > attackRange)
+        if (distanceToPlayer <= detectionRange)
         {
             Vector2 direction = (player.position.x > transform.position.x) ? Vector2.right : Vector2.left;
             rb.linearVelocity = new Vector2(direction.x * speed, 0f);
@@ -63,7 +62,7 @@ public class InsectAI : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damageAmount);
-                Debug.Log("Insect attacked the player!");
+                Debug.Log("Enemy attacked the player!");
             }
         }
     }

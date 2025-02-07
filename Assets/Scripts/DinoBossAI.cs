@@ -16,15 +16,12 @@ public class DinoBossAI : MonoBehaviour
     private Animator animator;          // Animator reference
     private Rigidbody2D rb;             // Rigidbody for physics-based movement
 
-    // Collider reference
-    private Collider2D originalCollider;
-    public Collider2D dashCollider;     // Collider to use during dash
+   
 
     void Start()
     {
         animator = GetComponent<Animator>();  // Get animator component
         rb = GetComponent<Rigidbody2D>();    // Get rigidbody component
-        originalCollider = GetComponent<Collider2D>(); // Get the original collider
     }
 
     void Update()
@@ -57,13 +54,6 @@ public class DinoBossAI : MonoBehaviour
 
         animator.SetTrigger("Dash"); // Play dash animation
 
-        // Switch to dash collider
-        if (dashCollider != null)
-        {
-            originalCollider.enabled = false; // Disable original collider
-            dashCollider.enabled = true; // Enable dash collider
-        }
-
         Vector2 dashDirection = (player.position - transform.position).normalized;
         float dashEndTime = Time.time + dashDuration;
 
@@ -76,12 +66,7 @@ public class DinoBossAI : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero; // Stop movement after dash
 
-        // Switch back to original collider
-        if (dashCollider != null)
-        {
-            dashCollider.enabled = false; // Disable dash collider
-            originalCollider.enabled = true; // Enable original collider
-        }
+        
 
         isDashing = false;
         cooldownTimer = dashCooldown; // Set cooldown timer

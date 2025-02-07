@@ -16,30 +16,36 @@ public class Bow : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        /*
         points = new GameObject[numberOfPoints];
         for (int i = 0; i < numberOfPoints; i++)
         {
             points[i] = Instantiate(point, shotPoint.position, Quaternion.identity);
         }
+        */
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         Vector2 bowPosition = transform.position;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = mousePosition - bowPosition;
         transform.right = direction;
 
+        
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
 
+        /*
         for (int i = 0; i < numberOfPoints; i++)
         {
             points[i].transform.position = PointPosition(i * spaceBetweenPoints);
         }
+        */
 
     }
 
