@@ -170,3 +170,5 @@ MonoBehaviour:
   detectionRange: 5
   damageAmount: 10
   health: 10
+  itemDrops: []
+  dropChance: 0.5
