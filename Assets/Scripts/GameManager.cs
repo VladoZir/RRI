@@ -44,27 +44,7 @@ public class GameManager : MonoBehaviour
                 cameraFollow.player = currentPlayer;
             }
         }
-
-        // Assign player to enemy AI if needed
-        if (enemy != null)
-        {
-            DinoBossAI enemyAI = enemy.GetComponent<DinoBossAI>();
-            if (enemyAI != null)
-            {
-                enemyAI.player = currentPlayer.transform;
-            }
-        }
     }
-
-    /*
-    public void UpgradePlayer(GameObject newPrefab, GameObject oldPlayer)
-    {
-        Vector3 position = oldPlayer.transform.position; // Store player position
-        Destroy(oldPlayer); // Remove the old player
-        SpawnPlayer(newPrefab); // Spawn new player at the same position
-        currentPlayer.transform.position = position; // Restore position
-    }
-    */
 
     public void UpgradePlayer(GameObject newPrefab, GameObject oldPlayer)
     {
@@ -79,16 +59,6 @@ public class GameManager : MonoBehaviour
             if (cameraFollow != null)
             {
                 cameraFollow.player = currentPlayer;
-            }
-        }
-
-        // Assign player to enemy AI if needed
-        if (enemy != null)
-        {
-            DinoBossAI enemyAI = enemy.GetComponent<DinoBossAI>();
-            if (enemyAI != null)
-            {
-                enemyAI.player = currentPlayer.transform;
             }
         }
 

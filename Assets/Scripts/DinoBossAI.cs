@@ -15,17 +15,43 @@ public class DinoBossAI : MonoBehaviour
     public Transform player;            // Player reference
     private Animator animator;          // Animator reference
     private Rigidbody2D rb;             // Rigidbody for physics-based movement
+    private bool playerFound = false;
 
-   
+
 
     void Start()
     {
         animator = GetComponent<Animator>();  // Get animator component
         rb = GetComponent<Rigidbody2D>();    // Get rigidbody component
+
     }
 
     void Update()
     {
+        if (!playerFound)
+        {
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject != null)
+            {
+                // Check if the player object has a child named "Bow"
+                Transform bowTransform = playerObject.transform.Find("Bow");
+                if (bowTransform != null)
+                {
+                    player = playerObject.transform;  // Set the player reference
+                    playerFound = true; // Mark player as found
+                }/*
+                else
+                {
+                    Debug.LogWarning("Player object does not have a 'Bow' child!");
+                }*/
+            }
+            else
+            {
+                Debug.LogWarning("No object with Player tag found!");
+            }
+        }
+
+
         if (player == null) return;  // Ensure the player is set
 
         if (isCoolingDown)
