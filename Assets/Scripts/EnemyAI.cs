@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour, IEnemy
 
     public int health = 10;
 
+    public GameObject[] itemDrops; // Array of item prefabs that can drop
+    public float dropChance = 0.5f; // 50% chance to drop an item
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -83,7 +85,15 @@ public class EnemyAI : MonoBehaviour, IEnemy
     private void Die()
     {
         Debug.Log($"{gameObject.name} has died.");
+        DropItem();
         Destroy(gameObject);
     }
-
+    private void DropItem()
+    {
+        if (itemDrops.Length > 0 && Random.value < dropChance) // Random chance check
+        {
+            int randomIndex = Random.Range(0, itemDrops.Length);
+            Instantiate(itemDrops[randomIndex], transform.position, Quaternion.identity);
+        }
+    }
 }
