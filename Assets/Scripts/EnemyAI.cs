@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
     public int health = 10;
 
     public GameObject[] itemDrops; // Array of item prefabs that can drop
-    public float dropChance = 0.5f; // 50% chance to drop an item
+    public float dropChance = 1f; // 50% chance to drop an item
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

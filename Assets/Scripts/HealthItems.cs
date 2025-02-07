@@ -2,16 +2,42 @@
 
 public class HealthItems : MonoBehaviour
 {
-    public int potionHealAmount = 20;  // Heal amount for health potion
-    public int medkitHealAmount = 50;  // Heal amount for medkit
+    public int potionHealAmount = 20;
+    public int medkitHealAmount = 50;
     public int shieldPotionAmount = 50;
+
+    private Collider2D itemCollider;
+    private Rigidbody2D rb;
+    private bool hasLanded = false;
+
+    void Start()
+    {
+        itemCollider = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            rb.gravityScale = 1f; // Enable falling
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!hasLanded && collision.gameObject.CompareTag("Ground"))
+        {
+            hasLanded = true;
+            rb.linearVelocity = Vector2.zero;  // Stop movement
+            rb.gravityScale = 0f;        // Disable gravity
+            rb.bodyType = RigidbodyType2D.Kinematic; // Stop physics interactions
+            itemCollider.isTrigger = true; // Make it pass-through
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Provjera je li objekt s kojim je došlo do kontakta označen tagom "Player"
         if (other.CompareTag("Player"))
         {
-            // Pokušaj dobiti PlayerHealth komponentu na igraču
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
 
             if (playerHealth != null)
@@ -31,30 +57,23 @@ public class HealthItems : MonoBehaviour
                 }
                 else if (playerHealth.currentHealth < playerHealth.maxHealth)
                 {
-                    // Provjeriti tip itema i primijeniti odgovarajuće liječenje
                     if (CompareTag("HealthPotion"))
                     {
-                        playerHealth.Heal(potionHealAmount);  // Liječenje pomoću potiona
-                        Destroy(gameObject);  // Uništiti health potion
+                        playerHealth.Heal(potionHealAmount);
+                        Destroy(gameObject);
                         Debug.Log("Health Potion Used! Current Health: " + playerHealth.currentHealth);
                     }
                     else if (CompareTag("Medkit"))
                     {
-                        playerHealth.Heal(medkitHealAmount);  // Liječenje pomoću medkita
-                        Destroy(gameObject);  // Uništiti medkit
+                        playerHealth.Heal(medkitHealAmount);
+                        Destroy(gameObject);
                         Debug.Log("Medkit Used! Current Health: " + playerHealth.currentHealth);
                     }
                 }
                 else
                 {
-                    // Ako je zdravlje već puno
                     Debug.Log("Health is already full! Item not used.");
                 }
-            }
-            else
-            {
-                // Ako se ne može naći PlayerHealth komponenta
-                Debug.Log("No PlayerHealth component found! Item not used.");
             }
         }
     }
