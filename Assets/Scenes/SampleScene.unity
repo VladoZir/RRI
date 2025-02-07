@@ -529,10 +529,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.06750572
     y: 0
-    width: 1
-    height: 1
+    width: 0.86447996
+    height: 0.99999994
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -779,6 +779,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1807658460992374343, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
+      propertyPath: itemDrops.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807658460992374343, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
+      propertyPath: 'itemDrops.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1373755873}
+    - target: {fileID: 1807658460992374343, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
+      propertyPath: 'itemDrops.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1285462794}
+    - target: {fileID: 1807658460992374343, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
+      propertyPath: 'itemDrops.Array.data[2]'
+      value: 
+      objectReference: {fileID: 968735637}
     - target: {fileID: 3094405077458004628, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
       propertyPath: m_Name
       value: Spider
@@ -828,6 +844,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
+--- !u!1 &968735637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7229929044907374106, guid: 952fc4ca9313bc343b26d7d192c7022b, type: 3}
+  m_PrefabInstance: {fileID: 1485308048208734345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1192460641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -876,6 +897,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6012149013900210247, guid: 2f7f15ca1d6dff64ca6ebbdd986f4d09, type: 3}
+      propertyPath: itemDrops.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012149013900210247, guid: 2f7f15ca1d6dff64ca6ebbdd986f4d09, type: 3}
+      propertyPath: 'itemDrops.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1285462794}
+    - target: {fileID: 6012149013900210247, guid: 2f7f15ca1d6dff64ca6ebbdd986f4d09, type: 3}
+      propertyPath: 'itemDrops.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1373755873}
+    - target: {fileID: 6012149013900210247, guid: 2f7f15ca1d6dff64ca6ebbdd986f4d09, type: 3}
+      propertyPath: 'itemDrops.Array.data[2]'
+      value: 
+      objectReference: {fileID: 968735637}
     - target: {fileID: 6996101720791689121, guid: 2f7f15ca1d6dff64ca6ebbdd986f4d09, type: 3}
       propertyPath: m_Name
       value: Insect
@@ -885,6 +922,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f7f15ca1d6dff64ca6ebbdd986f4d09, type: 3}
+--- !u!1 &1285462794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5196460000004242527, guid: a156a5b49f356e545920cca2156c44ae, type: 3}
+  m_PrefabInstance: {fileID: 1254859634010643784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1334675746
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +1002,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334675746}
   m_CullTransparentMesh: 1
+--- !u!1 &1373755873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2886329134516250418, guid: 744aa124cf583db459b483e6ab9ecc63, type: 3}
+  m_PrefabInstance: {fileID: 8448253307550983602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1506487960
 GameObject:
   m_ObjectHideFlags: 0
@@ -6995,6 +7042,14 @@ PrefabInstance:
       propertyPath: hitColorDuration
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 6735446782489743470, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
+      propertyPath: itemDrops.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735446782489743470, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
+      propertyPath: 'itemDrops.Array.data[0]'
+      value: 
+      objectReference: {fileID: 968735637}
     - target: {fileID: 7710662283089133225, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_SortingOrder
       value: 5

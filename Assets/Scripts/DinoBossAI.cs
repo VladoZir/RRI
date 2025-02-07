@@ -23,6 +23,8 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     private Color originalColor;
     public float hitColorDuration = 0.25f;
 
+    public GameObject[] itemDrops; // Array of item prefabs that can drop
+    public float dropChance = 1f; // 50% chance to drop an item
 
     void Start()
     {
@@ -148,7 +150,15 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     private void Die()
     {
         Debug.Log("DinoBoss has died.");
+        DropItem();
         Destroy(gameObject);
     }
-
+    private void DropItem()
+    {
+        if (itemDrops.Length > 0 && Random.value < dropChance) // Random chance check
+        {
+            int randomIndex = Random.Range(0, itemDrops.Length);
+            Instantiate(itemDrops[randomIndex], transform.position, Quaternion.identity);
+        }
+    }
 }
