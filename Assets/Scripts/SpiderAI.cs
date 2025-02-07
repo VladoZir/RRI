@@ -4,15 +4,14 @@ public class SpiderAI : MonoBehaviour
 {
     public Transform player; // Reference to the player
     public float speed = 2f; // Movement speed
-    public float attackRange = 1f; // Distance at which the spider attacks
-    public int damageAmount = 10; // Damage dealt to the player
+    public float detectionRange = 5f; // Range at which the spider detects and follows the player
+    public float attackRange = 1f; // Distance at which the spider attack
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Ensure the player is assigned if not manually set
         if (player == null)
         {
             GameObject foundPlayer = GameObject.FindGameObjectWithTag("Player");
@@ -31,35 +30,41 @@ public class SpiderAI : MonoBehaviour
     {
         if (player != null)
         {
-            // Get horizontal distance to the player (ignore Y)
-            float horizontalDistance = Mathf.Abs(transform.position.x - player.position.x);
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-            if (horizontalDistance > attackRange)
+            if (distanceToPlayer <= detectionRange && distanceToPlayer > attackRange)
             {
-                // Move towards the player's X position, no vertical movement (Y-axis stays the same)
+                // Move towards the player's X position, no vertical movement
                 Vector2 direction = (player.position.x - transform.position.x > 0) ? Vector2.right : Vector2.left;
                 rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y); // Keep the same vertical velocity
             }
             else
             {
-                // Stop movement when within attack range
+                // Stop movement if out of range or within attack range
                 rb.linearVelocity = Vector2.zero;
             }
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the spider collided with the player
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Deal damage to the player
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(damageAmount);
+                playerHealth.TakeDamage(10);
                 Debug.Log("Spider attacked the player!");
             }
         }
+    }
+
+    // Draw the detection and attack range in the scene view for debugging
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, detectionRange); // Detection range
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange); // Attack range
     }
 }

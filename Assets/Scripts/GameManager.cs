@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab; // Reference to the player prefab
-    public Vector3 spawnPosition = new Vector3(0f, 1f, 0f); // Define spawn position
+    public Vector3 spawnPosition = new Vector3(5f, 0f, 0f); // Define spawn position
 
     public Camera mainCamera;
 
