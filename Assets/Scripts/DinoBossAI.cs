@@ -21,7 +21,7 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
     private SpriteRenderer spriteRenderer; 
     private Color originalColor;
-    public float hitColorDuration = 0.5f;
+    public float hitColorDuration = 0.25f;
 
 
     void Start()

@@ -5760,6 +5760,10 @@ PrefabInstance:
       propertyPath: dashCollider
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6735446782489743470, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
+      propertyPath: hitColorDuration
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7710662283089133225, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_SortingOrder
       value: 5
