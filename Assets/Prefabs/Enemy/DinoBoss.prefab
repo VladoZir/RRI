@@ -188,12 +188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493e21ca535c10441bb2473c1403789c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  detectionRange: 5
   dashSpeed: 8
-  dashCooldown: 3
-  dashDuration: 0.5
-  player: {fileID: 2449243646438328459, guid: 90e962433e794694c8838e347e51dfbe, type: 3}
+  waitTime: 1
+  detectionRange: 5
+  leftSpot: {fileID: 0}
+  rightSpot: {fileID: 0}
   health: 100
   hitColorDuration: 0.5
   itemDrops: []
