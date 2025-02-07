@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DinoBossAI : MonoBehaviour
+public class DinoBossAI : MonoBehaviour, IEnemy
 {
     public float speed = 3f;            // Normal movement speed
     public float detectionRange = 25f;   // Range to detect the player
@@ -17,6 +17,7 @@ public class DinoBossAI : MonoBehaviour
     private Rigidbody2D rb;             // Rigidbody for physics-based movement
     private bool playerFound = false;
 
+    public int health = 100;
 
 
     void Start()
@@ -112,4 +113,22 @@ public class DinoBossAI : MonoBehaviour
             cooldownTimer = dashCooldown;
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log($"DinoBoss took {damage} damage! Health: {health}");
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("DinoBoss has died.");
+        Destroy(gameObject);
+    }
+
 }

@@ -4,6 +4,7 @@ public class ArrowNew : MonoBehaviour
 {
     Rigidbody2D rb;
     bool hasHit;
+    public int damage = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,7 +26,17 @@ public class ArrowNew : MonoBehaviour
         hasHit = true;
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
-        Destroy(gameObject, 3f);
-        Debug.Log(collision.transform.name);
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            IEnemy enemy = collision.gameObject.GetComponent<IEnemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage); // Call TakeDamage for any enemy type
+            }
+        }
+
+        Destroy(gameObject);
+        //Debug.Log(collision.transform.name);
     }
 }

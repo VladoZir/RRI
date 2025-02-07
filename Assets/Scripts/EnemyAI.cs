@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IEnemy
 {
     private Transform player;
     public float speed = 2f;
@@ -8,6 +8,8 @@ public class EnemyAI : MonoBehaviour
     public int damageAmount = 10;
     private Rigidbody2D rb;
     private bool isFacingRight = true; // Tracks current facing direction
+
+    public int health = 10;
 
     void Start()
     {
@@ -66,4 +68,22 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage; // Subtract damage from health
+        Debug.Log($"{gameObject.name} took {damage} damage! Health: {health}");
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log($"{gameObject.name} has died.");
+        Destroy(gameObject);
+    }
+
 }
