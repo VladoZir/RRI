@@ -13,6 +13,9 @@ public class Bow : MonoBehaviour
     public float spaceBetweenPoints;
     Vector2 direction;
 
+    public float shootCooldown = 0.5f;
+    private float lastShootTime = 0f;  
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,9 +38,13 @@ public class Bow : MonoBehaviour
         transform.right = direction;
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Time.time - lastShootTime >= shootCooldown)
         {
-            Shoot();
+            if (Input.GetMouseButtonDown(0)) // If the player clicks the mouse
+            {
+                Shoot();
+                lastShootTime = Time.time; // Update the last shoot time
+            }
         }
 
         /*
