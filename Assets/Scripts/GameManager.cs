@@ -3,48 +3,65 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject playerPrefab; // Reference to the player prefab
-    public Vector3 spawnPosition = new Vector3(5f, 0f, 0f); // Define spawn position
+    public static GameManager Instance;
+
+    public GameObject playerPrefab; 
+    public Vector3 spawnPosition = new Vector3(5f, 0f, 0f); 
 
     public Camera mainCamera;
 
     public GameObject enemy;
 
+    private GameObject currentPlayer; // Track the spawned player
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
-        // Instantiate the player at the spawn position
-        GameObject player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
 
-        // Set the player's tag to "Player" for the CameraFollow script to work
-        player.tag = "Player";
+        SpawnPlayer(playerPrefab);
 
-        // Initialize the player's health (optional, but ensures player health is set up)
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
+    }
+
+    public void SpawnPlayer(GameObject prefab)
+    {
+        if (currentPlayer != null)
         {
-            playerHealth.maxHealth = 100; // Set max health (can be done through the inspector too)
-            playerHealth.currentHealth = playerHealth.maxHealth;  // Set initial health to max
+            Destroy(currentPlayer); // Destroy previous player instance
         }
 
-        // If you have the CameraFollow script, set the player reference in the camera follow script
+        currentPlayer = Instantiate(prefab, spawnPosition, Quaternion.identity);
+
+        // Assign the new player to the camera
         if (mainCamera != null)
         {
             CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
             if (cameraFollow != null)
             {
-                cameraFollow.player = player;  // Assign the player to the camera follow script
+                cameraFollow.player = currentPlayer;
             }
         }
 
-        // Ensure the enemy follows the player
+        // Assign player to enemy AI if needed
         if (enemy != null)
         {
             DinoBossAI enemyAI = enemy.GetComponent<DinoBossAI>();
             if (enemyAI != null)
             {
-                enemyAI.player = player.transform;  // Assign the player reference to the enemy AI script
+                enemyAI.player = currentPlayer.transform;
             }
         }
-
     }
+
+    public void UpgradePlayer(GameObject newPrefab, GameObject oldPlayer)
+    {
+        Vector3 position = oldPlayer.transform.position; // Store player position
+        Destroy(oldPlayer); // Remove the old player
+        SpawnPlayer(newPrefab); // Spawn new player at the same position
+        currentPlayer.transform.position = position; // Restore position
+    }
+
 }
