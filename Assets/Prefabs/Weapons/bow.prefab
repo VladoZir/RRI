@@ -135,6 +135,3 @@ MonoBehaviour:
   arrow: {fileID: 2122637902105190913, guid: d9dda37ff53412d428bf80f6b983ba8c, type: 3}
   launchForce: 13
   shotPoint: {fileID: 3834136004741598902}
-  point: {fileID: 6044654306345731615, guid: 574dde56c9b180746adceccb82e8a10d, type: 3}
-  numberOfPoints: 50
-  spaceBetweenPoints: 0.025

@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 10
-  bow: {fileID: 1632248077722868962}
+  bow: {fileID: 8636010547027258872, guid: 5d8e2b50a7c326f409c0d95d0e26986b, type: 3}
 --- !u!50 &6381297615418654625
 Rigidbody2D:
   serializedVersion: 5

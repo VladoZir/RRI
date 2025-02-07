@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 10
-  bow: {fileID: 0}
+  bowPrefab: {fileID: 0}
 --- !u!50 &1175324863814370781
 Rigidbody2D:
   serializedVersion: 5

@@ -194,7 +194,6 @@ MonoBehaviour:
   dashCooldown: 3
   dashDuration: 0.5
   player: {fileID: 2449243646438328459, guid: 90e962433e794694c8838e347e51dfbe, type: 3}
-  dashCollider: {fileID: 0}
 --- !u!95 &-2895726126985323716
 Animator:
   serializedVersion: 7

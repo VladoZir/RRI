@@ -34,18 +34,6 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("IsJumping", !isGrounded); // IsJumping is true while in the air
 
     }
-    void FlipBow(bool flipLeft)
-    {
-        if (flipLeft)
-        {
-            bow.localScale = new Vector3(-1f, 1f, 1f);  // Flip bow horizontally when facing left
-        }
-        else
-        {
-            bow.localScale = new Vector3(1f, 1f, 1f);  // Reset bow's scale when facing right
-        }
-    }
-
 
     void Move()
     {
@@ -56,14 +44,15 @@ public class PlayerController : MonoBehaviour
         {
             // Flip sprite to the right (no need to modify local scale)
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            //FlipBow(false);
+
         }
         else if (moveInput < 0)
         {
             // Flip sprite to the left (no need to modify local scale)
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            //FlipBow(true);
         }
+
+        bow.localScale = new Vector3(1f, 1f, 1f);
     }
 
     void Jump()

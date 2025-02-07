@@ -28,13 +28,13 @@ public class Bow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         Vector2 bowPosition = transform.position;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = mousePosition - bowPosition;
         transform.right = direction;
 
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
