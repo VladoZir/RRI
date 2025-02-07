@@ -3,27 +3,34 @@ using System.Collections;
 
 public class DinoBossAI : MonoBehaviour, IEnemy
 {
-    public float speed = 3f;            // Normal movement speed
-    public float detectionRange = 25f;   // Range to detect the player
-    public float dashSpeed = 8f;        // Speed during dash
-    public float dashCooldown = 3f;     // Time before the dino can dash again
-    public float dashDuration = 0.5f;   // Duration of the dash
-    private bool isDashing = false;     // Flag to check if dashing
-    private bool isCoolingDown = false; // Flag for cooldown
-    private float cooldownTimer = 0f;   // Timer for cooldown
+    public float speed = 3f;            
+    public float detectionRange = 25f;
+    public float dashSpeed = 8f;      
+    public float dashCooldown = 3f;   
+    public float dashDuration = 0.5f;  
+    private bool isDashing = false;     
+    private bool isCoolingDown = false;
+    private float cooldownTimer = 0f;   
 
-    public Transform player;            // Player reference
-    private Animator animator;          // Animator reference
-    private Rigidbody2D rb;             // Rigidbody for physics-based movement
+    public Transform player;            
+    private Animator animator;         
+    private Rigidbody2D rb;             
     private bool playerFound = false;
 
     public int health = 100;
 
+    private SpriteRenderer spriteRenderer; 
+    private Color originalColor;
+    public float hitColorDuration = 0.5f;
+
 
     void Start()
     {
-        animator = GetComponent<Animator>();  // Get animator component
-        rb = GetComponent<Rigidbody2D>();    // Get rigidbody component
+        animator = GetComponent<Animator>();  
+        rb = GetComponent<Rigidbody2D>();    
+
+        spriteRenderer = GetComponent<SpriteRenderer>();  
+        originalColor = spriteRenderer.color;
 
     }
 
@@ -123,6 +130,19 @@ public class DinoBossAI : MonoBehaviour, IEnemy
         {
             Die();
         }
+        StartCoroutine(ChangeColorOnHit());
+    }
+
+    private IEnumerator ChangeColorOnHit()
+    {
+        // Change the color to red
+        spriteRenderer.color = Color.red;
+
+        // Wait for the specified duration
+        yield return new WaitForSeconds(hitColorDuration);
+
+        // Reset the color back to the original
+        spriteRenderer.color = originalColor;
     }
 
     private void Die()
