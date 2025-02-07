@@ -3,131 +3,103 @@ using System.Collections;
 
 public class DinoBossAI : MonoBehaviour, IEnemy
 {
-    public float speed = 3f;            
-    public float detectionRange = 25f;
-    public float dashSpeed = 8f;      
-    public float dashCooldown = 3f;   
-    public float dashDuration = 0.5f;  
-    private bool isDashing = false;     
-    private bool isCoolingDown = false;
-    private float cooldownTimer = 0f;   
+    public float dashSpeed = 8f;
+    public float waitTime = 1f;
+    public float detectionRange = 15f;
+    private bool playerDetected = false;
+    public Transform leftSpot;
+    public Transform rightSpot;
+    private Transform targetSpot;
 
-    public Transform player;            
-    private Animator animator;         
-    private Rigidbody2D rb;             
-    private bool playerFound = false;
+    private Animator animator;
+    private Transform player;
 
     public int health = 100;
-
-    private SpriteRenderer spriteRenderer; 
+    private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public float hitColorDuration = 0.25f;
 
-    public GameObject[] itemDrops; // Array of item prefabs that can drop
-    public float dropChance = 1f; // 50% chance to drop an item
+    public GameObject[] itemDrops;
+    public float dropChance = 1f;
 
     void Start()
     {
-        animator = GetComponent<Animator>();  
-        rb = GetComponent<Rigidbody2D>();    
-
-        spriteRenderer = GetComponent<SpriteRenderer>();  
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+        targetSpot = leftSpot;
 
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject)
+        {
+            player = playerObject.transform;
+        }
     }
 
     void Update()
+    { }
+
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-        if (!playerFound)
+        if (!playerDetected && other.CompareTag("Player"))
         {
-            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-            if (playerObject != null)
-            {
-                // Check if the player object has a child named "Bow"
-                Transform bowTransform = playerObject.transform.Find("Bow");
-                if (bowTransform != null)
-                {
-                    player = playerObject.transform;  // Set the player reference
-                    playerFound = true; // Mark player as found
-                }/*
-                else
-                {
-                    Debug.LogWarning("Player object does not have a 'Bow' child!");
-                }*/
-            }
-            else
-            {
-                Debug.LogWarning("No object with Player tag found!");
-            }
-        }
+            playerDetected = true;
 
+            // Wait for a short period before starting the dash
+            yield return new WaitForSeconds(waitTime);
 
-        if (player == null) return;  // Ensure the player is set
-
-        if (isCoolingDown)
-        {
-            cooldownTimer -= Time.deltaTime;
-            if (cooldownTimer <= 0f)
-            {
-                isCoolingDown = false;  // Reset cooldown
-            }
-            return; // Exit the update loop if the enemy is in cooldown
-        }
-
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        // If player is within range and not dashing, start dash
-        if (distanceToPlayer <= detectionRange && !isDashing)
-        {
-            StartCoroutine(DashTowardsPlayer());
+            StartCoroutine(DashToTarget());
         }
     }
 
-    private IEnumerator DashTowardsPlayer()
+    private IEnumerator DashToTarget()
     {
-        isDashing = true;
-        isCoolingDown = true; // Start cooldown
+        Vector2 targetPosition = targetSpot.position;
 
-        animator.SetTrigger("Dash"); // Play dash animation
+        // Trigger the dash animation
+        animator.SetTrigger("Dash");
 
-        Vector2 dashDirection = (player.position - transform.position).normalized;
-        float dashEndTime = Time.time + dashDuration;
+        // Wait for the duration of the animation (assuming you know the animation's length)
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
-        // Move the dino quickly towards the player
-        while (Time.time < dashEndTime)
+        // Start moving after the animation duration
+        while (Vector2.Distance(transform.position, targetPosition) > 0.1f)
         {
-            rb.linearVelocity = dashDirection * dashSpeed; // Move the dino during the dash
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, dashSpeed * Time.deltaTime);
             yield return null;
         }
 
-        rb.linearVelocity = Vector2.zero; // Stop movement after dash
+        transform.position = targetPosition;  // Ensure the boss reaches the target position
 
-        
+        // Flip the boss after reaching the target
+        FlipAfterDash();
 
-        isDashing = false;
-        cooldownTimer = dashCooldown; // Set cooldown timer
+        // Switch the target spot
+        SwitchTargetSpot();
+
+        // Wait before the next dash
+        yield return new WaitForSeconds(waitTime);
+
+        // Start the next dash cycle
+        StartCoroutine(DashToTarget());
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void FlipAfterDash()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(20); // Dino deals 20 damage on hit
-            }
-
-            isCoolingDown = true;
-            cooldownTimer = dashCooldown;
-        }
+        // Simply flip the boss by multiplying the X value of the local scale by -1
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
+    private void SwitchTargetSpot()
+    {
+        // Switch between the left and right spots
+        targetSpot = (targetSpot == rightSpot) ? leftSpot : rightSpot;
+    }
+
+    // Implement the TakeDamage method as required by the IEnemy interface
     public void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log($"DinoBoss took {damage} damage! Health: {health}");
-
         if (health <= 0)
         {
             Die();
@@ -137,25 +109,20 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
     private IEnumerator ChangeColorOnHit()
     {
-        // Change the color to red
         spriteRenderer.color = Color.red;
-
-        // Wait for the specified duration
         yield return new WaitForSeconds(hitColorDuration);
-
-        // Reset the color back to the original
         spriteRenderer.color = originalColor;
     }
 
     private void Die()
     {
-        Debug.Log("DinoBoss has died.");
         DropItem();
         Destroy(gameObject);
     }
+
     private void DropItem()
     {
-        if (itemDrops.Length > 0 && Random.value < dropChance) // Random chance check
+        if (itemDrops.Length > 0 && Random.value < dropChance)
         {
             int randomIndex = Random.Range(0, itemDrops.Length);
             Instantiate(itemDrops[randomIndex], transform.position, Quaternion.identity);
