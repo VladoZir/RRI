@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpiderAI : MonoBehaviour
+public class InsectAI : MonoBehaviour
 {
     private Transform player;
     public float speed = 2f;
@@ -23,7 +23,7 @@ public class SpiderAI : MonoBehaviour
             if (foundPlayer != null)
             {
                 player = foundPlayer.transform;
-                Debug.Log("Spider found the player!");
+                Debug.Log("Insect found the player!");
             }
             return;
         }
@@ -63,7 +63,7 @@ public class SpiderAI : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damageAmount);
-                Debug.Log("Spider attacked the player!");
+                Debug.Log("Insect attacked the player!");
             }
         }
     }
