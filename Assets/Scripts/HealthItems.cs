@@ -17,7 +17,7 @@ public class HealthItems : MonoBehaviour
 
         if (rb != null)
         {
-            rb.gravityScale = 1f; // Enable falling
+            rb.gravityScale = 1f;  // Enable falling
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
@@ -27,10 +27,9 @@ public class HealthItems : MonoBehaviour
         if (!hasLanded && collision.gameObject.CompareTag("Ground"))
         {
             hasLanded = true;
-            rb.linearVelocity = Vector2.zero;  // Stop movement
-            rb.gravityScale = 0f;        // Disable gravity
-            rb.bodyType = RigidbodyType2D.Kinematic; // Stop physics interactions
-            itemCollider.isTrigger = true; // Make it pass-through
+            rb.bodyType = RigidbodyType2D.Kinematic; // Stop physics movement
+            rb.linearVelocity = Vector2.zero;
+            itemCollider.isTrigger = true; // Enable pass-through for player
         }
     }
 

@@ -529,9 +529,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.043478258
     y: 0
-    width: 1
+    width: 0.9132977
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -780,6 +780,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1807658460992374343, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
+      propertyPath: dropChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807658460992374343, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
       propertyPath: itemDrops.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -798,6 +802,14 @@ PrefabInstance:
     - target: {fileID: 3094405077458004628, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
       propertyPath: m_Name
       value: Spider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334039543353741429, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334039543353741429, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
+      propertyPath: m_GravityScale
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7007416088435238148, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
       propertyPath: m_LocalPosition.x
@@ -857,6 +869,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3607596714624361851, guid: 2f7f15ca1d6dff64ca6ebbdd986f4d09, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607596714624361851, guid: 2f7f15ca1d6dff64ca6ebbdd986f4d09, type: 3}
+      propertyPath: m_GravityScale
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5503371435837510242, guid: 2f7f15ca1d6dff64ca6ebbdd986f4d09, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.782932
@@ -961,7 +981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15, y: 0.75}
   m_AnchorMax: {x: 0.15, y: 0.75}
-  m_AnchoredPosition: {x: -10.3, y: 12}
+  m_AnchoredPosition: {x: -10.299988, y: 12}
   m_SizeDelta: {x: 64, y: 22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334675748
