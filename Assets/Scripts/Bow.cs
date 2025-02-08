@@ -1,4 +1,3 @@
-using Unity.Cinemachine.Samples;
 using UnityEngine;
 
 public class Bow : MonoBehaviour
@@ -14,58 +13,42 @@ public class Bow : MonoBehaviour
     Vector2 direction;
 
     public float shootCooldown = 0.5f;
-    private float lastShootTime = 0f;  
+    private float lastShootTime = 0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Animator animator; // Reference to Animator
+
     void Start()
     {
-        /*
-        points = new GameObject[numberOfPoints];
-        for (int i = 0; i < numberOfPoints; i++)
-        {
-            points[i] = Instantiate(point, shotPoint.position, Quaternion.identity);
-        }
-        */
+        animator = GetComponent<Animator>(); // Get Animator component
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         Vector2 bowPosition = transform.position;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = mousePosition - bowPosition;
         transform.right = direction;
 
-
         if (Time.time - lastShootTime >= shootCooldown)
         {
-            if (Input.GetMouseButtonDown(0)) // If the player clicks the mouse
+            if (Input.GetMouseButtonDown(0)) // Left mouse click
             {
                 Shoot();
                 lastShootTime = Time.time; // Update the last shoot time
             }
         }
-
-        /*
-        for (int i = 0; i < numberOfPoints; i++)
-        {
-            points[i].transform.position = PointPosition(i * spaceBetweenPoints);
-        }
-        */
-
     }
 
     void Shoot()
     {
+        // Play shooting animation
+        if (animator != null)
+        {
+            animator.SetTrigger("Shoot");
+        }
+
+        // Instantiate and launch arrow
         GameObject newArrow = Instantiate(arrow, shotPoint.position, shotPoint.rotation);
         newArrow.GetComponent<Rigidbody2D>().linearVelocity = transform.right * launchForce;
     }
-
-    Vector2 PointPosition(float t)
-    {
-        Vector2 position = (Vector2)shotPoint.position + (direction.normalized * launchForce * t) + 0.5f * Physics2D.gravity * (t * t);
-        return position;
-    }
-
 }
