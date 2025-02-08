@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
@@ -16,6 +17,11 @@ public class PlayerHealth : MonoBehaviour
     public List<Sprite> shieldSprites = new List<Sprite>();
     public GameObject shieldContainer;
 
+    private bool isInvincible = false;
+    public float invincibilityDuration = 1.5f; // Time in seconds
+    public float flickerInterval = 0.1f; // Flicker speed
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         // Initialize health at the start
@@ -24,10 +30,14 @@ public class PlayerHealth : MonoBehaviour
 
         currentShield = 0;
         shieldContainer = GameObject.Find("ShieldBar");
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage)
     {
+        if (isInvincible) return;
+
         if (currentShield > 0)
         {
             currentShield -= damage;
@@ -55,63 +65,43 @@ public class PlayerHealth : MonoBehaviour
                 Die();
             }
         }
+
+        StartCoroutine(ActivateInvincibility()); // Start invincibility frames
+    }
+
+    private IEnumerator ActivateInvincibility()
+    {
+        isInvincible = true;
+
+        float timer = 0;
+        while (timer < invincibilityDuration)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled; // Toggle visibility for flicker effect
+            yield return new WaitForSeconds(flickerInterval);
+            timer += flickerInterval;
+        }
+
+        spriteRenderer.enabled = true; // Ensure player is visible at the end
+        isInvincible = false;
     }
 
     public void changeShieldSprite(int curShield)
     {
         // Izračunaj postotak od 50
         int shieldPercentage = (curShield * 100) / maxShield;
-
         // Na temelju postotka, odaberi odgovarajući sprite
         int spriteIndex = Mathf.FloorToInt(shieldPercentage / 10); // Za svakih 5%
-
         // Osiguraj da je spriteIndex u granicama (0 do 10 za 11 spriteova)
         spriteIndex = Mathf.Clamp(spriteIndex, 0, shieldSprites.Count - 1);
-
         // Postavi sprite za shield
         shieldContainer.GetComponent<Image>().sprite = shieldSprites[spriteIndex];
-
-        Debug.Log("Shield: " + curShield + " | Sprite Index: " + spriteIndex);
+       // Debug.Log("Shield: " + curShield + " | Sprite Index: " + spriteIndex);
     }
 
     public void changeHealthSprite(int curHealth)
     {
-        switch (curHealth)
-        {
-            case 100:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[10];
-                break;
-            case 90:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[9];
-                break;
-            case 80:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[8];
-                break;
-            case 70:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[7];
-                break;
-            case 60:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[6];
-                break;
-            case 50:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[5];
-                break;
-            case 40:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[4];
-                break;
-            case 30:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[3];
-                break;
-            case 20:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[2];
-                break;
-            case 10:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[1];
-                break;
-            case 0:
-                healthContainer.GetComponent<Image>().sprite = healthSprites[0];
-                break;
-        }
+        int index = Mathf.Clamp(curHealth / 10, 0, healthSprites.Count - 1);
+        healthContainer.GetComponent<Image>().sprite = healthSprites[index];
 
     }
 
