@@ -217,32 +217,32 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthSprites:
-  - {fileID: 3891034975967117877, guid: dc194504b8b3cd34885cd19a33adb330, type: 3}
-  - {fileID: -4271092032554199521, guid: c88119d9eaf020941b00424a9a4ee0f7, type: 3}
-  - {fileID: -3128869350068196958, guid: edd0e86afb2bb274c930427c14ae0adb, type: 3}
-  - {fileID: -5283185718816611481, guid: 0aef3631afcc51c4fb999707553418de, type: 3}
-  - {fileID: 7725373857059734629, guid: f8df93585a0fab54b8c1c0c10e754efc, type: 3}
-  - {fileID: 1127959787970724488, guid: e0d86d652aa6e154f9ce6fa55116cc6b, type: 3}
-  - {fileID: 8278530987361853768, guid: f3d3c019e7ee4eb49a72d71aba13819d, type: 3}
-  - {fileID: -4448276149476973900, guid: f5b2d833767582f43bd2f51e55276dee, type: 3}
-  - {fileID: 6158050195936809500, guid: 3c167c2156564c240b8394f27be18447, type: 3}
-  - {fileID: 5910531354226070042, guid: 28e87efa352b70d4c8760e615ff48980, type: 3}
-  - {fileID: 3182712424331773086, guid: 45796216bdbd6214d961ef798c82b26b, type: 3}
+  - {fileID: -1427043281, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: 1164153254, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: -2045584496, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: 1732276508, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: 1082134075, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: 528894245, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: 280311261, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: 1357112970, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: 1505218221, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: 1461457705, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
+  - {fileID: 413520565, guid: ed648f51b258a1b439a2fe620ac70382, type: 3}
   healthContainer: {fileID: 6585168501074367420}
   maxShield: 50
   currentShield: 0
   shieldSprites:
-  - {fileID: 1487489730931230757, guid: e5e56c3ab418b9643b9ce0d97f162d35, type: 3}
-  - {fileID: -5269697073360046100, guid: 9971c5bcf6029964b99518b6b6166778, type: 3}
-  - {fileID: 7976353980197947509, guid: c36967981aeec4f4d9780d380c377c71, type: 3}
-  - {fileID: 6232167902981424519, guid: b83d3b90fe69c444d8522ef9aaec846a, type: 3}
-  - {fileID: 2702003255452524830, guid: af5c70c0bf3d0d543ad2c50cb81c6a74, type: 3}
-  - {fileID: -7819810611893199297, guid: 287e06bf091f8d14f9cbcee68b24ad86, type: 3}
-  - {fileID: -7075052345752514577, guid: 5d12cba72beacc54993ad8cb9ac42e31, type: 3}
-  - {fileID: 1117922437789945145, guid: 141ba6c58c4984f43b5eab839aab9e9f, type: 3}
-  - {fileID: -8664575237810636151, guid: 483332ac512ce784290faf98bd996bf6, type: 3}
-  - {fileID: -3826812197123554252, guid: a44101ad429b16e4397a7baa32826492, type: 3}
-  - {fileID: -7034277020501658907, guid: a6162e22354860541b57f00264e0afa4, type: 3}
+  - {fileID: 1174930523, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: 1935447552, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: 519482083, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: 2044231570, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: 1047872948, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: -1282620876, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: -1613812392, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: 701561319, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: 15374064, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: 35636357, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
+  - {fileID: 20363020, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
   shieldContainer: {fileID: 6585168501074367420}
   invincibilityDuration: 1.5
   flickerInterval: 0.1
