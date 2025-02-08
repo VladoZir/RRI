@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DinoBossAI : MonoBehaviour, IEnemy
 {
+
     public float dashSpeed = 8f;
     public float waitTime = 1f;
     public float detectionRange = 15f;
@@ -25,6 +27,9 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     public PolygonCollider2D idleCollider;
     public PolygonCollider2D dashCollider;
 
+    public GameObject healthBarHolder;
+    public Slider healthBar;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -38,8 +43,13 @@ public class DinoBossAI : MonoBehaviour, IEnemy
             player = playerObject.transform;
         }
 
+        healthBar = GameObject.Find("BossHealthBar").GetComponent<Slider>();
+        healthBar.maxValue = health;
+        healthBar.value = health;
+
         EnableIdleCollider();
     }
+
 
 
     private IEnumerator OnTriggerEnter2D(Collider2D other)
@@ -88,6 +98,10 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     {
         // Simply flip the boss by multiplying the X value of the local scale by -1
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+
+        Vector3 healthBarScale = transform.GetChild(0).localScale;
+        transform.GetChild(0).localScale = new Vector3(Mathf.Abs(healthBarScale.x) * Mathf.Sign(transform.localScale.x), healthBarScale.y, healthBarScale.z);
     }
 
     private void SwitchTargetSpot()
@@ -145,12 +159,16 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthBar.value = health;  // Update the health bar
+
         if (health <= 0)
         {
             Die();
         }
+
         StartCoroutine(ChangeColorOnHit());
     }
+
 
     private IEnumerator ChangeColorOnHit()
     {
@@ -162,7 +180,16 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     private void Die()
     {
         Instantiate(medkit, transform.position, Quaternion.identity);
+        healthBar.gameObject.SetActive(false); // Hide the health bar on death
         Destroy(gameObject);
     }
+    void Update()
+    {
+        if (healthBar != null)
+        {
+            // Keep the health bar above the boss
+            healthBar.transform.position = transform.position + new Vector3(0, (float)3.5, 0);
 
+        }
+    }
 }
