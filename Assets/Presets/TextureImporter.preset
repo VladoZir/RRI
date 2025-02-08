@@ -366,98 +366,6 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SpriteSheet.m_Sprites.Array.size
-    value: 1
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Name
-    value: nozic_0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Rect.x
-    value: 3
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Rect.y
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Rect.width
-    value: 10
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Rect.height
-    value: 16
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Alignment
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Pivot.x
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Pivot.y
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Border.x
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Border.y
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Border.z
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Border.w
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_CustomData
-    value: 
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Outline.Array.size
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_PhysicsShape.Array.size
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_TessellationDetail
-    value: -1
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Bones.Array.size
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_SpriteID
-    value: 30d386c18aac43830800000000000000
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_InternalID
-    value: 4050084788292828419
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Vertices.Array.size
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Indices.Array.size
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Edges.Array.size
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_SpriteSheet.m_Sprites.Array.data[0].m_Weights.Array.size
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -478,7 +386,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SpriteSheet.m_SpriteID
-    value: 
+    value: 4ed0edbf7bcebe94ab48c4a81ae42669
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SpriteSheet.m_InternalID
@@ -510,7 +418,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SpriteSheet.m_NameFileIdTable.Array.size
-    value: 1
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SpriteSheet.m_NameFileIdTable.Array.data[0].first
@@ -519,6 +427,14 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_SpriteSheet.m_NameFileIdTable.Array.data[0].second
     value: 4050084788292828419
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SpriteSheet.m_NameFileIdTable.Array.data[1].first
+    value: nozic_1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SpriteSheet.m_NameFileIdTable.Array.data[1].second
+    value: -1072652936
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_MipmapLimitGroupName
