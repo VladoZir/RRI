@@ -179,17 +179,24 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
     private void Die()
     {
-        Instantiate(medkit, transform.position, Quaternion.identity);
-        healthBar.gameObject.SetActive(false); // Hide the health bar on death
-        Destroy(gameObject);
-    }
-    void Update()
-    {
-        if (healthBar != null)
-        {
-            // Keep the health bar above the boss
-            healthBar.transform.position = transform.position + new Vector3(0, (float)3.5, 0);
+        // Ensure the death animation is triggered
+        animator.SetTrigger("Die");
 
+        // Wait for the death animation to finish before doing any other logic
+        StartCoroutine(WaitForDeathAnimation());
+    }
+
+    private IEnumerator WaitForDeathAnimation()
+    {
+        // Wait until the death animation completes
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+        {
+            yield return null;
         }
+
+        // After the animation completes, handle cleanup
+        Instantiate(medkit, transform.position, Quaternion.identity);
+        healthBar.gameObject.SetActive(false); // Hide health bar
+        Destroy(gameObject); // Destroy the boss
     }
 }
