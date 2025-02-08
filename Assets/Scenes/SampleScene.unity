@@ -7649,6 +7649,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2495740787269411264, guid: 952fc4ca9313bc343b26d7d192c7022b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7229929044907374106, guid: 952fc4ca9313bc343b26d7d192c7022b, type: 3}
       propertyPath: m_Name
       value: Medkit
@@ -8151,6 +8155,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3154087205482939557, guid: 744aa124cf583db459b483e6ab9ecc63, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407524135242365680, guid: 744aa124cf583db459b483e6ab9ecc63, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

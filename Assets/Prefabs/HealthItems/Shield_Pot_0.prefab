@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3154087205482939557}
   - component: {fileID: 7734397704652892628}
   - component: {fileID: 6818654492063207999}
-  - component: {fileID: 7407524135242365680}
+  - component: {fileID: 8128336702167968146}
   m_Layer: 0
   m_Name: Shield_Pot_0
   m_TagString: ShieldPotion
@@ -104,8 +104,8 @@ MonoBehaviour:
   potionHealAmount: 20
   medkitHealAmount: 50
   shieldPotionAmount: 50
---- !u!70 &7407524135242365680
-CapsuleCollider2D:
+--- !u!61 &8128336702167968146
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -138,6 +138,15 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0101361275, y: -0.030411124}
-  m_Size: {x: 0.5675335, y: 0.93917775}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.75, y: 1}
+    newSize: {x: 0.12, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.75, y: 1}
+  m_EdgeRadius: 0

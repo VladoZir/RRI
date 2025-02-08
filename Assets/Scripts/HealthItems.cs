@@ -6,31 +6,16 @@ public class HealthItems : MonoBehaviour
     public int medkitHealAmount = 50;
     public int shieldPotionAmount = 50;
 
-    private Collider2D itemCollider;
-    private Rigidbody2D rb;
-    private bool hasLanded = false;
+    
 
     void Start()
     {
-        itemCollider = GetComponent<Collider2D>();
-        rb = GetComponent<Rigidbody2D>();
-
-        if (rb != null)
-        {
-            rb.gravityScale = 1f;  // Enable falling
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!hasLanded && collision.gameObject.CompareTag("Ground"))
-        {
-            hasLanded = true;
-            rb.bodyType = RigidbodyType2D.Kinematic; // Stop physics movement
-            rb.linearVelocity = Vector2.zero;
-            itemCollider.isTrigger = true; // Enable pass-through for player
-        }
+       
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -76,4 +61,5 @@ public class HealthItems : MonoBehaviour
             }
         }
     }
+
 }

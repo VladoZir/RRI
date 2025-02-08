@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour, IEnemy
@@ -90,35 +91,18 @@ public class EnemyAI : MonoBehaviour, IEnemy
     }
     private void DropItem()
     {
-        if (itemDrops.Length > 0 && Random.value < dropChance) // Random chance check
+        if (itemDrops.Length > 0 && Random.value < dropChance)
         {
             int randomIndex = Random.Range(0, itemDrops.Length);
             GameObject droppedItem = Instantiate(itemDrops[randomIndex], transform.position, Quaternion.identity);
 
-            // Add Rigidbody2D if missing
-            Rigidbody2D rb = droppedItem.GetComponent<Rigidbody2D>();
-            if (rb == null)
-            {
-                rb = droppedItem.AddComponent<Rigidbody2D>();
-            }
 
-            // Make sure it's "Dynamic" so it interacts with physics
-            rb.bodyType = RigidbodyType2D.Dynamic;
-
-            // Ensure there's a Collider2D
-            if (droppedItem.GetComponent<Collider2D>() == null)
-            {
-                droppedItem.AddComponent<BoxCollider2D>(); // Or CircleCollider2D depending on the shape
-            }
-
-            // Adjust Rigidbody properties for a natural drop
-            rb.gravityScale = 2f;  // Falls at a good speed
-            rb.linearDamping = 2f;          // Slows down excessive movement
-            rb.freezeRotation = true; // Prevents weird spinning
-
-            // Apply a gentle pop-up effect
-            rb.linearVelocity = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(2f, 3f));
+            // Destroy the item after 10 seconds
+            Destroy(droppedItem, 10f);
         }
     }
+
+
+
 
 }
