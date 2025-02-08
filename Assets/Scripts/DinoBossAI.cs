@@ -182,7 +182,9 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     {
         if (healthBar != null)
         {
+            // Keep the health bar above the boss
             healthBar.transform.position = transform.position + new Vector3(0, (float)3.5, 0);
+
         }
     }
 }
