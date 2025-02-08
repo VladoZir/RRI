@@ -97,15 +97,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: nozic_0
+      name: Boss_Health10
       rect:
         serializedVersion: 2
-        x: 3
+        x: 1
         y: 0
-        width: 10
+        width: 61
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 583f8acbd7f2caf47b0a65c2d57186f8
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      nozic_0: 4050084788292828419
+      Boss_Health10: 4050084788292828419
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
