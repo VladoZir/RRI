@@ -101,6 +101,8 @@ public class DinoBossAI : MonoBehaviour, IEnemy
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            Collider2D playerCollider = collision.gameObject.GetComponent<Collider2D>(); // Get player's collider
+
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
@@ -113,16 +115,19 @@ public class DinoBossAI : MonoBehaviour, IEnemy
                 playerRb.AddForce(knockbackForce, ForceMode2D.Impulse);
             }
 
-            // Ensure DinoBoss keeps moving after hitting the player
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
-            Invoke(nameof(ResetCollision), 0.2f); // Re-enable collision after short delay
-
+            // Disable player's collider temporarily to avoid continuous pushing
+            if (playerCollider != null)
+            {
+                StartCoroutine(DisablePlayerColliderTemporarily(playerCollider));
+            }
         }
     }
 
-    private void ResetCollision()
+    private IEnumerator DisablePlayerColliderTemporarily(Collider2D playerCollider)
     {
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>(), false);
+        playerCollider.enabled = false;
+        yield return new WaitForSeconds(0.5f); // Adjust delay as needed
+        playerCollider.enabled = true;
     }
 
     private void EnableIdleCollider()
