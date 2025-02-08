@@ -195,8 +195,10 @@ MonoBehaviour:
   rightSpot: {fileID: 0}
   health: 100
   hitColorDuration: 0.5
-  itemDrops: []
-  dropChance: 1
+  medkit: {fileID: 0}
+  damage: 20
+  idleCollider: {fileID: 0}
+  dashCollider: {fileID: 0}
 --- !u!95 &-2895726126985323716
 Animator:
   serializedVersion: 7

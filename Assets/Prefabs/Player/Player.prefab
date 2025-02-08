@@ -244,3 +244,5 @@ MonoBehaviour:
   - {fileID: -3826812197123554252, guid: a44101ad429b16e4397a7baa32826492, type: 3}
   - {fileID: -7034277020501658907, guid: a6162e22354860541b57f00264e0afa4, type: 3}
   shieldContainer: {fileID: 6585168501074367420}
+  invincibilityDuration: 1.5
+  flickerInterval: 0.1
