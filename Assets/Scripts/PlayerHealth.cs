@@ -95,7 +95,7 @@ public class PlayerHealth : MonoBehaviour
         spriteIndex = Mathf.Clamp(spriteIndex, 0, shieldSprites.Count - 1);
         // Postavi sprite za shield
         shieldContainer.GetComponent<Image>().sprite = shieldSprites[spriteIndex];
-       // Debug.Log("Shield: " + curShield + " | Sprite Index: " + spriteIndex);
+        // Debug.Log("Shield: " + curShield + " | Sprite Index: " + spriteIndex);
     }
 
     public void changeHealthSprite(int curHealth)
