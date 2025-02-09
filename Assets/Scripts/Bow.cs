@@ -16,11 +16,14 @@ public class Bow : MonoBehaviour
     public float shootCooldown = 0.5f;
     private float lastShootTime = 0f;
 
-    private Animator animator; // Reference to Animator
+    private Animator animator;
+
+    public AudioSource bowAudio;
 
     void Start()
     {
-        animator = GetComponent<Animator>(); // Get Animator component
+        animator = GetComponent<Animator>(); 
+        bowAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -42,7 +45,12 @@ public class Bow : MonoBehaviour
 
     void Shoot()
     {
-        // Play shooting animation
+
+        if (bowAudio != null)
+        {
+            bowAudio.Play();
+        }
+       
         if (animator != null)
         {
             animator.SetBool("IsShooting", true);
