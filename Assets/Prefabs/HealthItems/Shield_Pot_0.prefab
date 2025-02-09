@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7734397704652892628}
   - component: {fileID: 6818654492063207999}
   - component: {fileID: 8128336702167968146}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shield_Pot_0
   m_TagString: ShieldPotion
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

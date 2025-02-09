@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 674378159219566966}
   - component: {fileID: 6334039543353741429}
   - component: {fileID: 1807658460992374343}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -170,5 +170,8 @@ MonoBehaviour:
   detectionRange: 5
   damageAmount: 10
   health: 10
-  itemDrops: []
+  itemDrops:
+  - {fileID: 2886329134516250418, guid: 744aa124cf583db459b483e6ab9ecc63, type: 3}
+  - {fileID: 7229929044907374106, guid: 952fc4ca9313bc343b26d7d192c7022b, type: 3}
+  - {fileID: 5196460000004242527, guid: a156a5b49f356e545920cca2156c44ae, type: 3}
   dropChance: 0.5

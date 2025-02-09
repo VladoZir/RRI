@@ -19,8 +19,8 @@ TagManager:
   - Player
   - PlayerProjectile
   - Arrow
-  - 
-  - 
+  - HealthItem
+  - Enemy
   - 
   - 
   - 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6569998258783316005}
   - component: {fileID: 1766513223246732959}
   - component: {fileID: 2554460297952867520}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Health_Pot_0
   m_TagString: HealthPotion
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

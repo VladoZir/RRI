@@ -94,13 +94,26 @@ public class EnemyAI : MonoBehaviour, IEnemy
         if (itemDrops.Length > 0 && Random.value < dropChance)
         {
             int randomIndex = Random.Range(0, itemDrops.Length);
-            GameObject droppedItem = Instantiate(itemDrops[randomIndex], transform.position, Quaternion.identity);
+            Vector3 spawnPosition = transform.position + Vector3.up * 0.5f;
+            GameObject droppedItem = Instantiate(itemDrops[randomIndex], spawnPosition, Quaternion.identity);
 
+            Rigidbody2D rb = droppedItem.GetComponent<Rigidbody2D>();
+            if (rb == null)
+            {
+                rb = droppedItem.AddComponent<Rigidbody2D>(); 
+            }
+
+            float upwardForce = 5f;  
+            float sidewaysForce = Random.Range(-2f, 2f); 
+            rb.linearVelocity = new Vector2(sidewaysForce, upwardForce);
+
+            droppedItem.AddComponent<ItemCollisionHandler>();
 
             // Destroy the item after 10 seconds
             Destroy(droppedItem, 10f);
         }
     }
+
 
 
 
