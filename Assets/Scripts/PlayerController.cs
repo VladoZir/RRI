@@ -12,10 +12,13 @@ public class PlayerController : MonoBehaviour
 
     public Transform bow;
 
+    public AudioSource walkGrassAudio;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        walkGrassAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -51,6 +54,16 @@ public class PlayerController : MonoBehaviour
     {
         float moveInput = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
+
+        if (moveInput != 0 && !walkGrassAudio.isPlaying)
+        {
+            walkGrassAudio.Play();
+        }
+        // Stop the sound if the player stops moving
+        else if (moveInput == 0 && walkGrassAudio.isPlaying)
+        {
+            walkGrassAudio.Stop();
+        }
 
         if (moveInput > 0)
         {
