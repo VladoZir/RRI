@@ -8,11 +8,11 @@ public class EnemyAI : MonoBehaviour, IEnemy
     public float detectionRange = 5f;
     public int damageAmount = 10;
     private Rigidbody2D rb;
-    private bool isFacingRight = true; // Tracks current facing direction
+    private bool isFacingRight = true; 
 
     public int health = 10;
 
-    public GameObject[] itemDrops; // Array of item prefabs that can drop
+    public GameObject[] itemDrops; 
     public float dropChance = 1f; // 50% chance to drop an item
     void Start()
     {
@@ -37,9 +37,9 @@ public class EnemyAI : MonoBehaviour, IEnemy
         if (distanceToPlayer <= detectionRange)
         {
             Vector2 direction = (player.position.x > transform.position.x) ? Vector2.right : Vector2.left;
-            rb.linearVelocity = new Vector2(direction.x * speed, 0f);
 
-            // Flip the sprite if moving in the opposite direction
+            rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+
             if ((direction.x > 0 && !isFacingRight) || (direction.x < 0 && isFacingRight))
             {
                 Flip();
@@ -74,7 +74,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
 
     public void TakeDamage(int damage)
     {
-        health -= damage; // Subtract damage from health
+        health -= damage; 
         Debug.Log($"{gameObject.name} took {damage} damage! Health: {health}");
 
         if (health <= 0)
