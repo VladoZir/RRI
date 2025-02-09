@@ -392,6 +392,72 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Dinosaur_9
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 240
+        width: 41
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7257f98741091204bbf8df0f29b54d48
+      internalID: -1841596886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dinosaur_10
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 240
+        width: 47
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5caa29daa057f11498e10fe30dddca33
+      internalID: 492893598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dinosaur_11
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 206
+        width: 74
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77778b42b88c0548b971cf226a5d07b
+      internalID: 945787834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -408,6 +474,8 @@ TextureImporter:
     nameFileIdTable:
       Dinosaur_0: -3187875618433125209
       Dinosaur_1: -1860588392
+      Dinosaur_10: 492893598
+      Dinosaur_11: 945787834
       Dinosaur_2: 1003174572
       Dinosaur_3: 1149918004
       Dinosaur_4: 1576911329
@@ -415,6 +483,7 @@ TextureImporter:
       Dinosaur_6: 978365908
       Dinosaur_7: -238392647
       Dinosaur_8: -587346235
+      Dinosaur_9: -1841596886
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

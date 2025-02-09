@@ -180,7 +180,17 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     private void Die()
     {
         // Ensure the death animation is triggered
-        animator.SetTrigger("Die");
+        animator.SetBool("IsDead", true);
+
+        // Disable colliders so the boss no longer interacts with the player
+        idleCollider.enabled = false;
+        dashCollider.enabled = false;
+
+        // Stop all boss actions
+        StopAllCoroutines();
+
+        // Disable movement and AI logic
+        this.enabled = false;
 
         // Wait for the death animation to finish before doing any other logic
         StartCoroutine(WaitForDeathAnimation());
@@ -188,7 +198,12 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
     private IEnumerator WaitForDeathAnimation()
     {
-        // Wait until the death animation completes
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("DinoDeathNew") == false)
+        {
+            yield return null;
+        }
+
+        // Wait for the animation to finish
         while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
         {
             yield return null;
