@@ -13,12 +13,12 @@ public class PlayerController : MonoBehaviour
     public Transform bow;
 
     public AudioSource walkGrassAudio;
+    public AudioSource jumpAudio;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        walkGrassAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -55,12 +55,12 @@ public class PlayerController : MonoBehaviour
         float moveInput = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
 
-        if (moveInput != 0 && !walkGrassAudio.isPlaying)
+        if (moveInput != 0 && isGrounded && !walkGrassAudio.isPlaying)
         {
             walkGrassAudio.Play();
         }
-        // Stop the sound if the player stops moving
-        else if (moveInput == 0 && walkGrassAudio.isPlaying)
+        // Stop the walking sound if player stops moving or is in the air
+        else if ((moveInput == 0 || !isGrounded) && walkGrassAudio.isPlaying)
         {
             walkGrassAudio.Stop();
         }
@@ -82,6 +82,11 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+        if (!jumpAudio.isPlaying) 
+        {
+            jumpAudio.Play();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
