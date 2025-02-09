@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class DinoBossAI : MonoBehaviour, IEnemy
 {
@@ -28,7 +29,8 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     public PolygonCollider2D dashCollider;
 
     public GameObject healthBarHolder;
-    public Slider healthBar;
+
+    public List<Sprite> healthSprites = new List<Sprite>();
 
     void Start()
     {
@@ -43,9 +45,7 @@ public class DinoBossAI : MonoBehaviour, IEnemy
             player = playerObject.transform;
         }
 
-        healthBar = GameObject.Find("BossHealthBar").GetComponent<Slider>();
-        healthBar.maxValue = health;
-        healthBar.value = health;
+        healthBarHolder = GameObject.Find("BossHealthBarHolder");
 
         EnableIdleCollider();
     }
@@ -159,7 +159,9 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     public void TakeDamage(int damage)
     {
         health -= damage;
-        healthBar.value = health;  // Update the health bar
+        //healthBar.value = health;  // Update the health bar
+
+        changeHealthSprite(health);
 
         if (health <= 0)
         {
@@ -167,6 +169,13 @@ public class DinoBossAI : MonoBehaviour, IEnemy
         }
 
         StartCoroutine(ChangeColorOnHit());
+    }
+
+    public void changeHealthSprite(int curHealth)
+    {
+        int index = Mathf.Clamp(curHealth / 10, 0, healthSprites.Count - 1);
+        healthBarHolder.GetComponent<Image>().sprite = healthSprites[index];
+
     }
 
 
@@ -211,7 +220,6 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
         // After the animation completes, handle cleanup
         Instantiate(medkit, transform.position, Quaternion.identity);
-        healthBar.gameObject.SetActive(false); // Hide health bar
         Destroy(gameObject); // Destroy the boss
     }
 }
