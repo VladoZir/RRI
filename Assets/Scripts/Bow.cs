@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bow : MonoBehaviour
@@ -44,11 +45,19 @@ public class Bow : MonoBehaviour
         // Play shooting animation
         if (animator != null)
         {
-            animator.SetTrigger("Shoot");
+            animator.SetBool("IsShooting", true);
+            StartCoroutine(WaitForShootAnimation());
         }
 
         // Instantiate and launch arrow
         GameObject newArrow = Instantiate(arrow, shotPoint.position, shotPoint.rotation);
         newArrow.GetComponent<Rigidbody2D>().linearVelocity = transform.right * launchForce;
+    }
+
+    private IEnumerator WaitForShootAnimation()
+    {
+        // Wait for the shoot animation to finish (adjust time based on animation length)
+        yield return new WaitForSeconds(0.15f); // Adjust this time based on your shoot animation length
+        animator.SetBool("IsShooting", false); // Reset back to idle state after shooting
     }
 }
