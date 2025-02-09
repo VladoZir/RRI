@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;  // Max health value
-    public int currentHealth;    // Current health value
+    public int maxHealth = 100;  
+    public int currentHealth;    
     public List<Sprite> healthSprites = new List<Sprite>();
     public GameObject healthContainer;
 
@@ -18,13 +18,15 @@ public class PlayerHealth : MonoBehaviour
     public GameObject shieldContainer;
 
     private bool isInvincible = false;
-    public float invincibilityDuration = 1.5f; // Time in seconds
-    public float flickerInterval = 0.1f; // Flicker speed
+    public float invincibilityDuration = 1.5f; 
+    public float flickerInterval = 0.1f; 
     private SpriteRenderer spriteRenderer;
+
+    public AudioSource hurtAudio;
+    public AudioSource deathAudio;
 
     void Start()
     {
-        // Initialize health at the start
         currentHealth = maxHealth;
         healthContainer = GameObject.Find("HealthBar");
 
@@ -40,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentShield > 0)
         {
+            hurtAudio.Play();
             currentShield -= damage;
             if (currentShield < 0)
             {
@@ -51,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
+            hurtAudio.Play();
             currentHealth -= damage;
             if (currentHealth < 0)
             {
@@ -59,14 +63,16 @@ public class PlayerHealth : MonoBehaviour
 
             changeHealthSprite(currentHealth);
 
-            // You can add more behavior here, like triggering death when health reaches 0
             if (currentHealth <= 0)
             {
                 Die();
             }
         }
 
-        StartCoroutine(ActivateInvincibility()); // Start invincibility frames
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(ActivateInvincibility()); 
+        }
     }
 
     private IEnumerator ActivateInvincibility()
@@ -107,10 +113,16 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        // Logic for when the player dies, for example:
         Debug.Log("Player has died!");
-        // Optionally you can disable the player or restart the scene here
-        gameObject.SetActive(false);
+        deathAudio.Play();
+        //gameObject.SetActive(false);
+        StartCoroutine(WaitForAudioToFinish());
+    }
+    private IEnumerator WaitForAudioToFinish()
+    {
+        // Wait until the audio is done playing
+        yield return new WaitForSeconds(deathAudio.clip.length);  // Wait for the duration of the audio clip
+        gameObject.SetActive(false);  // Deactivate player GameObject after the audio finishes
     }
 
     public void Heal(int amount)
