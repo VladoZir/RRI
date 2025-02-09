@@ -102,6 +102,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
             {
                 rb = droppedItem.AddComponent<Rigidbody2D>(); 
             }
+            rb.freezeRotation = true;
 
             float upwardForce = 5f;  
             float sidewaysForce = Random.Range(-2f, 2f); 

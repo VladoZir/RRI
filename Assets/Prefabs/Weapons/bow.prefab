@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.44, y: 0, z: -10.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3834136004741598902}
@@ -140,6 +140,7 @@ MonoBehaviour:
   numberOfPoints: 0
   spaceBetweenPoints: 0
   shootCooldown: 0.5
+  bowAudio: {fileID: 0}
 --- !u!95 &4979795429416011589
 Animator:
   serializedVersion: 7
