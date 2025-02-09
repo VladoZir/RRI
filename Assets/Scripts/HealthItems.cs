@@ -6,8 +6,6 @@ public class HealthItems : MonoBehaviour
     public int medkitHealAmount = 50;
     public int shieldPotionAmount = 50;
 
-    
-
     void Start()
     {
         

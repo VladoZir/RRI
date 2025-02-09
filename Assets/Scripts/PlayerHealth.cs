@@ -24,6 +24,9 @@ public class PlayerHealth : MonoBehaviour
 
     public AudioSource hurtAudio;
     public AudioSource deathAudio;
+    public AudioSource healAudio;
+    public AudioSource shieldPickUpAudio;
+    public AudioSource shieldBreakAudio;
 
     void Start()
     {
@@ -46,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
             currentShield -= damage;
             if (currentShield < 0)
             {
+                shieldBreakAudio.Play();
                 currentShield = 0;
             }
 
@@ -127,14 +131,15 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int amount)
     {
+        healAudio.Play();
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth); // Prevent overhealing
 
-        // Update health sprite
         changeHealthSprite(currentHealth);
     }
 
     public void RestoreShield(int amount)
     {
+        shieldPickUpAudio.Play();
         currentShield = Mathf.Min(currentShield + amount, maxShield);
 
         changeShieldSprite(currentShield);
