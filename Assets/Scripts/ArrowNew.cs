@@ -37,6 +37,6 @@ public class ArrowNew : MonoBehaviour
         }
 
         Destroy(gameObject);
-        //Debug.Log(collision.transform.name);
+        Debug.Log(collision.transform.name);
     }
 }
