@@ -85,7 +85,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
 
     private void Die()
     {
-        Debug.Log($"{gameObject.name} has died.");
+        //Debug.Log($"{gameObject.name} has died.");
         DropItem();
         Destroy(gameObject);
     }

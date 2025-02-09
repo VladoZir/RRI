@@ -4,7 +4,7 @@ public class ArrowNew : MonoBehaviour
 {
     Rigidbody2D rb;
     bool hasHit;
-    public int damage = 100;
+    public int damage = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
