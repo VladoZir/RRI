@@ -5,9 +5,8 @@ public class BowCollectible : MonoBehaviour
 {
 
     [SerializeField] private GameObject playerWithBowPrefab;
-    [SerializeField] private float floatSpeed = 1f;  // Speed of floating
-    [SerializeField] private float floatHeight = 0.2f;  // Height of floating movement
-    //[SerializeField] private AudioClip collectSound; // Sound effect on pickup
+    [SerializeField] private float floatSpeed = 1f;  
+    [SerializeField] private float floatHeight = 0.2f;  
 
     private Vector3 startPosition;
 
@@ -25,15 +24,8 @@ public class BowCollectible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // Make sure the player has the "Player" tag
+        if (other.CompareTag("Player")) 
         {
-
-            /*
-            // Play sound if assigned
-            if (collectSound != null)
-                AudioSource.PlayClipAtPoint(collectSound, transform.position);
-            */
-
             GameManager.Instance.UpgradePlayer(playerWithBowPrefab, other.gameObject);
             Destroy(gameObject);
         }

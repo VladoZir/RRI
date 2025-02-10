@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject enemy;
 
-    private GameObject currentPlayer; // Track the spawned player
+    private GameObject currentPlayer;
+
+    public AudioSource collectAudio;
 
     private void Awake()
     {
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
         Vector3 position = oldPlayer.transform.position; // Store player position
         Destroy(oldPlayer); // Remove the old player
         currentPlayer = Instantiate(newPrefab, position, Quaternion.identity); // Spawn new player at the same position
+        collectAudio.Play();
 
         // Assign the new player to the camera
         if (mainCamera != null)
