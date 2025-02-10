@@ -7,6 +7,24 @@ public class Portal : MonoBehaviour
 {
     public float fadeDuration = 1f;
 
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        StartCoroutine(PlayPortalAnimation());
+    }
+
+    private IEnumerator PlayPortalAnimation()
+    {
+        anim.Play("Portal_Appear");
+
+        // Wait for the appear animation to finish
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+        anim.Play("Portal_Loop");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -69,6 +87,6 @@ public class Portal : MonoBehaviour
         //player.SetActive(false);
 
         // Option 2: Load next scene (if transitioning levels)
-         SceneManager.LoadScene("Level2"); // Uncomment if needed
+        SceneManager.LoadScene("Level2"); // Uncomment if needed
     }
 }
