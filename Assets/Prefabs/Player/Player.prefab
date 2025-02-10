@@ -254,6 +254,9 @@ MonoBehaviour:
   flickerInterval: 0.1
   hurtAudio: {fileID: -206419540373154281}
   deathAudio: {fileID: -5376913520085397498}
+  healAudio: {fileID: 0}
+  shieldPickUpAudio: {fileID: 0}
+  shieldBreakAudio: {fileID: 0}
 --- !u!82 &2847641368795698143
 AudioSource:
   m_ObjectHideFlags: 0

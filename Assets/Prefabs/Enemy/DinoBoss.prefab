@@ -200,7 +200,7 @@ MonoBehaviour:
   idleCollider: {fileID: 0}
   dashCollider: {fileID: 0}
   healthBarHolder: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthSprites: []
 --- !u!95 &-2895726126985323716
 Animator:
   serializedVersion: 7
