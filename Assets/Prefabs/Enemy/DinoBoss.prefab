@@ -201,6 +201,8 @@ MonoBehaviour:
   dashCollider: {fileID: 0}
   healthBarHolder: {fileID: 0}
   healthSprites: []
+  portalPrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
 --- !u!95 &-2895726126985323716
 Animator:
   serializedVersion: 7

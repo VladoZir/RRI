@@ -257,6 +257,7 @@ MonoBehaviour:
   healAudio: {fileID: 0}
   shieldPickUpAudio: {fileID: 0}
   shieldBreakAudio: {fileID: 0}
+  gameOverManager: {fileID: 0}
 --- !u!82 &2847641368795698143
 AudioSource:
   m_ObjectHideFlags: 0

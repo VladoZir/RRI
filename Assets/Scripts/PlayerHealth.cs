@@ -28,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
     public AudioSource shieldPickUpAudio;
     public AudioSource shieldBreakAudio;
 
+    //public GameObject gameOverManager;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -117,22 +119,23 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player has died!");
+        //Debug.Log("Player has died!");
         deathAudio.Play();
-        //gameObject.SetActive(false);
         StartCoroutine(WaitForAudioToFinish());
     }
     private IEnumerator WaitForAudioToFinish()
     {
         // Wait until the audio is done playing
-        yield return new WaitForSeconds(deathAudio.clip.length);  // Wait for the duration of the audio clip
-        gameObject.SetActive(false);  // Deactivate player GameObject after the audio finishes
+        yield return new WaitForSeconds(deathAudio.clip.length);  
+        gameObject.SetActive(false);
+        //gameOverManager.GetComponent<GameOver>().ShowGameOverScreen();
+        Time.timeScale = 0f;
     }
 
     public void Heal(int amount)
     {
         healAudio.Play();
-        currentHealth = Mathf.Min(currentHealth + amount, maxHealth); // Prevent overhealing
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
 
         changeHealthSprite(currentHealth);
     }
