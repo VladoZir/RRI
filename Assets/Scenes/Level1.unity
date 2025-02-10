@@ -6039,6 +6039,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efc77e29dae03884889e6b8ffa9c9c31, type: 3}
+--- !u!1 &2020436603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2020436604}
+  m_Layer: 0
+  m_Name: PortalSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2020436604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020436603}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.46, y: -5.64, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2026893163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7935,6 +7966,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 291441084}
     - target: {fileID: 6735446782489743470, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 2020436604}
+    - target: {fileID: 6735446782489743470, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: dashCollider
       value: 
       objectReference: {fileID: 556007527}
@@ -7946,6 +7981,10 @@ PrefabInstance:
       propertyPath: idleCollider
       value: 
       objectReference: {fileID: 556007526}
+    - target: {fileID: 6735446782489743470, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
+      propertyPath: portalPrefab
+      value: 
+      objectReference: {fileID: 2988143226946969367, guid: 3541d0da3df76de41a748d560ff8b499, type: 3}
     - target: {fileID: 6735446782489743470, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: hitColorDuration
       value: 0.25
@@ -8047,3 +8086,4 @@ SceneRoots:
   - {fileID: 2026893163}
   - {fileID: 1680794041}
   - {fileID: 187799740}
+  - {fileID: 2020436604}

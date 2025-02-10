@@ -32,6 +32,9 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
     public List<Sprite> healthSprites = new List<Sprite>();
 
+    public GameObject portalPrefab;
+    public Transform spawnPoint;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -233,6 +236,8 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
         droppedItem.AddComponent<ItemCollisionHandler>();
 
-        Destroy(gameObject); // Destroy the boss
+        Instantiate(portalPrefab, spawnPoint.position, Quaternion.identity);
+
+        Destroy(gameObject); 
     }
 }
