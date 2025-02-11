@@ -5,21 +5,25 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
-
+    
+    public float slideSpeed = 2f;
     private Rigidbody2D rb;
     private bool isGrounded;
+    private bool isOnWall;
     private Animator anim;
-
     public Transform bow;
-
     public AudioSource walkGrassAudio;
     public AudioSource jumpAudio;
-
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody2D component missing from player!");
+        }
     }
 
     void Update()
@@ -29,52 +33,61 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
-        // Update Animator parameters
-        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x)); // Use absolute value for movement speed
-        anim.SetBool("IsJumping", !isGrounded); // IsJumping is true while in the air
 
+        // Only apply wall slide if we're not on the ground
+        if (isOnWall && !isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -slideSpeed);
+        }
+
+        if (anim != null)
+        {
+            anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+            anim.SetBool("IsJumping", !isGrounded);
+        }
     }
 
     void FlipBow(bool flipLeft)
     {
-        if (bow != null) 
+        if (bow != null)
         {
             if (flipLeft)
             {
-                bow.localScale = new Vector3(-1f, 1f, 1f);  
+                bow.localScale = new Vector3(-1f, 1f, 1f);
             }
             else
             {
-                bow.localScale = new Vector3(1f, 1f, 1f);  
+                bow.localScale = new Vector3(1f, 1f, 1f);
             }
         }
     }
 
-
     void Move()
     {
         float moveInput = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
 
-        if (moveInput != 0 && isGrounded && !walkGrassAudio.isPlaying)
+        // Only apply horizontal movement if not on a wall or if on ground
+        if (!isOnWall || isGrounded)
+        {
+            rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
+        }
+
+        if (moveInput != 0 && isGrounded && walkGrassAudio != null && !walkGrassAudio.isPlaying)
         {
             walkGrassAudio.Play();
         }
-        // Stop the walking sound if player stops moving or is in the air
-        else if ((moveInput == 0 || !isGrounded) && walkGrassAudio.isPlaying)
+        else if ((moveInput == 0 || !isGrounded) && walkGrassAudio != null && walkGrassAudio.isPlaying)
         {
             walkGrassAudio.Stop();
         }
 
         if (moveInput > 0)
         {
-            // Flip sprite to the right (no need to modify local scale)
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             FlipBow(false);
         }
         else if (moveInput < 0)
         {
-            // Flip sprite to the left (no need to modify local scale)
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             FlipBow(true);
         }
@@ -83,8 +96,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-
-        if (!jumpAudio.isPlaying) 
+        if (jumpAudio != null && !jumpAudio.isPlaying)
         {
             jumpAudio.Play();
         }
@@ -94,7 +106,59 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
+            bool foundGround = false;
+
+            // First check for ground collision
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                float angle = Vector2.Angle(contact.normal, Vector2.up);
+
+                // Check for ground collision (angle less than 45 degrees from up)
+                if (angle < 45f)
+                {
+                    isGrounded = true;
+                    isOnWall = false;  // Clear wall state when grounded
+                    if (anim != null)
+                    {
+                        anim.SetBool("IsJumping", false);
+                    }
+                    foundGround = true;
+                    break;  // Exit the loop if we found ground
+                }
+            }
+
+            // Only check for wall if we didn't find ground
+            if (!foundGround)
+            {
+                foreach (ContactPoint2D contact in collision.contacts)
+                {
+                    float angle = Vector2.Angle(contact.normal, Vector2.up);
+                    // Check for wall collision (angle close to 90 degrees)
+                    if (angle > 85f)
+                    {
+                        isOnWall = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        // Recheck ground collision during continuous contact
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                float angle = Vector2.Angle(contact.normal, Vector2.up);
+                if (angle < 45f)
+                {
+                    isGrounded = true;
+                    isOnWall = false;  // Clear wall state when grounded
+                    return;
+                }
+            }
         }
     }
 
@@ -103,7 +167,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
-            anim.SetBool("IsJumping", false);
+            isOnWall = false;
+            if (anim != null)
+            {
+                anim.SetBool("IsJumping", true);
+            }
         }
     }
 }

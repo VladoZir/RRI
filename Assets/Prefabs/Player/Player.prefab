@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 10
+  slideSpeed: 3
   bow: {fileID: 0}
   walkGrassAudio: {fileID: 2847641368795698143}
   jumpAudio: {fileID: 746060013979158374}
