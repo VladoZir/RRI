@@ -9671,7 +9671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4756368035747483249, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6735446782489743470, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: medkit

@@ -9,6 +9,7 @@ TagManager:
   - HealthPotion
   - ShieldPotion
   - Enemy
+  - Portal
   layers:
   - Default
   - TransparentFX

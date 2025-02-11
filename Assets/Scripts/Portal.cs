@@ -41,6 +41,11 @@ public class Portal : MonoBehaviour
             {
                 playerController.enabled = false; 
             }
+            SceneMover sceneMover = Object.FindAnyObjectByType<SceneMover>();
+            if (sceneMover != null)
+            {
+                sceneMover.PauseSceneMovement(true); // Pause the scene movement while teleporting
+            }
 
             StartCoroutine(FadeOutAndTeleport(other.gameObject));
         }
