@@ -14,10 +14,15 @@ public class EnemyAI : MonoBehaviour, IEnemy
 
     public GameObject[] itemDrops; 
     public float dropChance = 1f; // 50% chance to drop an item
+
+    private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>(); // Get Animator Component
     }
+
 
     void Update()
     {
@@ -40,6 +45,8 @@ public class EnemyAI : MonoBehaviour, IEnemy
 
             rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
 
+            animator.SetBool("isWalking", true); // Start walking animation
+
             if ((direction.x > 0 && !isFacingRight) || (direction.x < 0 && isFacingRight))
             {
                 Flip();
@@ -48,6 +55,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
         else
         {
             rb.linearVelocity = Vector2.zero;
+            animator.SetBool("isWalking", false); // Stop animation when idle
         }
     }
 
@@ -114,9 +122,4 @@ public class EnemyAI : MonoBehaviour, IEnemy
             Destroy(droppedItem, 10f);
         }
     }
-
-
-
-
-
 }
