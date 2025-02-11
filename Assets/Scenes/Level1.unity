@@ -539,12 +539,57 @@ Transform:
   m_GameObject: {fileID: 291441083}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32, y: -9, z: -0.013722487}
+  m_LocalPosition: {x: 37.31, y: -9, z: -0.013722487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &332888581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 332888582}
+  - component: {fileID: 332888583}
+  m_Layer: 0
+  m_Name: GameOverManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &332888582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332888581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.34, y: -6.96, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332888583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332888581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1a34854ae5c9c4d897421b0c22a0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathPanel: {fileID: 676970450}
 --- !u!1 &354141612
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,9 +835,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.027777778
-    width: 0.16666667
-    height: 0.16666666
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -1359,6 +1404,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752580489}
   m_CullTransparentMesh: 1
+--- !u!1 &1056297193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1056297194}
+  m_Layer: 0
+  m_Name: PlayerSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1056297194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056297193}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.44, y: -0.6, z: 0.30206195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167585941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,8 +1692,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
+      - m_Target: {fileID: 332888583}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
@@ -1829,7 +1905,7 @@ Transform:
   m_GameObject: {fileID: 1641001196}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19, y: -9, z: -0.013722487}
+  m_LocalPosition: {x: 22.8, y: -9, z: -0.013722487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2167,10 +2243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 6585168501074367420, guid: 55ebea176b382a04aad0b2cdae1cd634, type: 3}
-  spawnPosition: {x: 0, y: 1, z: 0}
   mainCamera: {fileID: 519420031}
   enemy: {fileID: 556007505}
   collectAudio: {fileID: 1841464920}
+  playerSpawnPosition: {fileID: 1056297193}
 --- !u!4 &1841464919
 Transform:
   m_ObjectHideFlags: 0
@@ -2831,8 +2907,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
+      - m_Target: {fileID: 332888583}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -8558,7 +8634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4277556983463015675, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32
+      value: 37.18
       objectReference: {fileID: 0}
     - target: {fileID: 4277556983463015675, guid: f3d7f0673d8aec443806a477401bb80b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8738,3 +8814,5 @@ SceneRoots:
   - {fileID: 1680794041}
   - {fileID: 187799740}
   - {fileID: 2020436604}
+  - {fileID: 1056297194}
+  - {fileID: 332888582}

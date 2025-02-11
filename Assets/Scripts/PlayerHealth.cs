@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
     public AudioSource shieldPickUpAudio;
     public AudioSource shieldBreakAudio;
 
-    //public GameObject gameOverManager;
+    private GameOver gameOverManager;
 
     void Start()
     {
@@ -39,6 +39,8 @@ public class PlayerHealth : MonoBehaviour
         shieldContainer = GameObject.Find("ShieldBar");
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        gameOverManager = FindFirstObjectByType<GameOver>();
     }
 
     public void TakeDamage(int damage)
@@ -128,7 +130,10 @@ public class PlayerHealth : MonoBehaviour
         // Wait until the audio is done playing
         yield return new WaitForSeconds(deathAudio.clip.length);  
         gameObject.SetActive(false);
-        //gameOverManager.GetComponent<GameOver>().ShowGameOverScreen();
+        if (gameOverManager != null)
+        {
+            gameOverManager.ShowGameOverScreen();
+        }
         Time.timeScale = 0f;
     }
 
