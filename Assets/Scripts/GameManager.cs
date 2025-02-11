@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameObject playerPrefab; 
-    public Vector3 spawnPosition = new Vector3(5f, 0f, 0f); 
+    //public Vector3 spawnPosition = new Vector3(5f, 0f, 0f); 
 
     public Camera mainCamera;
 
@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private GameObject currentPlayer;
 
     public AudioSource collectAudio;
+
+    public GameObject playerSpawnPosition;
 
     private void Awake()
     {
@@ -35,7 +37,7 @@ public class GameManager : MonoBehaviour
             Destroy(currentPlayer); // Destroy previous player instance
         }
 
-        currentPlayer = Instantiate(prefab, spawnPosition, Quaternion.identity);
+        currentPlayer = Instantiate(prefab, playerSpawnPosition.transform.position, Quaternion.identity);
 
         // Assign the new player to the camera
         if (mainCamera != null)
@@ -50,9 +52,9 @@ public class GameManager : MonoBehaviour
 
     public void UpgradePlayer(GameObject newPrefab, GameObject oldPlayer)
     {
-        Vector3 position = oldPlayer.transform.position; // Store player position
-        Destroy(oldPlayer); // Remove the old player
-        currentPlayer = Instantiate(newPrefab, position, Quaternion.identity); // Spawn new player at the same position
+        Vector3 position = oldPlayer.transform.position; 
+        Destroy(oldPlayer); 
+        currentPlayer = Instantiate(newPrefab, position, Quaternion.identity); 
         collectAudio.Play();
 
         // Assign the new player to the camera
