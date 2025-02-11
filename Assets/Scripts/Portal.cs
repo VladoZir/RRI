@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // If teleporting to a new scene
+using UnityEngine.SceneManagement; 
 
 public class Portal : MonoBehaviour
 {
@@ -32,14 +32,14 @@ public class Portal : MonoBehaviour
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.linearVelocity = Vector2.zero;  // Stop movement
-                rb.bodyType = RigidbodyType2D.Kinematic;  // Make player unaffected by gravity
+                rb.linearVelocity = Vector2.zero;  
+                rb.bodyType = RigidbodyType2D.Kinematic;  
             }
 
             PlayerController playerController = other.GetComponent<PlayerController>();
             if (playerController != null)
             {
-                playerController.enabled = false;  // Disable player controls
+                playerController.enabled = false; 
             }
 
             StartCoroutine(FadeOutAndTeleport(other.gameObject));
@@ -80,13 +80,14 @@ public class Portal : MonoBehaviour
             sr.color = new Color(originalColors[sr].r, originalColors[sr].g, originalColors[sr].b, 0f);
         }
 
-        // Optional: Wait a bit before teleporting
-        //yield return new WaitForSeconds(0.5f);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
 
-        // Deactivate player (or teleport)
-        //player.SetActive(false);
+        if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0; 
+        }
 
-        // Option 2: Load next scene (if transitioning levels)
-        SceneManager.LoadScene("Level2"); // Uncomment if needed
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
