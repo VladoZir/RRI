@@ -3,14 +3,15 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public GameObject player; // Reference to the player GameObject
+    public GameObject playerSpawn; // Reference to the player spawn object
     public Vector3 offset;    // Offset from the player to position the camera
 
     void Start()
     {
-        // If the player is not set in the inspector, try to find it in the scene
-        if (player == null)
+        // If the playerSpawn is set in the inspector, use that as the initial target
+        if (playerSpawn != null)
         {
-            player = GameObject.FindGameObjectWithTag("Player"); // Make sure your player has the "Player" tag
+            player = playerSpawn; // Set camera to follow playerSpawn object initially
         }
     }
 
@@ -18,8 +19,13 @@ public class CameraFollow : MonoBehaviour
     {
         if (player != null)
         {
-            // Update the camera position to follow the player with the offset
+            // Update the camera position to follow the player (or playerSpawn) with the offset
             transform.position = new Vector3(player.transform.position.x + offset.x, player.transform.position.y + offset.y, transform.position.z);
         }
+    }
+
+    public void SetTarget(GameObject newTarget)
+    {
+        player = newTarget; // Set the target the camera should follow
     }
 }

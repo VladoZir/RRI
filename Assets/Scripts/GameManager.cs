@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,31 +11,38 @@ public class GameManager : MonoBehaviour
 
     public Camera mainCamera;
 
-    public GameObject enemy;
-
     private GameObject currentPlayer;
 
     public AudioSource collectAudio;
 
     public GameObject playerSpawnPosition;
+    private Animator portalAnim;
 
     private void Awake()
     {
         Instance = this;
+
+        if (playerSpawnPosition != null)
+        {
+            portalAnim = playerSpawnPosition.GetComponentInChildren<Animator>();
+        }
     }
 
     void Start()
     {
+        Invoke("SpawnPlayerWithDelay", 1f); 
+    }
 
-        SpawnPlayer(playerPrefab);
-
+    void SpawnPlayerWithDelay()
+    {
+        SpawnPlayer(playerPrefab); 
     }
 
     public void SpawnPlayer(GameObject prefab)
     {
         if (currentPlayer != null)
         {
-            Destroy(currentPlayer); // Destroy previous player instance
+            Destroy(currentPlayer); 
         }
 
         currentPlayer = Instantiate(prefab, playerSpawnPosition.transform.position, Quaternion.identity);
@@ -45,8 +53,29 @@ public class GameManager : MonoBehaviour
             CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
             if (cameraFollow != null)
             {
-                cameraFollow.player = currentPlayer;
+                cameraFollow.SetTarget(currentPlayer);
             }
+        }
+
+        if (portalAnim != null)
+        {
+            StartCoroutine(HidePortalAfterDelay(5f));
+        }
+    }
+
+    private IEnumerator HidePortalAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Sačekaj 5 sekundi
+
+        if (portalAnim != null)
+        {
+            portalAnim.Play("Portal_Disappear"); // Pokreni animaciju nestajanja
+
+            // Sačekaj da se animacija završi
+            yield return new WaitForSeconds(portalAnim.GetCurrentAnimatorStateInfo(0).length);
+
+            // Deaktiviraj portal nakon animacije
+            playerSpawnPosition.SetActive(false);
         }
     }
 
