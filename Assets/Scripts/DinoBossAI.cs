@@ -17,7 +17,8 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     private Animator animator;
     private Transform player;
 
-    public int health = 100;
+    public int maxHealth = 100;
+    public int curHealth;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public float hitColorDuration = 0.25f;
@@ -35,8 +36,13 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     public GameObject portalPrefab;
     public Transform spawnPoint;
 
+    public GameObject[] enemyPrefabs; 
+    public Transform[] spawnPoints; 
+    private int nextSpawnThreshold;
+
     void Start()
     {
+        curHealth = maxHealth;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
@@ -49,6 +55,7 @@ public class DinoBossAI : MonoBehaviour, IEnemy
         }
 
         healthBarHolder = GameObject.Find("BossHealthBarHolder");
+        nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
 
         EnableIdleCollider();
     }
@@ -161,16 +168,36 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        curHealth -= damage;
 
-        changeHealthSprite(health);
+        changeHealthSprite(curHealth);
 
-        if (health <= 0)
+        if (curHealth <= 0)
         {
             Die();
         }
+        else if (curHealth <= nextSpawnThreshold) // Check if boss health crossed the next threshold
+        {
+            SpawnEnemies();
+            nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f); // Move to next 25% threshold
+        }
 
         StartCoroutine(ChangeColorOnHit());
+    }
+
+    private void SpawnEnemies()
+    {
+        if (enemyPrefabs.Length == 0 || spawnPoints.Length == 0) return;
+        int spawnCount = Mathf.Min(4, spawnPoints.Length); // Ensure we don't spawn more than we have spawn points
+
+        for (int i = 0; i < spawnCount; i++) // Loop over each spawn point
+        {
+            GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; // Randomly pick an enemy from the array
+            Transform spawnLocation = spawnPoints[i]; // Use a different spawn point for each enemy
+
+            Instantiate(enemyToSpawn, spawnLocation.position, Quaternion.identity); // Spawn the enemy at the spawn point
+        }
+
     }
 
     public void changeHealthSprite(int curHealth)

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3537416977830576002}
   - component: {fileID: 6735446782489743470}
   - component: {fileID: -2895726126985323716}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DinoBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -203,6 +203,8 @@ MonoBehaviour:
   healthSprites: []
   portalPrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
+  enemyPrefabs: []
+  spawnPoints: []
 --- !u!95 &-2895726126985323716
 Animator:
   serializedVersion: 7

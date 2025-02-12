@@ -255,7 +255,7 @@ MonoBehaviour:
   - {fileID: 35636357, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
   - {fileID: 20363020, guid: bc2f488243cdca545b0852d0abf53f72, type: 3}
   shieldContainer: {fileID: 1754321237269034507}
-  invincibilityDuration: 1.5
+  invincibilityDuration: 0.5
   flickerInterval: 0.1
   hurtAudio: {fileID: 2531176776463856838}
   deathAudio: {fileID: 4644776753226900367}

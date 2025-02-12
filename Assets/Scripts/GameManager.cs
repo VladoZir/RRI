@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
             Transform bowTransform = currentPlayer.transform.Find("Bow"); // Assuming Bow is a child of the player prefab
             if (bowTransform != null)
             {
-                Debug.Log("bow found");
+                //Debug.Log("bow found");
                 playerController.bow = bowTransform; // Link the bow to the PlayerController
             }
         }

@@ -50,7 +50,7 @@ public class ArrowNew : MonoBehaviour
             Destroy(gameObject); // If not an enemy, destroy immediately
         }
 
-        Debug.Log(collision.transform.name);
+        //Debug.Log(collision.transform.name);
     }
 
     private IEnumerator DestroyAfterSound()

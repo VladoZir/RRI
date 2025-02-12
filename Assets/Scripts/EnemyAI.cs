@@ -13,14 +13,14 @@ public class EnemyAI : MonoBehaviour, IEnemy
     public int health = 10;
 
     public GameObject[] itemDrops; 
-    public float dropChance = 1f; // 50% chance to drop an item
+    public float dropChance = 0.25f;
 
     private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); // Get Animator Component
+        animator = GetComponent<Animator>(); 
     }
 
 
@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
             if (foundPlayer != null)
             {
                 player = foundPlayer.transform;
-                Debug.Log("Enemy found the player!");
+                //Debug.Log("Enemy found the player!");
             }
             return;
         }
@@ -75,7 +75,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damageAmount);
-                Debug.Log("Enemy attacked the player!");
+                //Debug.Log("Enemy attacked the player!");
             }
         }
     }
@@ -83,7 +83,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
     public void TakeDamage(int damage)
     {
         health -= damage; 
-        Debug.Log($"{gameObject.name} took {damage} damage! Health: {health}");
+       // Debug.Log($"{gameObject.name} took {damage} damage! Health: {health}");
 
         if (health <= 0)
         {

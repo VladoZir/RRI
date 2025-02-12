@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject shieldContainer;
 
     private bool isInvincible = false;
-    public float invincibilityDuration = 1.5f; 
+    public float invincibilityDuration = 1f; 
     public float flickerInterval = 0.1f; 
     private SpriteRenderer spriteRenderer;
 
