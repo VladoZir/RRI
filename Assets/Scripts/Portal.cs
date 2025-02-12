@@ -41,14 +41,47 @@ public class Portal : MonoBehaviour
             {
                 playerController.enabled = false; 
             }
-            SceneMover sceneMover = Object.FindAnyObjectByType<SceneMover>(); 
+
+            StartCoroutine(FadeOutAndTeleport(other.gameObject));
+        }
+        else if (other.CompareTag("PlayerSpaceship"))
+        {
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.bodyType = RigidbodyType2D.Kinematic;
+            }
+            FlyingController flyingController = other.GetComponent<FlyingController>();
+            if (flyingController != null)
+            {
+                flyingController.enabled = false;
+            }
+            SceneMover sceneMover = Object.FindAnyObjectByType<SceneMover>();
             if (sceneMover != null)
             {
                 sceneMover.PauseSceneMovement(true); // Pause the scene movement while teleporting
             }
 
-            StartCoroutine(FadeOutAndTeleport(other.gameObject));
+            StartCoroutine(PullShipIn(rb, other.transform));
         }
+    }
+
+    private IEnumerator PullShipIn(Rigidbody2D rb, Transform shipTransform)
+    {
+        Vector2 targetPosition = transform.position; // The center of the teleport area
+        float pullSpeed = 3f; // Adjust pull speed as needed
+
+        while (Vector2.Distance(shipTransform.position, targetPosition) > 0.1f)
+        {
+            shipTransform.position = Vector2.MoveTowards(shipTransform.position, targetPosition, pullSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+
+        StartCoroutine(FadeOutAndTeleport(shipTransform.gameObject));
     }
 
     private IEnumerator FadeOutAndTeleport(GameObject player)

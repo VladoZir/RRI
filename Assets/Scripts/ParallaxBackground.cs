@@ -27,7 +27,7 @@ public class SeamlessParallax : MonoBehaviour
         float deltaX = cam.position.x - lastCameraPosition.x;
 
         // Apply parallax effect to the texture
-        Vector3 parallaxOffset = new Vector3(deltaX * parallaxEffectMultiplier, 0, 0);
+        Vector3 parallaxOffset = new Vector3(-deltaX * parallaxEffectMultiplier, 0, 0);
         transform.position += parallaxOffset;
 
         // Debug the positions

@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Portal
   - PlayerSpawn
+  - PlayerSpaceship
   layers:
   - Default
   - TransparentFX
