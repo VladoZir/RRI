@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bbd11b7e0a8fcf64aa17dadbf7f40f3c
+guid: 30c711cbea8e70b46a962c54ea6db3e6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BossHealth00_0
+      name: DinoHealth_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf4a56aa2a78bb24d96f4db5a00f3d18
-      internalID: 466375173
+      spriteID: 4726a26ee1f0f1b4e96e6ca08294a14d
+      internalID: 611723796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_1
+      name: DinoHealth_1
       rect:
         serializedVersion: 2
         x: 0
@@ -134,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef0c3b9380d193c40b8c3b1651ae5746
-      internalID: 1217015931
+      spriteID: d869754a69c7eec4cb5e0d96456d39fd
+      internalID: 405147927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_2
+      name: DinoHealth_2
       rect:
         serializedVersion: 2
         x: 0
@@ -156,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85b9673b1f9e3dd4d901659c1db470c6
-      internalID: -1290636775
+      spriteID: 827f83e364a3b724983b657fbf49b8f1
+      internalID: 110265352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_3
+      name: DinoHealth_3
       rect:
         serializedVersion: 2
         x: 0
@@ -178,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1ebceaca6a6c224891fc0e5093b7904
-      internalID: -193842736
+      spriteID: f19d75ed605f24444ac01d003d9de022
+      internalID: -719185950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_4
+      name: DinoHealth_4
       rect:
         serializedVersion: 2
         x: 0
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8a2e90aa58732143a8f40fc687607ba
-      internalID: -2143755239
+      spriteID: cbc54cf930015c84aaa9c6b153d296c6
+      internalID: 1805445600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_5
+      name: DinoHealth_5
       rect:
         serializedVersion: 2
         x: 0
@@ -222,14 +222,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23313f35429708b41824a5a396dec2b5
-      internalID: 143095682
+      spriteID: b8d41e4f099d6f049a0b37f9a2c9d456
+      internalID: -468697768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_6
+      name: DinoHealth_6
       rect:
         serializedVersion: 2
         x: 0
@@ -244,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d47c1f733aa224e4f89d40cdf6c8fd24
-      internalID: -1647515258
+      spriteID: 371dd7303189ad847bfd484765054c03
+      internalID: 1367534897
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_7
+      name: DinoHealth_7
       rect:
         serializedVersion: 2
         x: 0
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc54f4b2516ba254d906dbd182a3f20b
-      internalID: 1324419509
+      spriteID: a4869692a7cd40f499e6ab96a4355c55
+      internalID: 1303699207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_8
+      name: DinoHealth_8
       rect:
         serializedVersion: 2
         x: 0
@@ -288,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6bc3be1d304fa14a99fd929e016839d
-      internalID: -1224044613
+      spriteID: 3a688f4e49aea694e8dcedadd2868f26
+      internalID: 908167496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_9
+      name: DinoHealth_9
       rect:
         serializedVersion: 2
         x: 0
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e71dfb56b4756e04fa0980c00e9ffe76
-      internalID: 2121000910
+      spriteID: c812599d5f234574191ea011dc57c4f5
+      internalID: -1508090311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHealth00_10
+      name: DinoHealth_10
       rect:
         serializedVersion: 2
         x: 0
@@ -332,8 +332,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 257a58a83c3ec744ebd694dfef89bd0f
-      internalID: 522800017
+      spriteID: a2fc8daef7b1a7243ad9b1faee2158d4
+      internalID: 800343612
       vertices: []
       indices: 
       edges: []
@@ -352,17 +352,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BossHealth00_0: 466375173
-      BossHealth00_1: 1217015931
-      BossHealth00_10: 522800017
-      BossHealth00_2: -1290636775
-      BossHealth00_3: -193842736
-      BossHealth00_4: -2143755239
-      BossHealth00_5: 143095682
-      BossHealth00_6: -1647515258
-      BossHealth00_7: 1324419509
-      BossHealth00_8: -1224044613
-      BossHealth00_9: 2121000910
+      DinoHealth_0: 611723796
+      DinoHealth_1: 405147927
+      DinoHealth_10: 800343612
+      DinoHealth_2: 110265352
+      DinoHealth_3: -719185950
+      DinoHealth_4: 1805445600
+      DinoHealth_5: -468697768
+      DinoHealth_6: 1367534897
+      DinoHealth_7: 1303699207
+      DinoHealth_8: 908167496
+      DinoHealth_9: -1508090311
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
