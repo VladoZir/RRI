@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
-    
+
     public float slideSpeed = 2f;
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        // Only allow jumping if grounded AND not touching a wall
+        if (Input.GetButtonDown("Jump") && isGrounded && !isOnWall)
         {
             Jump();
         }
@@ -149,6 +150,8 @@ public class PlayerController : MonoBehaviour
         // Recheck ground collision during continuous contact
         if (collision.gameObject.CompareTag("Ground"))
         {
+            bool foundGround = false;
+
             foreach (ContactPoint2D contact in collision.contacts)
             {
                 float angle = Vector2.Angle(contact.normal, Vector2.up);
@@ -156,7 +159,22 @@ public class PlayerController : MonoBehaviour
                 {
                     isGrounded = true;
                     isOnWall = false;  // Clear wall state when grounded
-                    return;
+                    foundGround = true;
+                    break;
+                }
+            }
+
+            // If we didn't find ground, check for wall
+            if (!foundGround)
+            {
+                foreach (ContactPoint2D contact in collision.contacts)
+                {
+                    float angle = Vector2.Angle(contact.normal, Vector2.up);
+                    if (angle > 85f)
+                    {
+                        isOnWall = true;
+                        break;
+                    }
                 }
             }
         }
