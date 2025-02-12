@@ -118,7 +118,7 @@ public class DinoBossAI : MonoBehaviour, IEnemy
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            Collider2D playerCollider = collision.gameObject.GetComponent<Collider2D>(); 
+            Collider2D playerCollider = collision.gameObject.GetComponent<Collider2D>();
 
             if (playerHealth != null)
             {
@@ -128,23 +128,24 @@ public class DinoBossAI : MonoBehaviour, IEnemy
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (playerRb != null)
             {
-                Vector2 knockbackForce = new Vector2(0, 10f); 
+                Vector2 knockbackForce = new Vector2(0, 10f);
                 playerRb.AddForce(knockbackForce, ForceMode2D.Impulse);
             }
 
             if (playerCollider != null)
             {
-                StartCoroutine(DisablePlayerColliderTemporarily(playerCollider));
+                StartCoroutine(DisablePlayerColliderTemporarily(playerCollider, collision.collider)); 
             }
         }
     }
 
-    private IEnumerator DisablePlayerColliderTemporarily(Collider2D playerCollider)
+    private IEnumerator DisablePlayerColliderTemporarily(Collider2D playerCollider, Collider2D enemyCollider)
     {
-        playerCollider.enabled = false;
-        yield return new WaitForSeconds(0.5f); 
-        playerCollider.enabled = true;
+        Physics2D.IgnoreCollision(playerCollider, enemyCollider, true); 
+        yield return new WaitForSeconds(0.5f);
+        Physics2D.IgnoreCollision(playerCollider, enemyCollider, false);
     }
+
 
     private void EnableIdleCollider()
     {
