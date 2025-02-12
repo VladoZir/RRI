@@ -2,16 +2,18 @@ using UnityEngine;
 
 public class FlyingController : MonoBehaviour
 {
-    public float liftForce = 5f; // Adjust lift force
+    public float liftForce = 5f; 
     private Rigidbody2D rb;
 
-    public Sprite normalSprite; // Spaceship without fire
-    public Sprite fireSprite;   // Spaceship with fire
+    public Sprite normalSprite; 
+    public Sprite fireSprite;  
 
     private SpriteRenderer spriteRenderer;
 
-    public float tiltSpeed = 4f; // Controls how quickly the ship rotates
-    public float maxTiltAngle = 30f; // Maximum tilt in degrees
+    public float tiltSpeed = 4f; 
+    public float maxTiltAngle = 30f;
+
+    public float pushForce = 3f;
 
     void Start()
     {
@@ -26,14 +28,14 @@ public class FlyingController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0)) // When the left mouse button is pressed
+        if (Input.GetMouseButton(0)) 
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, liftForce);
-            spriteRenderer.sprite = fireSprite; // Show fire sprite
+            spriteRenderer.sprite = fireSprite; 
         }
         else
         {
-            spriteRenderer.sprite = normalSprite; // Show normal sprite
+            spriteRenderer.sprite = normalSprite; 
         }
 
         RotateShip();
@@ -44,4 +46,20 @@ public class FlyingController : MonoBehaviour
         float tiltAngle = Mathf.Clamp(rb.linearVelocity.y * maxTiltAngle / liftForce, -maxTiltAngle, maxTiltAngle);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, tiltAngle), Time.deltaTime * tiltSpeed);
     }
+
+    /*
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("TopBarrier"))
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); 
+            rb.AddForce(Vector2.down * pushForce, ForceMode2D.Impulse); 
+        }
+        else if (collision.gameObject.CompareTag("BottomBarrier"))
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); 
+            rb.AddForce(Vector2.up * pushForce, ForceMode2D.Impulse); 
+        }
+    }
+    */
 }

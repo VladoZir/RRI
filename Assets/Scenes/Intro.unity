@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 1434697738}
   m_Layer: 0
   m_Name: TopBarrier
-  m_TagString: Untagged
+  m_TagString: TopBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 1838817938}
   m_Layer: 0
   m_Name: BottomBarrier
-  m_TagString: Untagged
+  m_TagString: BottomBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

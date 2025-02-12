@@ -12,6 +12,8 @@ TagManager:
   - Portal
   - PlayerSpawn
   - PlayerSpaceship
+  - TopBarrier
+  - BottomBarrier
   layers:
   - Default
   - TransparentFX
