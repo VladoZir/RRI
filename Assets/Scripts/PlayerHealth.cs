@@ -107,7 +107,7 @@ public class PlayerHealth : MonoBehaviour
         int spriteIndex = Mathf.FloorToInt(shieldPercentage / 10); // Za svakih 5%
         // Osiguraj da je spriteIndex u granicama (0 do 10 za 11 spriteova)
         spriteIndex = Mathf.Clamp(spriteIndex, 0, shieldSprites.Count - 1);
-        // Postavi sprite za shield
+
         shieldContainer.GetComponent<Image>().sprite = shieldSprites[spriteIndex];
         // Debug.Log("Shield: " + curShield + " | Sprite Index: " + spriteIndex);
     }
@@ -127,7 +127,6 @@ public class PlayerHealth : MonoBehaviour
     }
     private IEnumerator WaitForAudioToFinish()
     {
-        // Wait until the audio is done playing
         yield return new WaitForSeconds(deathAudio.clip.length);  
         gameObject.SetActive(false);
         if (gameOverManager != null)

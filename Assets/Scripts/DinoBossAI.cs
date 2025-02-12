@@ -118,7 +118,7 @@ public class DinoBossAI : MonoBehaviour, IEnemy
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            Collider2D playerCollider = collision.gameObject.GetComponent<Collider2D>(); // Get player's collider
+            Collider2D playerCollider = collision.gameObject.GetComponent<Collider2D>(); 
 
             if (playerHealth != null)
             {
@@ -128,11 +128,10 @@ public class DinoBossAI : MonoBehaviour, IEnemy
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (playerRb != null)
             {
-                Vector2 knockbackForce = new Vector2(0, 10f); // Adjust force as needed
+                Vector2 knockbackForce = new Vector2(0, 10f); 
                 playerRb.AddForce(knockbackForce, ForceMode2D.Impulse);
             }
 
-            // Disable player's collider temporarily to avoid continuous pushing
             if (playerCollider != null)
             {
                 StartCoroutine(DisablePlayerColliderTemporarily(playerCollider));
@@ -143,7 +142,7 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     private IEnumerator DisablePlayerColliderTemporarily(Collider2D playerCollider)
     {
         playerCollider.enabled = false;
-        yield return new WaitForSeconds(0.5f); // Adjust delay as needed
+        yield return new WaitForSeconds(0.5f); 
         playerCollider.enabled = true;
     }
 
@@ -162,7 +161,6 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     public void TakeDamage(int damage)
     {
         health -= damage;
-        //healthBar.value = health;  // Update the health bar
 
         changeHealthSprite(health);
 
@@ -191,20 +189,16 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
     private void Die()
     {
-        // Ensure the death animation is triggered
         animator.SetBool("IsDead", true);
 
-        // Disable colliders so the boss no longer interacts with the player
+        
         idleCollider.enabled = false;
         dashCollider.enabled = false;
 
-        // Stop all boss actions
         StopAllCoroutines();
 
-        // Disable movement and AI logic
         this.enabled = false;
 
-        // Wait for the death animation to finish before doing any other logic
         StartCoroutine(WaitForDeathAnimation());
     }
 
@@ -215,7 +209,6 @@ public class DinoBossAI : MonoBehaviour, IEnemy
             yield return null;
         }
 
-        // Wait for the animation to finish
         while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
         {
             yield return null;
