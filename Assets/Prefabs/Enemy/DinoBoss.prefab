@@ -193,7 +193,8 @@ MonoBehaviour:
   detectionRange: 5
   leftSpot: {fileID: 0}
   rightSpot: {fileID: 0}
-  health: 100
+  maxHealth: 100
+  curHealth: 0
   hitColorDuration: 0.5
   medkit: {fileID: 0}
   damage: 20
