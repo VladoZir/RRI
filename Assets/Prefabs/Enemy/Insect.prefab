@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3607596714624361851}
   - component: {fileID: 5686591803920967508}
   - component: {fileID: 6012149013900210247}
+  - component: {fileID: 7821697906097078039}
   m_Layer: 10
   m_Name: Insect
   m_TagString: Enemy
@@ -183,4 +184,26 @@ MonoBehaviour:
   - {fileID: 2886329134516250418, guid: 744aa124cf583db459b483e6ab9ecc63, type: 3}
   - {fileID: 7229929044907374106, guid: 952fc4ca9313bc343b26d7d192c7022b, type: 3}
   - {fileID: 5196460000004242527, guid: a156a5b49f356e545920cca2156c44ae, type: 3}
-  dropChance: 0.5
+  dropChance: 0.25
+--- !u!95 &7821697906097078039
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6996101720791689121}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad94939ad4bac194888194b5b58a1531, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

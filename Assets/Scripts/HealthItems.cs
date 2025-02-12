@@ -2,7 +2,7 @@
 
 public class HealthItems : MonoBehaviour
 {
-    public int potionHealAmount = 20;
+    public int potionHealAmount = 25;
     public int medkitHealAmount = 50;
     public int shieldPotionAmount = 50;
 
