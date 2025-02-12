@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 567765895}
   - component: {fileID: 567765894}
   m_Layer: 0
-  m_Name: PreHistory_4_0
+  m_Name: Space_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 1411058619}
   - component: {fileID: 1411058618}
   m_Layer: 0
-  m_Name: PreHistory_3_0
+  m_Name: Space_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 1449717727}
   - component: {fileID: 1449717726}
   m_Layer: 0
-  m_Name: PreHistory_2_0
+  m_Name: Space_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 1937323905}
   - component: {fileID: 1937323904}
   m_Layer: 0
-  m_Name: PreHistory_1_0
+  m_Name: Space_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
