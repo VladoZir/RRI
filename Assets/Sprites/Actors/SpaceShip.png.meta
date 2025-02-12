@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: a6a38d3af7cc89841a0c41d6823a6206
+guid: 75de6a569386cf14db2ede172d8e0895
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7127769706924348086
+    second: SpaceShip_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss_Health10
+      name: SpaceShip_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 61
-        height: 16
+        x: 0
+        y: 5
+        width: 32
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 30d386c18aac43830800000000000000
-      internalID: 4050084788292828419
+      spriteID: 6b2140ea8cceae260800000000000000
+      internalID: 7127769706924348086
       vertices: []
       indices: 
       edges: []
@@ -122,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 583f8acbd7f2caf47b0a65c2d57186f8
+    spriteID: 4ed0edbf7bcebe94ab48c4a81ae42669
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +135,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Boss_Health10: 4050084788292828419
+      nozic_0: 4050084788292828419
+      nozic_1: -1072652936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

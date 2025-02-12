@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3fba7d73d4e13f04b8d46672f1a469b2
+guid: 9a06d06b7f0c60b4c8c08974afb22aa4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -71,7 +71,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 0
     defaultPivotSpace: 0
@@ -84,7 +84,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 0
     defaultPivotSpace: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638749739118317014
+  platformSettingsDirtyTick: 638749746589069773
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -122,9 +122,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Sky
+  - name: Space_All
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5010395, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -132,9 +132,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 320
+      width: 962
       height: 180
-    spriteID: 5e2d112419bf01b409abb0da6426ef5a
+    spriteID: cc8aea469c5da664a9f9b6511fdc40f5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -143,19 +143,20 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Layer 3
+  spriteSheetImportData:
+  - name: Space_All_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 192
-      width: 320
-      height: 129
-    spriteID: 80134258d0477324092822229c4856e2
+      y: 544
+      width: 960
+      height: 180
+    spriteID: c9985e6ba6c31d643b3a33beb07a820f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -163,20 +164,20 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 192}
-  - name: Layer 2
+    uvTransform: {x: 0, y: 0}
+  - name: Space_All_1
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 463
-      width: 320
-      height: 118
-    spriteID: 77272cd3a6fef004991c97c692f31443
+      y: 364
+      width: 960
+      height: 180
+    spriteID: ddd431fadf3b4864284c3099e26a369f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -184,20 +185,20 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 463}
-  - name: Layer 1
+    uvTransform: {x: 0, y: 0}
+  - name: Space_All_2
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 329
-      width: 320
-      height: 126
-    spriteID: 7226d2123ffcc944fb0b18e3575e882e
+      y: 184
+      width: 960
+      height: 180
+    spriteID: b59c275d9d607724a89edff9692dd1f8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -205,65 +206,31 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 329}
-  spriteSheetImportData: []
+    uvTransform: {x: 0, y: 0}
+  - name: Space_All_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 960
+      height: 180
+    spriteID: ab521c14fce0c7242aba9b4ab54aada2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: -312994415
-    name: Sky
-    layerFlags: 3
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: Sky
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 320
-        height: 180
-      spriteId: 5e2d112419bf01b409abb0da6426ef5a
-    linkedCells: []
-    parentIndex: -1
-  - layerIndex: 1
-    guid: 1317221951
-    name: Layer 3
-    layerFlags: 3
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: Layer 3
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 320
-        height: 129
-      spriteId: 80134258d0477324092822229c4856e2
-    linkedCells: []
-    parentIndex: -1
-  - layerIndex: 2
-    guid: 1317221555
-    name: Layer 2
-    layerFlags: 3
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: Layer 2
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 320
-        height: 118
-      spriteId: 77272cd3a6fef004991c97c692f31443
-    linkedCells: []
-    parentIndex: -1
-  - layerIndex: 3
-    guid: 1317222747
+    guid: 1317222744
     name: Layer 1
     layerFlags: 3
     layerType: 0
@@ -273,11 +240,65 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: -2
         y: 0
-        width: 320
-        height: 126
-      spriteId: 7226d2123ffcc944fb0b18e3575e882e
+        width: 962
+        height: 180
+      spriteId: 1a7327a8e34cb14459900a4726d38acc
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 1
+    guid: 1882794632
+    name: Flattened
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Flattened
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 19
+        y: 14
+        width: 926
+        height: 152
+      spriteId: 3910a2745369ca849ac51d395c255455
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 2
+    guid: 1692341193
+    name: Flattened_1
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Flattened_1
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 5
+        y: 10
+        width: 920
+        height: 147
+      spriteId: 168a0f564b253a241bbca55278a2f247
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 3
+    guid: 1692341595
+    name: Flattened_2
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Flattened_2
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 74
+        y: 4
+        width: 861
+        height: 174
+      spriteId: 27b7807e1cca3e74b9d982c3afd48c0c
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -320,4 +341,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 320, y: 180}
+  canvasSize: {x: 960, y: 180}
