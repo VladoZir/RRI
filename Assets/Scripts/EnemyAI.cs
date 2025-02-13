@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
     public int health = 10;
 
     public GameObject[] itemDrops; 
-    public float dropChance = 0.25f;
+    public float dropChance = 0.1f;
 
     private Animator animator;
 
