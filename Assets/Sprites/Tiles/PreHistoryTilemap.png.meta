@@ -972,7 +972,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -994,7 +994,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1003,6 +1003,28 @@ TextureImporter:
       bones: []
       spriteID: 5fe631d685a4726409389d36b2849ba3
       internalID: -1067944854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PreHistoryTilemap_38
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 352729836c889794a9cfd5cf3e86a6df
+      internalID: 763501336
       vertices: []
       indices: 
       edges: []
@@ -1053,6 +1075,7 @@ TextureImporter:
       PreHistoryTilemap_35: -1545146837
       PreHistoryTilemap_36: 261381790
       PreHistoryTilemap_37: -1067944854
+      PreHistoryTilemap_38: 763501336
       PreHistoryTilemap_4: -679527904
       PreHistoryTilemap_5: 1519144505
       PreHistoryTilemap_6: -1720147056
