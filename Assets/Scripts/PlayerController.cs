@@ -5,8 +5,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
+    public float wallBounceForce = 3f;  // New variable for wall bounce strength
 
-    public float slideSpeed = 2f;
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isOnWall;
@@ -35,12 +35,6 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
 
-        // Only apply wall slide if we're not on the ground
-        if (isOnWall && !isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -slideSpeed);
-        }
-
         if (anim != null)
         {
             anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
@@ -67,7 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         float moveInput = Input.GetAxis("Horizontal");
 
-        // Only apply horizontal movement if not on a wall or if on ground
+        // Apply horizontal movement if not on a wall or if on ground
         if (!isOnWall || isGrounded)
         {
             rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
@@ -128,7 +122,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // Only check for wall if we didn't find ground
+            // Check for wall collision and apply bounce
             if (!foundGround)
             {
                 foreach (ContactPoint2D contact in collision.contacts)
@@ -138,6 +132,9 @@ public class PlayerController : MonoBehaviour
                     if (angle > 85f)
                     {
                         isOnWall = true;
+                        // Apply bounce force in the direction of the wall normal
+                        Vector2 bounceDirection = contact.normal;
+                        rb.linearVelocity = new Vector2(bounceDirection.x * wallBounceForce, rb.linearVelocity.y);
                         break;
                     }
                 }
@@ -164,7 +161,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // If we didn't find ground, check for wall
+            // Only check for wall state if not on ground
             if (!foundGround)
             {
                 foreach (ContactPoint2D contact in collision.contacts)
