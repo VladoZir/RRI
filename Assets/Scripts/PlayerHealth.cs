@@ -43,6 +43,15 @@ public class PlayerHealth : MonoBehaviour
         gameOverManager = FindFirstObjectByType<GameOver>();
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("DeathBarrier"))
+        {
+            Die();
+        }
+    }
+
+
     public void TakeDamage(int damage)
     {
         if (isInvincible) return;
