@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6462755236475387466}
   m_Layer: 0
   m_Name: sword_collectible
-  m_TagString: Untagged
+  m_TagString: SwordCollectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,5 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWithBowPrefab: {fileID: 1754321237269034507, guid: 9064d24b3d83ee149a170896dddccdb4, type: 3}
+  playerWithSwordPrefab: {fileID: 0}
   floatSpeed: 1
   floatHeight: 0.2

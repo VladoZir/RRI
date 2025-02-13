@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject currentPlayer;
 
-    public AudioSource collectAudio;
+    public AudioSource collectBowAudio;
+    public AudioSource collectSwordAudio;
 
     public GameObject playerSpawnPosition;
     private Animator portalAnim;
@@ -79,12 +80,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpgradePlayer(GameObject newPrefab, GameObject oldPlayer)
+    public void UpgradePlayerBow(GameObject newPrefab, GameObject oldPlayer)
     {
         Vector3 position = oldPlayer.transform.position; 
         Destroy(oldPlayer); 
-        currentPlayer = Instantiate(newPrefab, position, Quaternion.identity); 
-        collectAudio.Play();
+        currentPlayer = Instantiate(newPrefab, position, Quaternion.identity);
+        collectBowAudio.Play();
 
         // Assign the new player to the camera
         if (mainCamera != null)
@@ -109,5 +110,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpgradePlayerSword(GameObject newPrefab, GameObject oldPlayer)
+    {
+        Vector3 position = oldPlayer.transform.position;
+        Destroy(oldPlayer);
+        currentPlayer = Instantiate(newPrefab, position, Quaternion.identity);
+        collectSwordAudio.Play();
+
+        // Assign the new player to the camera
+        if (mainCamera != null)
+        {
+            CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
+            if (cameraFollow != null)
+            {
+                cameraFollow.player = currentPlayer;
+            }
+        }
+
+        /*
+        // Link the sword to the PlayerController (if the new player prefab has the sword)
+        PlayerController playerController = currentPlayer.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            Transform swordTransform = currentPlayer.transform.Find("Sword"); // Assuming Sword is a child of the player prefab
+            if (swordTransform != null)
+            {
+                //Debug.Log("sword found");
+                playerController.bow = swordTransform; // Link the sword to the PlayerController
+            }
+        }
+        */
+    }
 
 }
