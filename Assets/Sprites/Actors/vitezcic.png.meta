@@ -108,15 +108,15 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fe8be410336afc260800000000000000
-      internalID: 7120092273891522799
+      spriteID: 2ae8a5f2dc3b7f448a7a414ec0d2b5bb
+      internalID: 1695125451
       vertices: []
       indices: 
       edges: []
@@ -135,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      nozic_0: 4050084788292828419
-      nozic_1: -1072652936
+      vitezcic_0: 1695125451
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
