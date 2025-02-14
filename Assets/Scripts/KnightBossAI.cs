@@ -5,13 +5,9 @@ using UnityEngine.UI;
 
 public class KnightBossAI : MonoBehaviour, IEnemy
 {
-    //public float dashSpeed = 8f;
-    //public float waitTime = 1f;
+    public float waitTime = 1f;
     public float detectionRange = 15f;
-    //private bool playerDetected = false;
-    //public Transform leftSpot;
-    //public Transform rightSpot;
-    //private Transform targetSpot;
+    private bool playerDetected = false;
 
     private Animator animator;
     private Transform player;
@@ -26,7 +22,7 @@ public class KnightBossAI : MonoBehaviour, IEnemy
     public int damage = 20;
 
     //public PolygonCollider2D idleCollider;
-    //public PolygonCollider2D dashCollider;
+    //public CircleCollider2D atackCollider;
 
     public GameObject healthBarHolder;
 
@@ -34,6 +30,11 @@ public class KnightBossAI : MonoBehaviour, IEnemy
 
     public GameObject portalPrefab;
     public Transform spawnPoint;
+
+    private bool isMoving = false;
+    public float moveSpeed = 20f;
+    public List<Transform> targetSpots;
+    private int currentTargetIndex = 0;
 
     //public GameObject[] enemyPrefabs;
     //public Transform[] spawnPoints;
@@ -45,7 +46,6 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-      //  targetSpot = leftSpot;
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject)
@@ -56,75 +56,62 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         healthBarHolder = GameObject.Find("BossHealthBarHolder");
         //nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
 
-        //EnableIdleCollider();
+    }
+    private IEnumerator MoveToTargetSpots()
+    {
+        isMoving = true;
+
+        // Loop through target spots in the original order
+        for (int i = 0; i < targetSpots.Count; i++)
+        {
+            Transform targetSpot = targetSpots[i];
+            yield return StartCoroutine(MoveToTarget(targetSpot));
+        }
+
+        // After reaching all targets, move back to the starting position by reversing the target spots list
+        for (int i = targetSpots.Count - 1; i >= 0; i--)
+        {
+            Transform targetSpot = targetSpots[i];
+            yield return StartCoroutine(MoveToTarget(targetSpot));
+        }
+
+        // Finally, return to the starting position
+        yield return StartCoroutine(MoveToTarget(transform)); // Assuming transform is the starting position
+
+        isMoving = false;
+    }
+
+    // Move towards a specific target position without stopping at it
+    private IEnumerator MoveToTarget(Transform target)
+    {
+        float moveThreshold = 0.2f; // A small threshold to stop "hitting" the target spot
+        while (Vector2.Distance(transform.position, target.position) > moveThreshold)
+        {
+            Vector2 direction = (target.position - transform.position).normalized;
+            transform.Translate(direction * moveSpeed * Time.deltaTime);
+
+            // You can add more logic here like setting an animation for movement if needed
+
+            yield return null;
+        }
     }
 
 
-    /*
+    // Detect player in range and start the movement
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-        
         if (!playerDetected && other.CompareTag("Player"))
         {
+            Debug.Log("trigger");
             playerDetected = true;
 
             yield return new WaitForSeconds(waitTime);
 
-            StartCoroutine(DashToTarget());
+            StartCoroutine(MoveToTargetSpots());
         }
-        
-    }
-    */
-
-    /*
-    private IEnumerator DashToTarget()
-    {
-        Vector2 targetPosition = targetSpot.position;
-
-        EnableDashCollider();
-
-        animator.SetTrigger("Dash");
-
-        // Wait for the duration of the animation (assuming you know the animation's length)
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
-        // Start moving after the animation duration
-        while (Vector2.Distance(transform.position, targetPosition) > 0.1f)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, dashSpeed * Time.deltaTime);
-            yield return null;
-        }
-
-        transform.position = targetPosition;
-
-        FlipAfterDash();
-        SwitchTargetSpot();
-
-        EnableIdleCollider();
-
-        yield return new WaitForSeconds(waitTime);
-
-        StartCoroutine(DashToTarget());
-    }
-    */
-
-    private void FlipAfterDash()
-    {
-        // Simply flip the boss by multiplying the X value of the local scale by -1
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-
-
-        Vector3 healthBarScale = transform.GetChild(0).localScale;
-        transform.GetChild(0).localScale = new Vector3(Mathf.Abs(healthBarScale.x) * Mathf.Sign(transform.localScale.x), healthBarScale.y, healthBarScale.z);
     }
 
-    /*
-    private void SwitchTargetSpot()
-    {
-        // Switch between the left and right spots
-        targetSpot = (targetSpot == rightSpot) ? leftSpot : rightSpot;
-    }
-    */
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -160,20 +147,6 @@ public class KnightBossAI : MonoBehaviour, IEnemy
     }
 
 
-    /*
-    private void EnableIdleCollider()
-    {
-        idleCollider.enabled = true;
-        dashCollider.enabled = false;
-    }
-
-    private void EnableDashCollider()
-    {
-        idleCollider.enabled = false;
-        dashCollider.enabled = true;
-    }
-    */
-
     public void TakeDamage(int damage)
     {
         curHealth -= damage;
@@ -194,23 +167,6 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         StartCoroutine(ChangeColorOnHit());
     }
 
-    /*
-    private void SpawnEnemies()
-    {
-        if (enemyPrefabs.Length == 0 || spawnPoints.Length == 0) return;
-        int spawnCount = Mathf.Min(4, spawnPoints.Length); // Ensure we don't spawn more than we have spawn points
-
-        for (int i = 0; i < spawnCount; i++) // Loop over each spawn point
-        {
-            GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; // Randomly pick an enemy from the array
-            Transform spawnLocation = spawnPoints[i]; // Use a different spawn point for each enemy
-
-            Instantiate(enemyToSpawn, spawnLocation.position, Quaternion.identity); // Spawn the enemy at the spawn point
-        }
-
-    }
-    */
-
     public void changeHealthSprite(int curHealth)
     {
         int index = Mathf.Clamp(curHealth / 10, 0, healthSprites.Count - 1);
@@ -228,11 +184,6 @@ public class KnightBossAI : MonoBehaviour, IEnemy
 
     private void Die()
     {
-        //animator.SetBool("IsDead", true);
-
-
-        //idleCollider.enabled = false;
-        //dashCollider.enabled = false;
 
         StopAllCoroutines();
 
@@ -292,4 +243,21 @@ public class KnightBossAI : MonoBehaviour, IEnemy
 
         Destroy(gameObject);
     }
+
+    /*
+   private void SpawnEnemies()
+   {
+       if (enemyPrefabs.Length == 0 || spawnPoints.Length == 0) return;
+       int spawnCount = Mathf.Min(4, spawnPoints.Length); // Ensure we don't spawn more than we have spawn points
+
+       for (int i = 0; i < spawnCount; i++) // Loop over each spawn point
+       {
+           GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; // Randomly pick an enemy from the array
+           Transform spawnLocation = spawnPoints[i]; // Use a different spawn point for each enemy
+
+           Instantiate(enemyToSpawn, spawnLocation.position, Quaternion.identity); // Spawn the enemy at the spawn point
+       }
+
+   }
+   */
 }
