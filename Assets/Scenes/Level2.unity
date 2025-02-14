@@ -5860,10 +5860,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6134290486710472107, guid: 90e73b1a7de406b43969c7c5de3068c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1439121891, guid: 96345ade20f787949af2ed3146be13fb, type: 3}
     - target: {fileID: 6462755236475387466, guid: 90e73b1a7de406b43969c7c5de3068c6, type: 3}
       propertyPath: playerWithSwordPrefab
       value: 
-      objectReference: {fileID: 6585168501074367420, guid: 55ebea176b382a04aad0b2cdae1cd634, type: 3}
+      objectReference: {fileID: 7974336642933253722, guid: d1b5624923f6e784d9529bd1ec11892d, type: 3}
     - target: {fileID: 7753902589138410784, guid: 90e73b1a7de406b43969c7c5de3068c6, type: 3}
       propertyPath: m_Name
       value: sword_collectible
