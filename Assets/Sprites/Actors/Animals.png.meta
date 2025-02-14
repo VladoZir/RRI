@@ -103,45 +103,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dogs_0
+      name: Animals_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 16
         width: 16
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbcc8751cd7553342b54f2957feb2d68
-      internalID: 90157024
+      spriteID: 23824ce6844f6e648b98abcf9c1cad5b
+      internalID: -2106956237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dogs_1
+      name: Animals_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 16
+        y: 16
         width: 16
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68d0a8ad090b7354a97c8cc8217a30a4
-      internalID: -10955842
+      spriteID: 9e8e03af6dab53d45931ed363b01ef82
+      internalID: -2146805319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animals_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429309360f6ae7d45840cb4a484ac365
+      internalID: 1237770777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animals_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c67d58e4a8a6514ca2515a9e6cc3100
+      internalID: 261074988
       vertices: []
       indices: 
       edges: []
@@ -160,10 +204,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dogs_0: 90157024
-      dogs_1: -10955842
-      nozic_0: 4050084788292828419
-      nozic_1: -1072652936
+      Animals_0: -2106956237
+      Animals_1: -2146805319
+      Animals_2: 1237770777
+      Animals_3: 261074988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
