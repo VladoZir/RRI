@@ -230,17 +230,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4012538222518336192, guid: 53d0a59e4e032984195c5ad82e8101ad, type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6593424760920146703, guid: 53d0a59e4e032984195c5ad82e8101ad, type: 3}
       propertyPath: m_Name
       value: PlayerSpaceShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 6593424760920146703, guid: 53d0a59e4e032984195c5ad82e8101ad, type: 3}
-      propertyPath: m_TagString
-      value: PlayerSpaceship
       objectReference: {fileID: 0}
     - target: {fileID: 7202459071072899117, guid: 53d0a59e4e032984195c5ad82e8101ad, type: 3}
       propertyPath: m_LocalPosition.x

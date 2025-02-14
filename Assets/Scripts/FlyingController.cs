@@ -2,18 +2,22 @@ using UnityEngine;
 
 public class FlyingController : MonoBehaviour
 {
-    public float liftForce = 5f; 
+    public float liftForce = 5f;
     private Rigidbody2D rb;
 
-    public Sprite normalSprite; 
-    public Sprite fireSprite;  
+    public Sprite normalSprite;
+    public Sprite fireSprite;
 
     private SpriteRenderer spriteRenderer;
 
-    public float tiltSpeed = 4f; 
+    public float tiltSpeed = 4f;
     public float maxTiltAngle = 30f;
 
     public float pushForce = 3f;
+
+    public AudioSource rocketBoostAudio;
+    public AudioSource idleRocketBoostAudio;
+    private bool isBoostingAudio = false;
 
     void Start()
     {
@@ -24,18 +28,31 @@ public class FlyingController : MonoBehaviour
         {
             spriteRenderer.sprite = normalSprite;
         }
+        idleRocketBoostAudio.Play();
     }
 
     void Update()
     {
-        if (Input.GetMouseButton(0)) 
+        if (Input.GetMouseButton(0))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, liftForce);
-            spriteRenderer.sprite = fireSprite; 
+            spriteRenderer.sprite = fireSprite;
+
+            if (!isBoostingAudio)
+            {
+                rocketBoostAudio.Play();
+                isBoostingAudio = true;
+            }
         }
         else
         {
-            spriteRenderer.sprite = normalSprite; 
+            spriteRenderer.sprite = normalSprite;
+
+            if (isBoostingAudio)
+            {
+                rocketBoostAudio.Stop();
+                isBoostingAudio = false;
+            }
         }
 
         RotateShip();
