@@ -15,10 +15,6 @@ public class FlyingController : MonoBehaviour
 
     public float pushForce = 3f;
 
-    public AudioSource rocketBoostAudio;
-    public AudioSource idleRocketBoostAudio;
-    private bool isBoostingAudio = false;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,33 +24,18 @@ public class FlyingController : MonoBehaviour
         {
             spriteRenderer.sprite = normalSprite;
         }
-        idleRocketBoostAudio.Play();
     }
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) 
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, liftForce);
-            spriteRenderer.sprite = fireSprite;
-
-            if (!isBoostingAudio)
-            {
-                rocketBoostAudio.Play();
-                isBoostingAudio = true;
-                //idleRocketBoostAudio.Stop();
-            }
+            spriteRenderer.sprite = fireSprite; 
         }
         else
         {
-            spriteRenderer.sprite = normalSprite;
-
-            if (isBoostingAudio)
-            {
-                rocketBoostAudio.Stop();
-                isBoostingAudio = false;
-                //idleRocketBoostAudio.Play();
-            }
+            spriteRenderer.sprite = normalSprite; 
         }
 
         RotateShip();
