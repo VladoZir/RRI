@@ -104,6 +104,72 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b27b17a5268b6f4a8061972b381db6b
+      internalID: -85085839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBoss_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d164419b997f9614ab39c894598e4383
+      internalID: 1185925383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBoss_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c42900f40553c4e8690a9d1ad765bf
+      internalID: -855691277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBoss_3
+      rect:
+        serializedVersion: 2
+        x: 32
         y: 0
         width: 32
         height: 32
@@ -113,10 +179,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8f835f03c95f6d7d0800000000000000
-      internalID: -2893855659353884424
+      spriteID: d7fde08da80d91046b5b144ee9c34407
+      internalID: -785124845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBoss_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceaf851950ffb2f40ac3c3005d431e58
+      internalID: 21373076
       vertices: []
       indices: 
       edges: []
@@ -135,8 +223,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      nozic_0: 4050084788292828419
-      nozic_1: -1072652936
+      KnightBoss_0: -85085839
+      KnightBoss_1: 1185925383
+      KnightBoss_2: -855691277
+      KnightBoss_3: -785124845
+      KnightBoss_4: 21373076
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
