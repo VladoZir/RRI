@@ -17,6 +17,7 @@ TagManager:
   - DeathBarrier
   - BowCollectible
   - SwordCollectible
+  - SpaceGunCollectible
   layers:
   - Default
   - TransparentFX

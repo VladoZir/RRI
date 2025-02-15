@@ -6,15 +6,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public GameObject playerPrefab; 
-    //public Vector3 spawnPosition = new Vector3(5f, 0f, 0f); 
-
+    public GameObject playerPrefab;
     public Camera mainCamera;
 
     private GameObject currentPlayer;
 
     public AudioSource collectBowAudio;
     public AudioSource collectSwordAudio;
+    public AudioSource collectSpaceGunAudio; // NEW: Sound effect for SpaceGun pickup
 
     public GameObject playerSpawnPosition;
     private Animator portalAnim;
@@ -31,19 +30,19 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Invoke("SpawnPlayerWithDelay", 1f); 
+        Invoke("SpawnPlayerWithDelay", 1f);
     }
 
     void SpawnPlayerWithDelay()
     {
-        SpawnPlayer(playerPrefab); 
+        SpawnPlayer(playerPrefab);
     }
 
     public void SpawnPlayer(GameObject prefab)
     {
         if (currentPlayer != null)
         {
-            Destroy(currentPlayer); 
+            Destroy(currentPlayer);
         }
 
         currentPlayer = Instantiate(prefab, playerSpawnPosition.transform.position, Quaternion.identity);
@@ -66,58 +65,41 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator HidePortalAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay); // Sačekaj 5 sekundi
+        yield return new WaitForSeconds(delay);
 
         if (portalAnim != null)
         {
-            portalAnim.Play("Portal_Disappear"); // Pokreni animaciju nestajanja
-
-            // Sačekaj da se animacija završi
+            portalAnim.Play("Portal_Disappear");
             yield return new WaitForSeconds(portalAnim.GetCurrentAnimatorStateInfo(0).length);
-
-            // Deaktiviraj portal nakon animacije
             playerSpawnPosition.SetActive(false);
         }
     }
 
     public void UpgradePlayerBow(GameObject newPrefab, GameObject oldPlayer)
     {
-        Vector3 position = oldPlayer.transform.position; 
-        Destroy(oldPlayer); 
-        currentPlayer = Instantiate(newPrefab, position, Quaternion.identity);
-        collectBowAudio.Play();
-
-        // Assign the new player to the camera
-        if (mainCamera != null)
-        {
-            CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
-            if (cameraFollow != null)
-            {
-                cameraFollow.player = currentPlayer;
-            }
-        }
-
-        // Link the bow to the PlayerController (if the new player prefab has the bow)
-        PlayerController playerController = currentPlayer.GetComponent<PlayerController>();
-        if (playerController != null)
-        {
-            Transform bowTransform = currentPlayer.transform.Find("Bow"); // Assuming Bow is a child of the player prefab
-            if (bowTransform != null)
-            {
-                //Debug.Log("bow found");
-                playerController.bow = bowTransform; // Link the bow to the PlayerController
-            }
-        }
+        ReplacePlayer(newPrefab, oldPlayer);
+        if (collectBowAudio != null) collectBowAudio.Play();
     }
 
     public void UpgradePlayerSword(GameObject newPrefab, GameObject oldPlayer)
     {
+        ReplacePlayer(newPrefab, oldPlayer);
+        if (collectSwordAudio != null) collectSwordAudio.Play();
+    }
+
+    public void UpgradePlayerSpaceGun(GameObject newPrefab, GameObject oldPlayer) // NEW FUNCTION
+    {
+        ReplacePlayer(newPrefab, oldPlayer);
+        if (collectSpaceGunAudio != null) collectSpaceGunAudio.Play();
+    }
+
+    private void ReplacePlayer(GameObject newPrefab, GameObject oldPlayer)
+    {
         Vector3 position = oldPlayer.transform.position;
         Destroy(oldPlayer);
         currentPlayer = Instantiate(newPrefab, position, Quaternion.identity);
-        collectSwordAudio.Play();
 
-        // Assign the new player to the camera
+        // Ensure camera follows new player
         if (mainCamera != null)
         {
             CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
@@ -126,20 +108,5 @@ public class GameManager : MonoBehaviour
                 cameraFollow.player = currentPlayer;
             }
         }
-
-        /*
-        // Link the sword to the PlayerController (if the new player prefab has the sword)
-        PlayerController playerController = currentPlayer.GetComponent<PlayerController>();
-        if (playerController != null)
-        {
-            Transform swordTransform = currentPlayer.transform.Find("Sword"); // Assuming Sword is a child of the player prefab
-            if (swordTransform != null)
-            {
-                //Debug.Log("sword found");
-                playerController.bow = swordTransform; // Link the sword to the PlayerController
-            }
-        }
-        */
     }
-
 }
