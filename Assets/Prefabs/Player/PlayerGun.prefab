@@ -1044,6 +1044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jetpackForce: 2
   initialBoostForce: 100
+  horizontalBoostFactor: 1.5
   idleSprite: {fileID: -6185330995369775033, guid: 4897de0dcf995da4f9d7c43b68b527c4, type: 3}
   activeSprite: {fileID: -5005502778718521590, guid: 4897de0dcf995da4f9d7c43b68b527c4, type: 3}
 --- !u!1001 &7025524351666123034
@@ -1146,8 +1147,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9df469acfb6f0c743be9fb718c7c1755, type: 3}
-  m_Resource: {fileID: 8300000, guid: 9df469acfb6f0c743be9fb718c7c1755, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4be9531cebec8384097b7b1d54fbce61, type: 3}
+  m_Resource: {fileID: 8300000, guid: 4be9531cebec8384097b7b1d54fbce61, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
