@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 338113648281872704}
   - component: {fileID: 2584041534103633553}
   - component: {fileID: 1216798767032130621}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BossHealthBarHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,8 @@ GameObject:
   - component: {fileID: 6776945257550212481}
   - component: {fileID: 2296326481636741223}
   - component: {fileID: 8660247376142728187}
-  m_Layer: 0
+  - component: {fileID: 2408053121896578683}
+  m_Layer: 12
   m_Name: KnightBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -266,6 +267,7 @@ MonoBehaviour:
   hitColorDuration: 0.25
   medkit: {fileID: 7229929044907374106, guid: 952fc4ca9313bc343b26d7d192c7022b, type: 3}
   damage: 20
+  boxCollider: {fileID: 2408053121896578683}
   healthBarHolder: {fileID: 2830699355180139126}
   healthSprites:
   - {fileID: -8184904836014155779, guid: eb380f371cb4b9b47af787364f97b273, type: 3}
@@ -281,8 +283,13 @@ MonoBehaviour:
   - {fileID: -4438221387209993050, guid: eb380f371cb4b9b47af787364f97b273, type: 3}
   portalPrefab: {fileID: 2988143226946969367, guid: 3541d0da3df76de41a748d560ff8b499, type: 3}
   spawnPoint: {fileID: 0}
-  moveSpeed: 2
-  targetSpots: []
+  moveSpeed: 20
+  targetSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &8660247376142728187
 Animator:
   serializedVersion: 7
@@ -305,3 +312,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &2408053121896578683
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3234438999700533770}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -9.171591, y: 1.5828052}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 25.026554, y: 5.1656103}
+  m_EdgeRadius: 0
