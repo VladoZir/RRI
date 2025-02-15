@@ -137,7 +137,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 10
   wallBounceForce: 3
-  bow: {fileID: 8636010547027258872, guid: 5d8e2b50a7c326f409c0d95d0e26986b, type: 3}
+  bow: {fileID: 1632248077722868962}
   walkGrassAudio: {fileID: -7445076941323552355}
   jumpAudio: {fileID: -6266447809599242598}
 --- !u!50 &6381297615418654625
@@ -952,6 +952,14 @@ PrefabInstance:
     - target: {fileID: 7805736118446520231, guid: 5d8e2b50a7c326f409c0d95d0e26986b, type: 3}
       propertyPath: m_Name
       value: Bow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636010547027258872, guid: 5d8e2b50a7c326f409c0d95d0e26986b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636010547027258872, guid: 5d8e2b50a7c326f409c0d95d0e26986b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8636010547027258872, guid: 5d8e2b50a7c326f409c0d95d0e26986b, type: 3}
       propertyPath: m_LocalPosition.x

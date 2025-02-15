@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool isOnWall;
     private Animator anim;
     public Transform bow;
+    public SpaceGun spaceGun;
     public AudioSource walkGrassAudio;
     public AudioSource jumpAudio;
 
@@ -28,11 +29,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        UpdateBowRotation();
         Move();
         // Only allow jumping if grounded AND not touching a wall
         if (Input.GetButtonDown("Jump") && isGrounded && !isOnWall)
         {
             Jump();
+        }
+
+        if (spaceGun != null)
+        {
+            spaceGun.AimAtMouse();  // Use the SpaceGun's aiming logic
         }
 
         if (anim != null)
@@ -42,19 +50,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FlipBow(bool flipLeft)
+
+
+    void UpdateBowRotation()
     {
-        if (bow != null)
-        {
-            if (flipLeft)
-            {
-                bow.localScale = new Vector3(-1f, 1f, 1f);
-            }
-            else
-            {
-                bow.localScale = new Vector3(1f, 1f, 1f);
-            }
-        }
+        if (bow == null) return;
+
+        // Get mouse position in world space
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f;
+
+        // Get direction from bow to mouse
+        Vector2 direction = (mousePos - bow.position).normalized;
+
+        // Calculate angle to rotate towards mouse
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Apply rotation (bow should always face the mouse)
+        bow.rotation = Quaternion.Euler(0, 0, angle);
+
+        // Flip the bow's scale on X when the player turns
+        bool facingLeft = transform.localScale.x < 0;
+        bow.localScale = facingLeft ? new Vector3(-1f, 1f, 1f) : new Vector3(1f, 1f, 1f);
     }
 
     void Move()
@@ -79,12 +96,10 @@ public class PlayerController : MonoBehaviour
         if (moveInput > 0)
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            FlipBow(false);
         }
         else if (moveInput < 0)
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            FlipBow(true);
         }
     }
 

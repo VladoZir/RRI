@@ -138,7 +138,8 @@ MonoBehaviour:
   speed: 5
   jumpForce: 10
   wallBounceForce: 3
-  bow: {fileID: 0}
+  bow: {fileID: 1632248077722868962}
+  spaceGun: {fileID: 7767893299913616022}
   walkGrassAudio: {fileID: -7445076941323552355}
   jumpAudio: {fileID: -6266447809599242598}
 --- !u!50 &6381297615418654625
@@ -1247,7 +1248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2122637902105190913, guid: 963f5239a6e426f4b88ee0b5b2065539, type: 3}
-  launchSpeed: 20
+  launchSpeed: 30
   shotPoint: {fileID: 6073732249810042796}
   shootCooldown: 0.3
   gunAudio: {fileID: 4579693830107064659}

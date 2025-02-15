@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class SpaceGun : MonoBehaviour
 {
-    public GameObject projectile;  // The space bullet or laser
+    public GameObject projectile;
     public float launchSpeed = 20f;
     public Transform shotPoint;
 
-    public float shootCooldown = 0.3f; // Adjust fire rate
+    public float shootCooldown = 0.3f;
     private float lastShootTime = 0f;
 
     private Animator animator;
@@ -24,7 +24,7 @@ public class SpaceGun : MonoBehaviour
 
         if (Time.time - lastShootTime >= shootCooldown)
         {
-            if (Input.GetMouseButtonDown(0)) // Left click to shoot
+            if (Input.GetMouseButtonDown(0))
             {
                 Shoot();
                 lastShootTime = Time.time;
@@ -32,43 +32,29 @@ public class SpaceGun : MonoBehaviour
         }
     }
 
-    void AimAtMouse()
+    public void AimAtMouse()
     {
         Vector2 gunPosition = transform.position;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - gunPosition).normalized;
 
-        // Rotate the gun to face the mouse
-        if (transform != null)
-        {
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        }
+        // Calculate angle to rotate towards mouse
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        // Flip gun to face the correct direction
-        if (direction.x < 0)
-        {
-            FlipGun(true);  // Flip gun to the left
-        }
-        else
-        {
-            FlipGun(false); // Flip gun to the right
-        }
+        // Apply rotation
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        bool facingLeft = transform.parent.localScale.x < 0;
+
+        // Check if gun is pointing upward
+        bool isPointingUp = Mathf.Abs(angle) > 90f;
+
+        // Combine both conditions to determine Y scale
+        float yScale = isPointingUp ? -1f : 1f;
+        float xScale = facingLeft ? -1f : 1f;
+
+        transform.localScale = new Vector3(xScale, yScale, 1f);
     }
-
-    void FlipGun(bool flipLeft)
-    {
-        if (flipLeft)
-        {
-            transform.localScale = new Vector3(1f, -1f, 1f);  // Flip the gun to face left
-        }
-        else
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);   // Reset the gun to face right
-        }
-    }
-
-
 
     void Shoot()
     {
@@ -79,11 +65,13 @@ public class SpaceGun : MonoBehaviour
 
         if (animator != null)
         {
-            animator.SetTrigger("Shoot"); // Using a trigger instead of a bool
+            animator.SetTrigger("Shoot");
         }
 
-        // Create projectile and set its velocity
         GameObject newProjectile = Instantiate(projectile, shotPoint.position, shotPoint.rotation);
-        newProjectile.GetComponent<Rigidbody2D>().linearVelocity = shotPoint.right * launchSpeed;
+
+        // Calculate the shooting direction based on the mouse position
+        Vector2 shootDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        newProjectile.GetComponent<Rigidbody2D>().linearVelocity = shootDirection * launchSpeed;
     }
 }
