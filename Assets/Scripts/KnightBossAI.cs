@@ -23,6 +23,7 @@ public class KnightBossAI : MonoBehaviour, IEnemy
 
     //public PolygonCollider2D idleCollider;
     //public CircleCollider2D atackCollider;
+    public BoxCollider2D boxCollider;
 
     public GameObject healthBarHolder;
 
@@ -31,10 +32,8 @@ public class KnightBossAI : MonoBehaviour, IEnemy
     public GameObject portalPrefab;
     public Transform spawnPoint;
 
-    private bool isMoving = false;
     public float moveSpeed = 20f;
     public List<Transform> targetSpots;
-    private int currentTargetIndex = 0;
 
     //public GameObject[] enemyPrefabs;
     //public Transform[] spawnPoints;
@@ -57,30 +56,45 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         //nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
 
     }
+    void Update()
+    {
+        if (playerDetected)
+        {
+            boxCollider.enabled = false;
+        }
+    }
     private IEnumerator MoveToTargetSpots()
     {
-        isMoving = true;
 
-        // Loop through target spots in the original order
-        for (int i = 0; i < targetSpots.Count; i++)
+        while (playerDetected) 
         {
-            Transform targetSpot = targetSpots[i];
-            yield return StartCoroutine(MoveToTarget(targetSpot));
+            animator.SetTrigger("StartMove");
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+            animator.SetBool("IsMoving", true);
+
+            // Move through target spots in order
+            for (int i = 0; i < targetSpots.Count; i++)
+            {
+                Transform targetSpot = targetSpots[i];
+                yield return StartCoroutine(MoveToTarget(targetSpot));
+            }
+
+            // Move back through the target spots in reverse
+            for (int i = targetSpots.Count - 1; i >= 0; i--)
+            {
+                Transform targetSpot = targetSpots[i];
+                yield return StartCoroutine(MoveToTarget(targetSpot));
+            }
+
+            // Return to the starting position
+            yield return StartCoroutine(MoveToTarget(transform));
+
+            animator.SetBool("IsMoving", false);
+
+            yield return new WaitForSeconds(10f); // Wait 10 seconds before starting again
         }
 
-        // After reaching all targets, move back to the starting position by reversing the target spots list
-        for (int i = targetSpots.Count - 1; i >= 0; i--)
-        {
-            Transform targetSpot = targetSpots[i];
-            yield return StartCoroutine(MoveToTarget(targetSpot));
-        }
-
-        // Finally, return to the starting position
-        yield return StartCoroutine(MoveToTarget(transform)); // Assuming transform is the starting position
-
-        isMoving = false;
     }
-
     // Move towards a specific target position without stopping at it
     private IEnumerator MoveToTarget(Transform target)
     {
@@ -96,13 +110,10 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         }
     }
 
-
-    // Detect player in range and start the movement
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
         if (!playerDetected && other.CompareTag("Player"))
         {
-            Debug.Log("trigger");
             playerDetected = true;
 
             yield return new WaitForSeconds(waitTime);
@@ -110,8 +121,6 @@ public class KnightBossAI : MonoBehaviour, IEnemy
             StartCoroutine(MoveToTargetSpots());
         }
     }
-
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
