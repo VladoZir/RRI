@@ -35,9 +35,9 @@ public class KnightBossAI : MonoBehaviour, IEnemy
     public float moveSpeed = 20f;
     public List<Transform> targetSpots;
 
-    //public GameObject[] enemyPrefabs;
-    //public Transform[] spawnPoints;
-    //private int nextSpawnThreshold;
+    public GameObject enemyPrefab;
+    public Transform[] spawnPoints;
+    private int nextSpawnThreshold;
 
     void Start()
     {
@@ -53,7 +53,7 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         }
 
         healthBarHolder = GameObject.Find("BossHealthBarHolder");
-        //nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
+        nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
 
     }
     void Update()
@@ -91,7 +91,7 @@ public class KnightBossAI : MonoBehaviour, IEnemy
 
             animator.SetBool("IsMoving", false);
 
-            yield return new WaitForSeconds(10f); // Wait 10 seconds before starting again
+            yield return new WaitForSeconds(5f);
         }
 
     }
@@ -165,13 +165,15 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         if (curHealth <= 0)
         {
             Die();
-        }/*
+        }
+        /*
         else if (curHealth <= nextSpawnThreshold) // Check if boss health crossed the next threshold
         {
             SpawnEnemies();
             nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f); // Move to next 25% threshold
         }
         */
+        
 
         StartCoroutine(ChangeColorOnHit());
     }
@@ -253,20 +255,20 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         Destroy(gameObject);
     }
 
-    /*
+    
    private void SpawnEnemies()
    {
-       if (enemyPrefabs.Length == 0 || spawnPoints.Length == 0) return;
+       //if (enemyPrefabs.Length == 0 || spawnPoints.Length == 0) return;
        int spawnCount = Mathf.Min(4, spawnPoints.Length); // Ensure we don't spawn more than we have spawn points
 
        for (int i = 0; i < spawnCount; i++) // Loop over each spawn point
        {
-           GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; // Randomly pick an enemy from the array
+           //GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; // Randomly pick an enemy from the array
            Transform spawnLocation = spawnPoints[i]; // Use a different spawn point for each enemy
 
-           Instantiate(enemyToSpawn, spawnLocation.position, Quaternion.identity); // Spawn the enemy at the spawn point
+           Instantiate(enemyPrefab, spawnLocation.position, Quaternion.identity); // Spawn the enemy at the spawn point
        }
 
    }
-   */
+   
 }

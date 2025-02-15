@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 4050084788292828419, guid: 34e35002ca262894bb0f42b3f68f1e40, type: 3}
+  m_Sprite: {fileID: -1439121891, guid: 96345ade20f787949af2ed3146be13fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWithBowPrefab: {fileID: 1754321237269034507, guid: 9064d24b3d83ee149a170896dddccdb4, type: 3}
-  playerWithSwordPrefab: {fileID: 0}
+  playerWithSwordPrefab: {fileID: 7974336642933253722, guid: d1b5624923f6e784d9529bd1ec11892d, type: 3}
+  playerWithSpaceGunPrefab: {fileID: 0}
   floatSpeed: 1
   floatHeight: 0.2
