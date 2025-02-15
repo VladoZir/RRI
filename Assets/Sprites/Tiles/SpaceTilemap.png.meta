@@ -417,6 +417,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SpaceTilemap_13
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f43015becf08ff74381945c2578b563e
+      internalID: 2121446853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTilemap_14
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111b3911eeddc5747b61aab2db082b86
+      internalID: 1626603037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -436,6 +480,8 @@ TextureImporter:
       SpaceTilemap_10: 82420347
       SpaceTilemap_11: -1038352289
       SpaceTilemap_12: 248572588
+      SpaceTilemap_13: 2121446853
+      SpaceTilemap_14: 1626603037
       SpaceTilemap_2: -1528591471
       SpaceTilemap_3: -1412156557
       SpaceTilemap_4: -1926982053
