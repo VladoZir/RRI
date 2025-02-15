@@ -3248,7 +3248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825053e316dd78c419c7339bf97c9c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 1053702628}
   parallaxEffectMultiplier: 0.1
   teleportThreshold: 20
 --- !u!212 &954581896
@@ -3530,7 +3530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825053e316dd78c419c7339bf97c9c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 1053702628}
   parallaxEffectMultiplier: 0.4
   teleportThreshold: 20
 --- !u!212 &1110736500
@@ -8641,7 +8641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825053e316dd78c419c7339bf97c9c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 1053702628}
   parallaxEffectMultiplier: 0.2
   teleportThreshold: 20
 --- !u!212 &1462186622
@@ -9699,7 +9699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825053e316dd78c419c7339bf97c9c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 1053702628}
   parallaxEffectMultiplier: 0.6
   teleportThreshold: 20
 --- !u!212 &2057235467

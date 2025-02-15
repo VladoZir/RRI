@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4773e88b750aa943b339721e234e021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 1
   detectionRange: 15
   maxHealth: 100
   curHealth: 0
@@ -280,6 +281,8 @@ MonoBehaviour:
   - {fileID: -4438221387209993050, guid: eb380f371cb4b9b47af787364f97b273, type: 3}
   portalPrefab: {fileID: 2988143226946969367, guid: 3541d0da3df76de41a748d560ff8b499, type: 3}
   spawnPoint: {fileID: 0}
+  moveSpeed: 2
+  targetSpots: []
 --- !u!95 &8660247376142728187
 Animator:
   serializedVersion: 7
