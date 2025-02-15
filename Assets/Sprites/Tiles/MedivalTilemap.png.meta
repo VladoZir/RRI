@@ -1441,6 +1441,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: MedivalTilemap_57
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38da5c72e55fd334d88a39470bdb6209
+      internalID: -2019720264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1508,6 +1530,7 @@ TextureImporter:
       MedivalTilemap_54: 1843119649
       MedivalTilemap_55: 33151351
       MedivalTilemap_56: -1443033841
+      MedivalTilemap_57: -2019720264
       MedivalTilemap_6: 541578431
       MedivalTilemap_7: -2102479339
       MedivalTilemap_8: 156354614
