@@ -50,6 +50,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   collectBowAudio: {fileID: 3487489374919456221}
   collectSwordAudio: {fileID: 7501918632946477462}
+  collectSpaceGunAudio: {fileID: 3487489374919456221}
   playerSpawnPosition: {fileID: 0}
 --- !u!82 &3487489374919456221
 AudioSource:
@@ -61,8 +62,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7a75bc6407b7fc34e8b3565d24703309, type: 3}
-  m_Resource: {fileID: 8300000, guid: 7a75bc6407b7fc34e8b3565d24703309, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e9471d47df64f6d4e880818f4f944c9d, type: 3}
+  m_Resource: {fileID: 8300000, guid: e9471d47df64f6d4e880818f4f944c9d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -158,8 +159,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bc4c9608a2817564fa0c70da9ebd9aeb, type: 3}
-  m_Resource: {fileID: 8300000, guid: bc4c9608a2817564fa0c70da9ebd9aeb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e9471d47df64f6d4e880818f4f944c9d, type: 3}
+  m_Resource: {fileID: 8300000, guid: e9471d47df64f6d4e880818f4f944c9d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
