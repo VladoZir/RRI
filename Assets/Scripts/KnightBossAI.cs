@@ -83,7 +83,6 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         while (playerDetected) 
         {
             animator.SetTrigger("StartMove");
-            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
             animator.SetBool("IsMoving", true);
 
             // Move through target spots in order
