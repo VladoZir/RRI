@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public Camera mainCamera;
 
-    private GameObject currentPlayer;
+    public GameObject currentPlayer;
 
     public AudioSource collectBowAudio;
     public AudioSource collectSwordAudio;

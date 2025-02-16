@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3401965589817287405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7034303383513682846}
+  m_Layer: 0
+  m_Name: BossShotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7034303383513682846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401965589817287405}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.44, y: -0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1236993918586711906}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4477125384197748223
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,7 +67,8 @@ Transform:
   m_LocalPosition: {x: 103.35, y: 2.31, z: -0.020628368}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7034303383513682846}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8337070655726368850
@@ -156,6 +188,10 @@ MonoBehaviour:
   bossCollider: {fileID: 0}
   portalPrefab: {fileID: 2988143226946969367, guid: 3541d0da3df76de41a748d560ff8b499, type: 3}
   spawnPoint: {fileID: 0}
+  projectilePrefab: {fileID: 1508955470622798870, guid: 0f8338318dda6754488fc1a7908ef1b5, type: 3}
+  shootPoint: {fileID: 7034303383513682846}
+  shootCooldown: 2
+  projectileSpeed: 15
 --- !u!58 &6529534729400081832
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -29,6 +29,16 @@ public class FinalBossAI : MonoBehaviour, IEnemy
     //public Transform[] spawnPoints;
     //private int nextSpawnThreshold;
 
+    public GameObject projectilePrefab;
+    public Transform shootPoint; 
+    public float shootCooldown = 2f; 
+    private float nextShootTime = 0f;
+
+    public float projectileSpeed = 20f;
+    private Transform playerTransform; 
+    private AIDestinationSetter aiDestinationSetter;
+    private bool isActivated = false;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -39,19 +49,70 @@ public class FinalBossAI : MonoBehaviour, IEnemy
 
         //nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
 
-
+        FindPlayer();
     }
 
-    // Update is called once per frame
+    private void FindPlayer()
+    {
+        GameObject player = GameManager.Instance?.currentPlayer;
+        if (player != null)
+        {
+            playerTransform = player.transform;
+            if (aiDestinationSetter != null)
+            {
+                aiDestinationSetter.target = playerTransform;
+            }
+        }
+    }
+
     void Update()
     {
+        if (playerTransform == null)
+        {
+            FindPlayer();
+        }
+
         if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            transform.localScale = new Vector3(-1f,1f,1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-        else if(aiPath.desiredVelocity.x <= -0.01)
+        else if (aiPath.desiredVelocity.x <= -0.01)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        if (isActivated && Time.time >= nextShootTime)
+        {
+            ShootAtPlayer();
+        }
+    }
+
+    private void ShootAtPlayer()
+    {
+        if (projectilePrefab != null && shootPoint != null && playerTransform != null)
+        {
+            // Calculate direction to the player using Transform
+            Vector2 direction = (playerTransform.position - shootPoint.position).normalized;
+
+            // Instantiate projectile at shootPoint
+            GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+
+            // Add Rigidbody2D component if it doesn't exist
+            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+            if (rb == null)
+            {
+                rb = projectile.AddComponent<Rigidbody2D>();
+                rb.gravityScale = 0f; // Disable gravity for the projectile
+            }
+
+            // Set the velocity of the projectile
+            rb.linearVelocity = direction * projectileSpeed;
+
+            // Optionally, rotate the projectile to face the direction it's moving
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            nextShootTime = Time.time + shootCooldown;
         }
     }
 
@@ -107,6 +168,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
     public void OnHealthBarActivated()
     {
         healthContainer = GameObject.Find("FinalBossHealthBar");
+        isActivated = true;
 
         if (healthContainer != null)
         {
@@ -141,7 +203,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         // Postavi odgovarajući sprite za zdravlje
         healthContainer.GetComponent<Image>().sprite = healthSprites[spriteIndex];
 
-        Debug.Log("Health: " + curHealth + " | Sprite Index: " + spriteIndex);
+        //Debug.Log("Health: " + curHealth + " | Sprite Index: " + spriteIndex);
     }
 
 

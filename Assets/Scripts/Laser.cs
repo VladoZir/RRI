@@ -5,17 +5,15 @@ public class Laser : MonoBehaviour
 {
     Rigidbody2D rb;
     public int damage = 10;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public AudioSource laserHitAudio;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0; // Disable gravity for the laser
+        rb.gravityScale = 0;
 
     }
 
-    // Update is called once per frame
     void Update()
     {
     }
