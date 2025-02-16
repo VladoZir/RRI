@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(HidePortalAfterDelay(5f));
         }
+
     }
 
     private IEnumerator HidePortalAfterDelay(float delay)
@@ -90,6 +92,12 @@ public class GameManager : MonoBehaviour
     {
         ReplacePlayer(newPrefab, oldPlayer);
         if (collectSpaceGunAudio != null) collectSpaceGunAudio.Play();
+
+        AITrigger[] aiTriggers = FindObjectsByType<AITrigger>(FindObjectsSortMode.None);
+        foreach (AITrigger aiTrigger in aiTriggers)
+        {
+            aiTrigger.SetPlayer(currentPlayer.transform);
+        }
     }
 
     private void ReplacePlayer(GameObject newPrefab, GameObject oldPlayer)
