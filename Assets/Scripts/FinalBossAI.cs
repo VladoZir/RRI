@@ -110,7 +110,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
 
             // Optionally, rotate the projectile to face the direction it's moving
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            projectile.transform.rotation = Quaternion.AngleAxis(angle-180f, Vector3.forward);
 
             nextShootTime = Time.time + shootCooldown;
         }
