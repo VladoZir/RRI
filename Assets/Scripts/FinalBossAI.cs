@@ -1,12 +1,18 @@
  using UnityEngine;
 using Pathfinding;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class FinalBossAI : MonoBehaviour, IEnemy
 {
     public AIPath aiPath;
+    
     public int maxHealth = 100;
-    public int curHealth;
+    public int currentHealth;
+    public List<Sprite> healthSprites = new List<Sprite>();
+    public GameObject healthContainer;
+
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public float hitColorDuration = 0.25f;
@@ -25,7 +31,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
 
     void Start()
     {
-        curHealth = maxHealth;
+        currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
@@ -77,11 +83,11 @@ public class FinalBossAI : MonoBehaviour, IEnemy
 
     public void TakeDamage(int damage)
     {
-        curHealth -= damage;
+        currentHealth -= damage;
 
-        //changeHealthSprite(curHealth);
+        changeHealthSprite(currentHealth);
 
-        if (curHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -98,14 +104,27 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         StartCoroutine(ChangeColorOnHit());
     }
 
-    /*
+    public void OnHealthBarActivated()
+    {
+        healthContainer = GameObject.Find("FinalBossHealthBar");
+
+        if (healthContainer != null)
+        {
+            Debug.Log("Health bar found!");
+        }
+        else
+        {
+            Debug.LogError("FinalBossHealthBar not found!");
+        }
+    }
+
+
     public void changeHealthSprite(int curHealth)
     {
         int index = Mathf.Clamp(curHealth / 10, 0, healthSprites.Count - 1);
-        healthBarHolder.GetComponent<Image>().sprite = healthSprites[index];
+        healthContainer.GetComponent<Image>().sprite = healthSprites[index];
 
     }
-    */
 
 
     private IEnumerator ChangeColorOnHit()
