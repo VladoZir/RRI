@@ -21,8 +21,8 @@ public class KnightBossAI : MonoBehaviour, IEnemy
     public GameObject medkit;
     public int damage = 20;
 
-    //public PolygonCollider2D idleCollider;
-    //public CircleCollider2D atackCollider;
+    public PolygonCollider2D idleCollider;
+    public CircleCollider2D attackCollider;
     public BoxCollider2D boxCollider;
 
     public GameObject healthBarHolder;
@@ -55,6 +55,8 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         healthBarHolder = GameObject.Find("BossHealthBarHolder");
         nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
 
+
+        EnableIdleCollider();
     }
     void Update()
     {
@@ -63,9 +65,21 @@ public class KnightBossAI : MonoBehaviour, IEnemy
             boxCollider.enabled = false;
         }
     }
+
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
+    {
+        if (!playerDetected && other.CompareTag("Player"))
+        {
+            playerDetected = true;
+
+            yield return new WaitForSeconds(waitTime);
+
+            StartCoroutine(MoveToTargetSpots());
+        }
+    }
     private IEnumerator MoveToTargetSpots()
     {
-
+        EnableAttackCollider();
         while (playerDetected) 
         {
             animator.SetTrigger("StartMove");
@@ -91,14 +105,14 @@ public class KnightBossAI : MonoBehaviour, IEnemy
 
             animator.SetBool("IsMoving", false);
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
         }
-
+        EnableIdleCollider();
     }
     // Move towards a specific target position without stopping at it
     private IEnumerator MoveToTarget(Transform target)
     {
-        float moveThreshold = 0.2f; // A small threshold to stop "hitting" the target spot
+        float moveThreshold = 0.5f; // A small threshold to stop "hitting" the target spot
         while (Vector2.Distance(transform.position, target.position) > moveThreshold)
         {
             Vector2 direction = (target.position - transform.position).normalized;
@@ -110,16 +124,16 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         }
     }
 
-    private IEnumerator OnTriggerEnter2D(Collider2D other)
+    private void EnableIdleCollider()
     {
-        if (!playerDetected && other.CompareTag("Player"))
-        {
-            playerDetected = true;
+        idleCollider.enabled = true;
+        attackCollider.enabled = false;
+    }
 
-            yield return new WaitForSeconds(waitTime);
-
-            StartCoroutine(MoveToTargetSpots());
-        }
+    private void EnableAttackCollider()
+    {
+        idleCollider.enabled = false;
+        attackCollider.enabled = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -166,13 +180,13 @@ public class KnightBossAI : MonoBehaviour, IEnemy
         {
             Die();
         }
-        /*
+        
         else if (curHealth <= nextSpawnThreshold) // Check if boss health crossed the next threshold
         {
             SpawnEnemies();
             nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f); // Move to next 25% threshold
         }
-        */
+        
         
 
         StartCoroutine(ChangeColorOnHit());
@@ -195,38 +209,24 @@ public class KnightBossAI : MonoBehaviour, IEnemy
 
     private void Die()
     {
+        animator.SetBool("IsDead", true);
 
         StopAllCoroutines();
 
+        idleCollider.enabled = false;
+        attackCollider.enabled = false;
+
         this.enabled = false;
 
-        //StartCoroutine(WaitForDeathAnimation());
-        Vector3 spawnPosition = transform.position + Vector3.up * 0.5f;
-        GameObject droppedItem = Instantiate(medkit, spawnPosition, Quaternion.identity);
-
-        Rigidbody2D rb = droppedItem.GetComponent<Rigidbody2D>();
-        if (rb == null)
-        {
-            rb = droppedItem.AddComponent<Rigidbody2D>();
-        }
-
-        float upwardForce = 5f;
-        float sidewaysForce = Random.Range(-2f, 2f);
-        rb.linearVelocity = new Vector2(sidewaysForce, upwardForce);
-
-        droppedItem.AddComponent<ItemCollisionHandler>();
-
-        Instantiate(portalPrefab, spawnPoint.position, Quaternion.identity);
-
-        Destroy(gameObject);
+        StartCoroutine(WaitForDeathAnimation());
     }
 
     private IEnumerator WaitForDeathAnimation()
     {
         
-        while (animator.GetCurrentAnimatorStateInfo(0).IsName("DinoDeathNew") == false)
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("KnightBossDeath") == false)
         {
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
 
         while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)

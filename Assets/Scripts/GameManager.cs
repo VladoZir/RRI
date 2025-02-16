@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public AudioSource collectBowAudio;
     public AudioSource collectSwordAudio;
-    public AudioSource collectSpaceGunAudio; // NEW: Sound effect for SpaceGun pickup
+    public AudioSource collectSpaceGunAudio;
 
     public GameObject playerSpawnPosition;
     private Animator portalAnim;
@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
 
         currentPlayer = Instantiate(prefab, playerSpawnPosition.transform.position, Quaternion.identity);
 
-        // Assign the new player to the camera
         if (mainCamera != null)
         {
             CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
@@ -87,7 +86,7 @@ public class GameManager : MonoBehaviour
         if (collectSwordAudio != null) collectSwordAudio.Play();
     }
 
-    public void UpgradePlayerSpaceGun(GameObject newPrefab, GameObject oldPlayer) // NEW FUNCTION
+    public void UpgradePlayerSpaceGun(GameObject newPrefab, GameObject oldPlayer) 
     {
         ReplacePlayer(newPrefab, oldPlayer);
         if (collectSpaceGunAudio != null) collectSpaceGunAudio.Play();

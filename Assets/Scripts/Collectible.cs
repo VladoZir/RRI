@@ -4,7 +4,7 @@ public class Collectible : MonoBehaviour
 {
     [SerializeField] private GameObject playerWithBowPrefab;
     [SerializeField] private GameObject playerWithSwordPrefab;
-    [SerializeField] private GameObject playerWithSpaceGunPrefab; // Added SpaceGun
+    [SerializeField] private GameObject playerWithSpaceGunPrefab;
 
     [SerializeField] private float floatSpeed = 1f;
     [SerializeField] private float floatHeight = 0.2f;
@@ -35,12 +35,12 @@ public class Collectible : MonoBehaviour
             {
                 GameManager.Instance.UpgradePlayerSword(playerWithSwordPrefab, other.gameObject);
             }
-            else if (CompareTag("SpaceGunCollectible")) // New SpaceGun collectible check
+            else if (CompareTag("SpaceGunCollectible")) 
             {
                 GameManager.Instance.UpgradePlayerSpaceGun(playerWithSpaceGunPrefab, other.gameObject);
             }
 
-            Destroy(gameObject); // Remove the collectible after pickup
+            Destroy(gameObject); 
         }
     }
 }

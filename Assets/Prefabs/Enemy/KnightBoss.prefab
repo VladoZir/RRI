@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 2296326481636741223}
   - component: {fileID: 8660247376142728187}
   - component: {fileID: 2408053121896578683}
+  - component: {fileID: 3237275836708493811}
   m_Layer: 12
   m_Name: KnightBoss
   m_TagString: Enemy
@@ -239,6 +240,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.10551405, y: 0.8830751}
       - {x: -0.21337748, y: 0.46027422}
+      - {x: -0.5557976, y: 0.16382587}
       - {x: -0.66871214, y: -0.33936286}
       - {x: -0.2984519, y: -0.773525}
       - {x: -0.34076357, y: -0.980512}
@@ -267,6 +269,8 @@ MonoBehaviour:
   hitColorDuration: 0.25
   medkit: {fileID: 7229929044907374106, guid: 952fc4ca9313bc343b26d7d192c7022b, type: 3}
   damage: 20
+  idleCollider: {fileID: 6776945257550212481}
+  attackCollider: {fileID: 3237275836708493811}
   boxCollider: {fileID: 2408053121896578683}
   healthBarHolder: {fileID: 2830699355180139126}
   healthSprites:
@@ -286,6 +290,12 @@ MonoBehaviour:
   moveSpeed: 20
   targetSpots:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyPrefab: {fileID: 6996101720791689121, guid: cf242ec6b6492474ca338280ab86b476, type: 3}
+  spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -358,3 +368,39 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 25.026554, y: 5.1656103}
   m_EdgeRadius: 0
+--- !u!58 &3237275836708493811
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3234438999700533770}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1

@@ -4,7 +4,6 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     Rigidbody2D rb;
-    bool hasHit;
     public int damage = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -23,7 +22,6 @@ public class Laser : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        hasHit = true;
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
 

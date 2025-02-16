@@ -138,6 +138,7 @@ MonoBehaviour:
   jumpForce: 10
   wallBounceForce: 3
   bow: {fileID: 1632248077722868962}
+  spaceGun: {fileID: 0}
   walkGrassAudio: {fileID: -7445076941323552355}
   jumpAudio: {fileID: -6266447809599242598}
 --- !u!50 &6381297615418654625
