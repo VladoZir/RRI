@@ -12,6 +12,8 @@ public class JetpackController : MonoBehaviour
     private SpriteRenderer jetpackSpriteRenderer; // Jetpack's SpriteRenderer
     private bool isBoosting = false;          // Track if the boost is applied
 
+    public AudioSource jetpackAudio; // Reference to AudioSource
+
     void Start()
     {
         // Get the Rigidbody2D component from the Player object (parent of the jetpack)
@@ -27,17 +29,27 @@ public class JetpackController : MonoBehaviour
         {
             Debug.LogError("No SpriteRenderer found on the Jetpack object!");
         }
+
+        if (jetpackAudio == null)
+        {
+            jetpackAudio = GetComponent<AudioSource>(); // Get the AudioSource
+        }
     }
 
     void Update()
     {
         // Check if the spacebar is being held down
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space)) // Play only once when Space is first pressed
         {
+            if (!jetpackAudio.isPlaying)
+            {
+                jetpackAudio.Play();
+            }
             ActivateJetpack();
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.Space)) // Stop when Space is released
         {
+            jetpackAudio.Stop();
             DeactivateJetpack();
         }
     }
