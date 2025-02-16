@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: arrow_0
+      name: EnemyLaser_0
       rect:
         serializedVersion: 2
         x: 1
@@ -108,15 +108,15 @@ TextureImporter:
         width: 14
         height: 3
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af5b2f78f5a2ca04ca7d2698a12bcd55
-      internalID: -205962885
+      spriteID: 3859f1d9431695648ac7e6eaf813e947
+      internalID: -191878564
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      arrow_0: -205962885
+      EnemyLaser_0: -191878564
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
