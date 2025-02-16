@@ -17,6 +17,9 @@ public class EnemyAI : MonoBehaviour, IEnemy
 
     private Animator animator;
 
+    public delegate void DeathEvent(GameObject enemy);
+    public event DeathEvent OnDeath;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -72,12 +75,24 @@ public class EnemyAI : MonoBehaviour, IEnemy
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            Collider2D playerCollider = collision.gameObject.GetComponent<Collider2D>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damageAmount);
                 //Debug.Log("Enemy attacked the player!");
             }
+            if (playerCollider != null)
+            {
+                StartCoroutine(DisablePlayerColliderTemporarily(playerCollider, collision.collider));
+            }
         }
+    }
+
+    private IEnumerator DisablePlayerColliderTemporarily(Collider2D playerCollider, Collider2D enemyCollider)
+    {
+        Physics2D.IgnoreCollision(playerCollider, enemyCollider, true);
+        yield return new WaitForSeconds(1.5f);
+        Physics2D.IgnoreCollision(playerCollider, enemyCollider, false);
     }
 
     public void TakeDamage(int damage)
@@ -94,6 +109,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
     private void Die()
     {
         //Debug.Log($"{gameObject.name} has died.");
+        OnDeath?.Invoke(gameObject);
         DropItem();
         Destroy(gameObject);
     }
