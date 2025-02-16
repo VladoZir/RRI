@@ -5,13 +5,11 @@ using System.Collections;
 public class FinalBossAI : MonoBehaviour, IEnemy
 {
     public AIPath aiPath;
-
     public int maxHealth = 100;
     public int curHealth;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public float hitColorDuration = 0.25f;
-    public int damage = 10;
 
     private Animator animator;
 
@@ -33,8 +31,11 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         bossCollider = GetComponent<CircleCollider2D>();
 
         //nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
+
+
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (aiPath.desiredVelocity.x >= 0.01f)
@@ -45,33 +46,6 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            Collider2D playerCollider = collision.gameObject.GetComponent<Collider2D>();
-
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damage);
-            }
-
-            if (playerCollider != null)
-            {
-                StartCoroutine(DisablePlayerColliderTemporarily(playerCollider, collision.collider));
-            }
-        }
-    }
-
-    private IEnumerator DisablePlayerColliderTemporarily(Collider2D playerCollider, Collider2D enemyCollider)
-    {
-        Physics2D.IgnoreCollision(playerCollider, enemyCollider, true);
-        yield return new WaitForSeconds(0.5f);
-        Physics2D.IgnoreCollision(playerCollider, enemyCollider, false);
     }
 
     public void TakeDamage(int damage)
