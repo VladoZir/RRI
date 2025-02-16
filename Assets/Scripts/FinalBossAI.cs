@@ -10,6 +10,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public float hitColorDuration = 0.25f;
+    public int damage = 10;
 
     private Animator animator;
 
@@ -46,6 +47,32 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            Collider2D playerCollider = collision.gameObject.GetComponent<Collider2D>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
+
+            if (playerCollider != null)
+            {
+                StartCoroutine(DisablePlayerColliderTemporarily(playerCollider, collision.collider));
+            }
+        }
+    }
+
+    private IEnumerator DisablePlayerColliderTemporarily(Collider2D playerCollider, Collider2D enemyCollider)
+    {
+        Physics2D.IgnoreCollision(playerCollider, enemyCollider, true);
+        yield return new WaitForSeconds(0.5f);
+        Physics2D.IgnoreCollision(playerCollider, enemyCollider, false);
     }
 
     public void TakeDamage(int damage)
