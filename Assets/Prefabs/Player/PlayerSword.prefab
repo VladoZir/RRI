@@ -951,6 +951,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2437876454996225426}
     m_Modifications:
+    - target: {fileID: 1950664292813074173, guid: 26b17f698f6de0943a7b73cbc38892ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.371
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950664292813074173, guid: 26b17f698f6de0943a7b73cbc38892ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272294111160540598, guid: 26b17f698f6de0943a7b73cbc38892ea, type: 3}
+      propertyPath: attackRange
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4919813238479582658, guid: 26b17f698f6de0943a7b73cbc38892ea, type: 3}
       propertyPath: m_Name
       value: Sword
