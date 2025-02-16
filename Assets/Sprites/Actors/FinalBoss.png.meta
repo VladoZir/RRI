@@ -103,10 +103,10 @@ TextureImporter:
       name: FinalBoss_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 98
-        width: 29
-        height: 28
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,10 +125,10 @@ TextureImporter:
       name: FinalBoss_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 96
-        width: 30
-        height: 20
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,7 +150,7 @@ TextureImporter:
         x: 64
         y: 96
         width: 32
-        height: 27
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +169,10 @@ TextureImporter:
       name: FinalBoss_3
       rect:
         serializedVersion: 2
-        x: 97
+        x: 96
         y: 96
-        width: 31
-        height: 29
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +191,10 @@ TextureImporter:
       name: FinalBoss_4
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 64
-        width: 30
-        height: 11
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: FinalBoss_5
       rect:
         serializedVersion: 2
-        x: 1
-        y: 35
-        width: 30
-        height: 25
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,10 +235,10 @@ TextureImporter:
       name: FinalBoss_6
       rect:
         serializedVersion: 2
-        x: 33
-        y: 35
-        width: 30
-        height: 25
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,10 +257,10 @@ TextureImporter:
       name: FinalBoss_7
       rect:
         serializedVersion: 2
-        x: 65
-        y: 35
-        width: 30
-        height: 25
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,10 +279,10 @@ TextureImporter:
       name: FinalBoss_8
       rect:
         serializedVersion: 2
-        x: 97
-        y: 35
-        width: 30
-        height: 25
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,10 +301,10 @@ TextureImporter:
       name: FinalBoss_9
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 30
-        height: 25
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
