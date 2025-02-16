@@ -148,13 +148,6 @@ public class KnightBossAI : MonoBehaviour, IEnemy
                 playerHealth.TakeDamage(damage);
             }
 
-            Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (playerRb != null)
-            {
-                Vector2 knockbackForce = new Vector2(0, 10f);
-                playerRb.AddForce(knockbackForce, ForceMode2D.Impulse);
-            }
-
             if (playerCollider != null)
             {
                 StartCoroutine(DisablePlayerColliderTemporarily(playerCollider, collision.collider));

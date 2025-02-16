@@ -263,6 +263,7 @@ MonoBehaviour:
   healAudio: {fileID: -4604540190616292117}
   shieldPickUpAudio: {fileID: 6273562679017604420}
   shieldBreakAudio: {fileID: -9009597531602794489}
+  rb: {fileID: 6381297615418654625}
 --- !u!82 &-7445076941323552355
 AudioSource:
   m_ObjectHideFlags: 0

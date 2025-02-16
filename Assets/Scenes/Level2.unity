@@ -444,6 +444,78 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnightBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: -0.1676135
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: -0.61790085
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: 0.17624581
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: -0.7308116
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: -0.4014628
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
+      value: -0.4226508
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
+      value: -0.8356248
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].x
+      value: 0.85309124
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
+      value: -0.8645025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[8].x
+      value: 1.074791
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[8].y
+      value: -0.5504988
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[9].x
+      value: 1.0679092
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[9].y
+      value: 0.102350295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[10].x
+      value: 0.9610243
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[10].y
+      value: 0.67205
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[11].x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776945257550212481, guid: fbdcdbfb19a0efc4d9881ea2ca29752f, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[11].y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

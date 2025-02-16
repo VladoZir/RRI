@@ -25,7 +25,6 @@ public class Sword : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && Time.time >= nextAttackTime)
         {
-            //audioSource.PlayOneShot(swooshAudio);
             Attack();
             nextAttackTime = Time.time + attackCooldown;
         }

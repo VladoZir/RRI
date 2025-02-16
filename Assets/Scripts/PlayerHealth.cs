@@ -30,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
 
     private GameOver gameOverManager;
 
+    public Rigidbody2D rb;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -41,6 +43,8 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         gameOverManager = FindFirstObjectByType<GameOver>();
+
+        rb.GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -55,6 +59,12 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isInvincible) return;
+
+        if (rb != null)
+        {
+            Vector2 knockbackForce = new Vector2(0, 10f);
+            rb.AddForce(knockbackForce, ForceMode2D.Impulse);
+        }
 
         if (currentShield > 0)
         {
@@ -99,12 +109,12 @@ public class PlayerHealth : MonoBehaviour
         float timer = 0;
         while (timer < invincibilityDuration)
         {
-            spriteRenderer.enabled = !spriteRenderer.enabled; // Toggle visibility for flicker effect
+            spriteRenderer.enabled = !spriteRenderer.enabled; 
             yield return new WaitForSeconds(flickerInterval);
             timer += flickerInterval;
         }
 
-        spriteRenderer.enabled = true; // Ensure player is visible at the end
+        spriteRenderer.enabled = true; 
         isInvincible = false;
     }
 

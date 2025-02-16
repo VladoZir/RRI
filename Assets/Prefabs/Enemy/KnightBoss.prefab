@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 338113648281872704}
   - component: {fileID: 2584041534103633553}
   - component: {fileID: 1216798767032130621}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: BossHealthBarHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 8660247376142728187}
   - component: {fileID: 2408053121896578683}
   - component: {fileID: 3237275836708493811}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: KnightBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
