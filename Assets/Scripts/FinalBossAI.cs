@@ -1,4 +1,4 @@
- using UnityEngine;
+﻿ using UnityEngine;
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
 {
     public AIPath aiPath;
     
-    public int maxHealth = 100;
+    public int maxHealth = 300;
     public int currentHealth;
     public List<Sprite> healthSprites = new List<Sprite>();
     public GameObject healthContainer;
@@ -110,21 +110,40 @@ public class FinalBossAI : MonoBehaviour, IEnemy
 
         if (healthContainer != null)
         {
-            Debug.Log("Health bar found!");
+            //Debug.Log("Health bar found!");
         }
         else
         {
-            Debug.LogError("FinalBossHealthBar not found!");
+            //Debug.LogError("FinalBossHealthBar not found!");
         }
     }
 
 
     public void changeHealthSprite(int curHealth)
     {
-        int index = Mathf.Clamp(curHealth / 10, 0, healthSprites.Count - 1);
-        healthContainer.GetComponent<Image>().sprite = healthSprites[index];
+        // Ako je zdravlje 0, uvijek prikazuj sprite s indeksom 0
+        if (curHealth == 0)
+        {
+            healthContainer.GetComponent<Image>().sprite = healthSprites[0];
+            Debug.Log("Health: " + curHealth + " | Sprite Index: 0");
+            return;
+        }
 
+        // Izračunaj postotak od maksimalnog zdravlja
+        int healthPercentage = (curHealth * 100) / maxHealth;
+
+        // Na temelju postotka, odaberi odgovarajući sprite
+        int spriteIndex = Mathf.FloorToInt(healthPercentage / 10); // Za svakih 10%
+
+        // Osiguraj da je spriteIndex u granicama (0 do broj spriteova - 1)
+        spriteIndex = Mathf.Clamp(spriteIndex, 1, healthSprites.Count - 1); // Minimum je 1, tako da sprite 0 nije prikazan dok zdravlje nije 0
+
+        // Postavi odgovarajući sprite za zdravlje
+        healthContainer.GetComponent<Image>().sprite = healthSprites[spriteIndex];
+
+        Debug.Log("Health: " + curHealth + " | Sprite Index: " + spriteIndex);
     }
+
 
 
     private IEnumerator ChangeColorOnHit()

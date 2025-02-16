@@ -136,9 +136,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiPath: {fileID: 3563060317544622024}
-  maxHealth: 100
-  curHealth: 0
+  maxHealth: 300
+  currentHealth: 0
+  healthSprites:
+  - {fileID: -1792415646, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: -687295263, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: -760108086, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: -779757228, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: -1461084005, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: 1784359474, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: 1733447367, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: -449295138, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: 2116602568, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: -109353216, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  - {fileID: 1810810072, guid: e77187400a57fc84b9df101295af99d7, type: 3}
+  healthContainer: {fileID: 0}
   hitColorDuration: 0.25
+  damage: 10
   bossCollider: {fileID: 0}
   portalPrefab: {fileID: 2988143226946969367, guid: 3541d0da3df76de41a748d560ff8b499, type: 3}
   spawnPoint: {fileID: 0}
@@ -177,7 +191,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.92
 --- !u!212 &6682473901461368041
 SpriteRenderer:
   m_ObjectHideFlags: 0
