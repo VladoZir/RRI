@@ -8,11 +8,11 @@ public class EnemyAI : MonoBehaviour, IEnemy
     public float detectionRange = 5f;
     public int damageAmount = 10;
     private Rigidbody2D rb;
-    private bool isFacingRight = true; 
+    private bool isFacingRight = true;
 
     public int health = 10;
 
-    public GameObject[] itemDrops; 
+    public GameObject[] itemDrops;
     public float dropChance = 0.1f;
 
     private Animator animator;
@@ -20,10 +20,15 @@ public class EnemyAI : MonoBehaviour, IEnemy
     public delegate void DeathEvent(GameObject enemy);
     public event DeathEvent OnDeath;
 
+    private SpriteRenderer spriteRenderer;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
 
@@ -97,21 +102,35 @@ public class EnemyAI : MonoBehaviour, IEnemy
 
     public void TakeDamage(int damage)
     {
-        health -= damage; 
-       // Debug.Log($"{gameObject.name} took {damage} damage! Health: {health}");
+        health -= damage;
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red; // Turn red when hit
+        }
 
         if (health <= 0)
         {
-            Die();
+            Die(); // Kill the enemy immediately
+        }
+        else
+        {
+            Invoke(nameof(ResetColor), 0.2f); // Only reset color if still alive
         }
     }
 
+
     private void Die()
     {
-        //Debug.Log($"{gameObject.name} has died.");
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red; // Turn red before death
+        }
+
         OnDeath?.Invoke(gameObject);
         DropItem();
-        Destroy(gameObject);
+
+        Destroy(gameObject, 0.1f); // Small delay before destruction
     }
     private void DropItem()
     {
@@ -124,18 +143,26 @@ public class EnemyAI : MonoBehaviour, IEnemy
             Rigidbody2D rb = droppedItem.GetComponent<Rigidbody2D>();
             if (rb == null)
             {
-                rb = droppedItem.AddComponent<Rigidbody2D>(); 
+                rb = droppedItem.AddComponent<Rigidbody2D>();
             }
             rb.freezeRotation = true;
 
-            float upwardForce = 5f;  
-            float sidewaysForce = Random.Range(-2f, 2f); 
+            float upwardForce = 5f;
+            float sidewaysForce = Random.Range(-2f, 2f);
             rb.linearVelocity = new Vector2(sidewaysForce, upwardForce);
 
             droppedItem.AddComponent<ItemCollisionHandler>();
 
             // Destroy the item after 10 seconds
             Destroy(droppedItem, 10f);
+        }
+    }
+
+    private void ResetColor()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.white; // Default color
         }
     }
 }
