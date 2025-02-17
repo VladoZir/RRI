@@ -170,8 +170,8 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         
         else if (currentHealth <= nextSpawnThreshold) 
         {
-            //SpawnEnemies();
-            //nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f); // Move to next 25% threshold
+            SpawnEnemies();
+            nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f); // Move to next 25% threshold
         }
         
 
@@ -182,17 +182,25 @@ public class FinalBossAI : MonoBehaviour, IEnemy
 
     private void SpawnEnemies()
     {
-        //if (enemyPrefabs.Length == 0 || spawnPoints.Length == 0) return;
-        int spawnCount = Mathf.Min(4, spawnPoints.Length); // Ensure we don't spawn more than we have spawn points
+        if (enemyPrefab == null || spawnPoints.Length == 0) return;
 
-        for (int i = 0; i < spawnCount; i++) // Loop over each spawn point
+        Transform playerTransform = GameManager.Instance?.currentPlayer?.transform; 
+
+        int spawnCount = Mathf.Min(4, spawnPoints.Length);
+
+        for (int i = 0; i < spawnCount; i++)
         {
-            //GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; // Randomly pick an enemy from the array
-            Transform spawnLocation = spawnPoints[i]; // Use a different spawn point for each enemy
+            Transform spawnLocation = spawnPoints[i];
 
-            Instantiate(enemyPrefab, spawnLocation.position, Quaternion.identity); // Spawn the enemy at the spawn point
+            GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnLocation.position, Quaternion.identity);
+
+            // Immediately set the AI target if the player is already detected
+            AIDestinationSetter aiDestination = spawnedEnemy.GetComponent<AIDestinationSetter>();
+            if (aiDestination != null && playerTransform != null)
+            {
+                aiDestination.target = playerTransform;
+            }
         }
-
     }
 
     public void OnHealthBarActivated()

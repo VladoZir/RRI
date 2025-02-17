@@ -5,16 +5,9 @@ using System;
 public class AITrigger : MonoBehaviour
 {
     public static event Action<Transform> OnPlayerTriggered;
-    //private Transform currentPlayer;
     public GameObject bossHealthContainer;
 
-    /*
-    public void SetPlayer(Transform playerTransform)
-    {
-        currentPlayer = playerTransform;
-        //Debug.Log("AITrigger: Player assigned successfully.");
-    }
-    */
+  
 
     private void OnTriggerEnter2D(Collider2D other)
     {
