@@ -91,6 +91,8 @@ public class FinalBossAI : MonoBehaviour, IEnemy
     {
         if (projectilePrefab != null && shootPoint != null && playerTransform != null)
         {
+            animator.SetBool("IsShooting", true);
+
             // Calculate direction to the player using Transform
             Vector2 direction = (playerTransform.position - shootPoint.position).normalized;
 
@@ -113,7 +115,20 @@ public class FinalBossAI : MonoBehaviour, IEnemy
             projectile.transform.rotation = Quaternion.AngleAxis(angle-180f, Vector3.forward);
 
             nextShootTime = Time.time + shootCooldown;
+            
+            StartCoroutine(ResetShootTrigger());
         }
+    }
+
+    private IEnumerator ResetShootTrigger()
+    {
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("FinalBossShoot") == false)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // Reset the "Shoot" trigger
+        animator.SetBool("IsShooting", false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

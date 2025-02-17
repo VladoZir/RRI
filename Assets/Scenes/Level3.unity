@@ -45980,13 +45980,13 @@ PrefabInstance:
       propertyPath: healthContainer
       value: 
       objectReference: {fileID: 436368019}
-    - target: {fileID: 2297300947636319449, guid: ba7b69fb758cc4a48b33c5c6f4d90442, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 7286871748577010903, guid: bd4aa84f5d97cec43991a673dd0a6608, type: 3}
     - target: {fileID: 4477125384197748223, guid: ba7b69fb758cc4a48b33c5c6f4d90442, type: 3}
       propertyPath: m_Name
       value: FinalBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034303383513682846, guid: ba7b69fb758cc4a48b33c5c6f4d90442, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
