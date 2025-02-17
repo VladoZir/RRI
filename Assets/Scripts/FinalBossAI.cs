@@ -58,10 +58,6 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         if (player != null)
         {
             playerTransform = player.transform;
-            if (aiDestinationSetter != null)
-            {
-                aiDestinationSetter.target = playerTransform;
-            }
         }
     }
 
@@ -69,7 +65,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
     {
         if (playerTransform == null)
         {
-            FindPlayer();
+           FindPlayer();
         }
 
         if (aiPath.desiredVelocity.x >= 0.01f)
@@ -329,7 +325,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         if (aiDestination != null)
         {
             aiDestination.target = playerTransform;
-            Debug.Log("Final Boss AI now follows the player.");
+            //Debug.Log("Final Boss AI now follows the player.");
         }
     }
 

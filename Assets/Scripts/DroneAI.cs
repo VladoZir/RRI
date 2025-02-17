@@ -25,19 +25,35 @@ public class DroneAI : MonoBehaviour, IEnemy
 
     private SpriteRenderer spriteRenderer;
 
-
+    public GameObject projectilePrefab;
+    public Transform shootPoint;
+    public float shootCooldown = 2f;
+    private float nextShootTime = 0f;
+    public float projectileSpeed = 20f;
+    private Transform playerTransform;
+    private AIDestinationSetter aiDestinationSetter;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
     }
 
+    private void FindPlayer()
+    {
+        GameObject player = GameManager.Instance?.currentPlayer;
+        if (player != null)
+        {
+            playerTransform = player.transform;
+        }
+    }
 
     void Update()
     {
+        if (playerTransform == null)
+        {
+            FindPlayer();
+        }
+
         if (aiPath.desiredVelocity.x >= 0.01f)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -46,6 +62,51 @@ public class DroneAI : MonoBehaviour, IEnemy
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+
+        if (Time.time >= nextShootTime)
+        {
+            ShootAtPlayer();
+        }
+    }
+
+    private void ShootAtPlayer()
+    {
+        if (projectilePrefab != null && shootPoint != null && playerTransform != null)
+        {
+
+            animator.SetBool("IsShooting", true);
+
+            Vector2 direction = (playerTransform.position - shootPoint.position).normalized;
+
+            GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+
+            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+            if (rb == null)
+            {
+                rb = projectile.AddComponent<Rigidbody2D>();
+                rb.gravityScale = 0f; 
+            }
+
+            rb.linearVelocity = direction * projectileSpeed;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            projectile.transform.rotation = Quaternion.AngleAxis(angle - 180f, Vector3.forward);
+
+            nextShootTime = Time.time + shootCooldown;
+
+            StartCoroutine(ResetShootTrigger());
+        }
+    }
+
+    private IEnumerator ResetShootTrigger()
+    {
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("DroneShoot") == false)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // Reset the "Shoot" trigger
+        animator.SetBool("IsShooting", false);
     }
 
 

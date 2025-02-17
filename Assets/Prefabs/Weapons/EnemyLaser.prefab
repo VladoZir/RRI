@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 630174548470348632}
   - component: {fileID: 4841015336260656335}
   - component: {fileID: 5794805592268038741}
+  - component: {fileID: -1441133827813964011}
   m_Layer: 15
   m_Name: EnemyLaser
   m_TagString: Untagged
@@ -79,15 +80,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -205962885, guid: 0c9eb99e9572ed34b9713042350ea03c, type: 3}
+  m_Sprite: {fileID: -191878564, guid: 0c9eb99e9572ed34b9713042350ea03c, type: 3}
   m_Color: {r: 0.98490566, g: 0.98490566, b: 0.98490566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.875, y: 0.25}
+  m_Size: {x: 0.875, y: 0.1875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!70 &630174548470348632
@@ -251,3 +252,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1441133827813964011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508955470622798870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc57224ba21030d4ebcd164bb6cf4697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  lifetime: 5
