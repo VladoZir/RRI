@@ -20,6 +20,7 @@ public class KnightBossAI : MonoBehaviour, IEnemy
 
     public GameObject medkit;
     public int damage = 20;
+    public int specialAttackDamage = 40;
 
     public PolygonCollider2D idleCollider;
     public CircleCollider2D attackCollider;
@@ -144,7 +145,14 @@ public class KnightBossAI : MonoBehaviour, IEnemy
 
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(damage);
+                if (idleCollider.enabled) 
+                {
+                    playerHealth.TakeDamage(damage);
+                }
+                else if (attackCollider.enabled) 
+                {
+                    playerHealth.TakeDamage(specialAttackDamage);
+                }
             }
 
             if (playerCollider != null)
@@ -236,8 +244,8 @@ public class KnightBossAI : MonoBehaviour, IEnemy
             rb = droppedItem.AddComponent<Rigidbody2D>();
         }
 
-        float upwardForce = 5f;
-        float sidewaysForce = Random.Range(-2f, 2f);
+        float upwardForce = 3f;
+        float sidewaysForce = Random.Range(-1f, 1f);
         rb.linearVelocity = new Vector2(sidewaysForce, upwardForce);
 
         droppedItem.AddComponent<ItemCollisionHandler>();
