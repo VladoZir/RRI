@@ -92,7 +92,7 @@ public class DroneAI : MonoBehaviour, IEnemy
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             projectile.transform.rotation = Quaternion.AngleAxis(angle - 180f, Vector3.forward);
 
-            nextShootTime = Time.time + shootCooldown;
+            nextShootTime = Time.time + Random.Range(0f, 2f);
 
             StartCoroutine(ResetShootTrigger());
         }
@@ -157,8 +157,8 @@ public class DroneAI : MonoBehaviour, IEnemy
             }
             rb.freezeRotation = true;
 
-            float upwardForce = 5f;
-            float sidewaysForce = Random.Range(-2f, 2f);
+            float upwardForce = 3f;
+            float sidewaysForce = Random.Range(-1f, 1f);
             rb.linearVelocity = new Vector2(sidewaysForce, upwardForce);
 
             droppedItem.AddComponent<ItemCollisionHandler>();

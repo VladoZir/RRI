@@ -147,8 +147,8 @@ public class EnemyAI : MonoBehaviour, IEnemy
             }
             rb.freezeRotation = true;
 
-            float upwardForce = 5f;
-            float sidewaysForce = Random.Range(-2f, 2f);
+            float upwardForce = 3f;
+            float sidewaysForce = Random.Range(-1f, 1f);
             rb.linearVelocity = new Vector2(sidewaysForce, upwardForce);
 
             droppedItem.AddComponent<ItemCollisionHandler>();
