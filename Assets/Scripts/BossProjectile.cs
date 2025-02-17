@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class BossProjectile : MonoBehaviour
 {
     Rigidbody2D rb;
-    public int damage = 5;
+    public int damage = 20;
     public float lifetime = 5f;
 
     void Start()
@@ -18,20 +18,20 @@ public class EnemyProjectile : MonoBehaviour
     {
         //Debug.Log($"Collision detected with: {collision.gameObject.name} (Tag: {collision.gameObject.tag})");
 
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-
-            if (playerHealth != null)
+        
+            if (collision.gameObject.CompareTag("Player"))
             {
-                //Debug.Log($"PlayerHealth found. Current health before damage: {playerHealth.currentHealth}");
-                playerHealth.TakeDamage(damage);
-                //Debug.Log("Damage method called");
-            }
-        }
+               
+                PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
 
+                if (playerHealth != null)
+                {
+                    //Debug.Log($"PlayerHealth found. Current health before damage: {playerHealth.currentHealth}");
+                    playerHealth.TakeDamage(damage);
+                    //Debug.Log("Damage method called");
+                }
+            }
+        
 
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;

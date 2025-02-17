@@ -25,9 +25,9 @@ public class FinalBossAI : MonoBehaviour, IEnemy
     public GameObject portalPrefab;
     public Transform spawnPoint;
 
-    //public GameObject enemyPrefab;
-    //public Transform[] spawnPoints;
-    //private int nextSpawnThreshold;
+    public GameObject enemyPrefab;
+    public Transform[] spawnPoints;
+    private int nextSpawnThreshold;
 
     public GameObject projectilePrefab;
     public Transform shootPoint; 
@@ -47,7 +47,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         originalColor = spriteRenderer.color;
         bossCollider = GetComponent<CircleCollider2D>();
 
-        //nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
+        nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
 
         FindPlayer();
     }
@@ -167,17 +167,32 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         {
             Die();
         }
-        /*
-        else if (curHealth <= nextSpawnThreshold) // Check if boss health crossed the next threshold
+        
+        else if (currentHealth <= nextSpawnThreshold) // Check if boss health crossed the next threshold
         {
             SpawnEnemies();
             nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f); // Move to next 25% threshold
         }
-        */
+        
 
 
 
         StartCoroutine(ChangeColorOnHit());
+    }
+
+    private void SpawnEnemies()
+    {
+        //if (enemyPrefabs.Length == 0 || spawnPoints.Length == 0) return;
+        int spawnCount = Mathf.Min(4, spawnPoints.Length); // Ensure we don't spawn more than we have spawn points
+
+        for (int i = 0; i < spawnCount; i++) // Loop over each spawn point
+        {
+            //GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; // Randomly pick an enemy from the array
+            Transform spawnLocation = spawnPoints[i]; // Use a different spawn point for each enemy
+
+            Instantiate(enemyPrefab, spawnLocation.position, Quaternion.identity); // Spawn the enemy at the spawn point
+        }
+
     }
 
     public void OnHealthBarActivated()
