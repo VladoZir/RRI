@@ -1045,8 +1045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881f9fdf17de3f14095381d3cff1c4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jetpackForce: 2
-  initialBoostForce: 100
+  jetpackForce: 8
+  maxVerticalSpeed: 15
   horizontalBoostFactor: 1.5
   idleSprite: {fileID: -6185330995369775033, guid: 4897de0dcf995da4f9d7c43b68b527c4, type: 3}
   activeSprite: {fileID: -5005502778718521590, guid: 4897de0dcf995da4f9d7c43b68b527c4, type: 3}
