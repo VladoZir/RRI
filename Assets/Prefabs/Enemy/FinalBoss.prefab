@@ -188,6 +188,8 @@ MonoBehaviour:
   bossCollider: {fileID: 0}
   portalPrefab: {fileID: 2988143226946969367, guid: 3541d0da3df76de41a748d560ff8b499, type: 3}
   spawnPoint: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  spawnPoints: []
   projectilePrefab: {fileID: 7286871748577010903, guid: bd4aa84f5d97cec43991a673dd0a6608, type: 3}
   shootPoint: {fileID: 7034303383513682846}
   shootCooldown: 2
