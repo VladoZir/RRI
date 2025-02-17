@@ -168,10 +168,10 @@ public class FinalBossAI : MonoBehaviour, IEnemy
             Die();
         }
         
-        else if (currentHealth <= nextSpawnThreshold) // Check if boss health crossed the next threshold
+        else if (currentHealth <= nextSpawnThreshold) 
         {
-            SpawnEnemies();
-            nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f); // Move to next 25% threshold
+            //SpawnEnemies();
+            //nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f); // Move to next 25% threshold
         }
         
 
@@ -304,5 +304,25 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         Destroy(gameObject);
     }
 
+
+    private void OnEnable()
+    {
+        AITrigger.OnPlayerTriggered += SetAITarget; // Subscribe to the event
+    }
+
+    private void OnDisable()
+    {
+        AITrigger.OnPlayerTriggered -= SetAITarget; // Unsubscribe to avoid memory leaks
+    }
+
+    private void SetAITarget(Transform playerTransform)
+    {
+        AIDestinationSetter aiDestination = GetComponent<AIDestinationSetter>();
+        if (aiDestination != null)
+        {
+            aiDestination.target = playerTransform;
+            Debug.Log("Final Boss AI now follows the player.");
+        }
+    }
 
 }

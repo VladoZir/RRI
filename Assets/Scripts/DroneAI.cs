@@ -115,4 +115,24 @@ public class DroneAI : MonoBehaviour, IEnemy
 
         }
     }
+
+    private void OnEnable()
+    {
+        AITrigger.OnPlayerTriggered += SetAITarget; // Subscribe to the event
+    }
+
+    private void OnDisable()
+    {
+        AITrigger.OnPlayerTriggered -= SetAITarget; // Unsubscribe to avoid memory leaks
+    }
+
+    private void SetAITarget(Transform playerTransform)
+    {
+        AIDestinationSetter aiDestination = GetComponent<AIDestinationSetter>();
+        if (aiDestination != null)
+        {
+            aiDestination.target = playerTransform;
+            Debug.Log("Final Boss AI now follows the player.");
+        }
+    }
 }
