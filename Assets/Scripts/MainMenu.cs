@@ -14,9 +14,6 @@ public class MainMenu : MonoBehaviour
 
     private bool isToggledSelection = false;
     private bool isToggledSettings = false;
-    private bool isMuted = false;
-
-    public AudioSource musicSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,9 +24,6 @@ public class MainMenu : MonoBehaviour
         {
             levelButtons[i].interactable = (i < unlockedLevels);
         }
-
-        isMuted = PlayerPrefs.GetInt("musicMuted", 0) == 1;
-        UpdateMusicState();
     }
 
     // Update is called once per frame
@@ -40,20 +34,13 @@ public class MainMenu : MonoBehaviour
 
     public void ToggleMusic()
     {
-        isMuted = !isMuted;
-        PlayerPrefs.SetInt("musicMuted", isMuted ? 1 : 0);
-        UpdateMusicState();
+        if (MusicManager.Instance == null)
+            return;
+
+        bool isMuted = !MusicManager.Instance.IsMuted();
+        MusicManager.Instance.SetMute(isMuted);
     }
 
-    void UpdateMusicState()
-    {
-        if (musicSource != null)
-            musicSource.mute = isMuted;
-        /*
-        if (muteButtonText != null)
-            muteButtonText.text = isMuted ? "Unmute Music" : "Mute Music";
-        */
-    }
 
     public void PlayGame()
     {
