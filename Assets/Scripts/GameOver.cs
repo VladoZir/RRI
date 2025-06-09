@@ -66,6 +66,7 @@ public class GameOver : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
 
+
         if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
         {
             nextSceneIndex = 0; // Loop back to the first scene if needed

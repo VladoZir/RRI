@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelSelection : MonoBehaviour
 {
@@ -7,12 +8,20 @@ public class LevelSelection : MonoBehaviour
    
     public int level;
 
+    public Button[] levelButtons;
+
     private bool isToggled = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        int unlockedLevels = PlayerPrefs.GetInt("unlockedLevels", 0); 
+
+        for (int i = 0; i < levelButtons.Length; i++)
+        {
+            levelButtons[i].interactable = (i < unlockedLevels);
+        }
+
     }
 
     // Update is called once per frame
