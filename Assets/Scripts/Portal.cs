@@ -121,8 +121,7 @@ public class Portal : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
 
-        // Ključna promjena: Otključavamo level koji SMO UPRAVO ZAVRŠILI + 1
-        int currentLevelNumber = currentSceneIndex - 1; // Jer MainMenu (0) i Intro (1) nisu "leveli"
+        int currentLevelNumber = currentSceneIndex - 1;
         int unlockedLevels = PlayerPrefs.GetInt("unlockedLevels", 0);
 
         if (currentLevelNumber + 1 > unlockedLevels)
