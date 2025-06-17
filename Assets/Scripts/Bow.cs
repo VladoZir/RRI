@@ -35,10 +35,10 @@ public class Bow : MonoBehaviour
 
         if (Time.time - lastShootTime >= shootCooldown)
         {
-            if (Input.GetMouseButtonDown(0)) // Left mouse click
+            if (Input.GetMouseButtonDown(0)) 
             {
                 Shoot();
-                lastShootTime = Time.time; // Update the last shoot time
+                lastShootTime = Time.time; 
             }
         }
     }
@@ -57,15 +57,13 @@ public class Bow : MonoBehaviour
             StartCoroutine(WaitForShootAnimation());
         }
 
-        // Instantiate and launch arrow
         GameObject newArrow = Instantiate(arrow, shotPoint.position, shotPoint.rotation);
         newArrow.GetComponent<Rigidbody2D>().linearVelocity = transform.right * launchForce;
     }
 
     private IEnumerator WaitForShootAnimation()
     {
-        // Wait for the shoot animation to finish (adjust time based on animation length)
-        yield return new WaitForSeconds(0.15f); // Adjust this time based on your shoot animation length
-        animator.SetBool("IsShooting", false); // Reset back to idle state after shooting
+        yield return new WaitForSeconds(0.15f); 
+        animator.SetBool("IsShooting", false);
     }
 }

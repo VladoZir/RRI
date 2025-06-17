@@ -15,6 +15,15 @@ public class MainMenu : MonoBehaviour
     private bool isToggledSelection = false;
     private bool isToggledSettings = false;
 
+    public Sprite muteNormal;
+    public Sprite muteHighlighted;
+    public Sprite mutePressed;
+
+    public Sprite unmuteNormal;
+    public Sprite unmuteHighlighted;
+    public Sprite unmutePressed;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +33,9 @@ public class MainMenu : MonoBehaviour
         {
             levelButtons[i].interactable = (i < unlockedLevels);
         }
+
+        bool isMuted = (MusicManager.Instance != null) && MusicManager.Instance.IsMuted();
+        UpdateMuteButtonSprites(isMuted);
     }
 
     // Update is called once per frame
@@ -39,7 +51,34 @@ public class MainMenu : MonoBehaviour
 
         bool isMuted = !MusicManager.Instance.IsMuted();
         MusicManager.Instance.SetMute(isMuted);
+
+        UpdateMuteButtonSprites(isMuted);
     }
+
+    void UpdateMuteButtonSprites(bool isMuted)
+    {
+        var spriteState = new SpriteState();
+
+        if (isMuted)
+        {
+            muteButton.image.sprite = muteNormal;
+            spriteState.highlightedSprite = muteHighlighted;
+            spriteState.pressedSprite = mutePressed;
+            spriteState.selectedSprite = muteNormal; 
+            spriteState.disabledSprite = muteNormal;
+        }
+        else
+        {
+            muteButton.image.sprite = unmuteNormal;
+            spriteState.highlightedSprite = unmuteHighlighted;
+            spriteState.pressedSprite = unmutePressed;
+            spriteState.selectedSprite = unmuteNormal;
+            spriteState.disabledSprite = unmuteNormal;
+        }
+
+        muteButton.spriteState = spriteState;
+    }
+
 
 
     public void PlayGame()

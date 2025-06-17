@@ -105,7 +105,6 @@ public class DroneAI : MonoBehaviour, IEnemy
             yield return new WaitForSeconds(0.1f);
         }
 
-        // Reset the "Shoot" trigger
         animator.SetBool("IsShooting", false);
     }
 
@@ -116,16 +115,16 @@ public class DroneAI : MonoBehaviour, IEnemy
 
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = Color.red; // Turn red when hit
+            spriteRenderer.color = Color.red; 
         }
 
         if (health <= 0)
         {
-            Die(); // Kill the enemy immediately
+            Die(); 
         }
         else
         {
-            Invoke(nameof(ResetColor), 0.2f); // Only reset color if still alive
+            Invoke(nameof(ResetColor), 0.2f); 
         }
     }
 
@@ -134,13 +133,13 @@ public class DroneAI : MonoBehaviour, IEnemy
     {
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = Color.red; // Turn red before death
+            spriteRenderer.color = Color.red; 
         }
 
         OnDeath?.Invoke(gameObject);
         DropItem();
 
-        Destroy(gameObject, 0.1f); // Small delay before destruction
+        Destroy(gameObject, 0.1f); 
     }
     private void DropItem()
     {
@@ -163,7 +162,6 @@ public class DroneAI : MonoBehaviour, IEnemy
 
             droppedItem.AddComponent<ItemCollisionHandler>();
 
-            // Destroy the item after 10 seconds
             Destroy(droppedItem, 10f);
         }
     }
@@ -172,10 +170,9 @@ public class DroneAI : MonoBehaviour, IEnemy
     {
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = Color.white; // Default color
+            spriteRenderer.color = Color.white; 
 
         }
     }
 
-   
 }

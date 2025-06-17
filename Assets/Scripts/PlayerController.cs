@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
-    public float wallBounceForce = 3f;  // New variable for wall bounce strength
+    public float wallBounceForce = 3f;  
 
     private Rigidbody2D rb;
     private bool isGrounded;

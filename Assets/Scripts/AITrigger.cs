@@ -18,7 +18,6 @@ public class AITrigger : MonoBehaviour
             AssignEnemiesTarget(playerTransform);
             bossHealthContainer.SetActive(true);
 
-            // Notify all listeners that the player has triggered this AI
             OnPlayerTriggered?.Invoke(playerTransform);
 
             FinalBossAI finalBossAI = FindFirstObjectByType<FinalBossAI>();

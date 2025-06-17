@@ -55,7 +55,7 @@ public class DinoBossAI : MonoBehaviour, IEnemy
         }
 
         healthBarHolder = GameObject.Find("BossHealthBarHolder");
-        nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
+        nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); 
 
         EnableIdleCollider();
     }
@@ -82,10 +82,8 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
         animator.SetTrigger("Dash");
 
-        // Wait for the duration of the animation (assuming you know the animation's length)
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
-        // Start moving after the animation duration
         while (Vector2.Distance(transform.position, targetPosition) > 0.1f)
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, dashSpeed * Time.deltaTime);
@@ -106,9 +104,7 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
     private void FlipAfterDash()
     {
-        // Simply flip the boss by multiplying the X value of the local scale by -1
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-
 
         Vector3 healthBarScale = transform.GetChild(0).localScale;
         transform.GetChild(0).localScale = new Vector3(Mathf.Abs(healthBarScale.x) * Mathf.Sign(transform.localScale.x), healthBarScale.y, healthBarScale.z);
@@ -116,7 +112,6 @@ public class DinoBossAI : MonoBehaviour, IEnemy
 
     private void SwitchTargetSpot()
     {
-        // Switch between the left and right spots
         targetSpot = (targetSpot == rightSpot) ? leftSpot : rightSpot;
     }
 
@@ -169,10 +164,10 @@ public class DinoBossAI : MonoBehaviour, IEnemy
         {
             Die();
         }
-        else if (curHealth <= nextSpawnThreshold) // Check if boss health crossed the next threshold
+        else if (curHealth <= nextSpawnThreshold) 
         {
             SpawnEnemies();
-            nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f); // Move to next 25% threshold
+            nextSpawnThreshold -= Mathf.FloorToInt(maxHealth * 0.25f);
         }
 
         StartCoroutine(ChangeColorOnHit());
@@ -181,14 +176,14 @@ public class DinoBossAI : MonoBehaviour, IEnemy
     private void SpawnEnemies()
     {
         if (enemyPrefabs.Length == 0 || spawnPoints.Length == 0) return;
-        int spawnCount = Mathf.Min(4, spawnPoints.Length); // Ensure we don't spawn more than we have spawn points
+        int spawnCount = Mathf.Min(4, spawnPoints.Length); 
 
-        for (int i = 0; i < spawnCount; i++) // Loop over each spawn point
+        for (int i = 0; i < spawnCount; i++) 
         {
-            GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; // Randomly pick an enemy from the array
-            Transform spawnLocation = spawnPoints[i]; // Use a different spawn point for each enemy
+            GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; 
+            Transform spawnLocation = spawnPoints[i]; 
 
-            Instantiate(enemyToSpawn, spawnLocation.position, Quaternion.identity); // Spawn the enemy at the spawn point
+            Instantiate(enemyToSpawn, spawnLocation.position, Quaternion.identity); 
         }
 
     }
