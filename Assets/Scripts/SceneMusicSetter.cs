@@ -10,4 +10,9 @@ public class SceneMusicSetter : MonoBehaviour
             MusicManager.Instance.PlayMusicForScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         }
     }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu"); 
+    }
 }
