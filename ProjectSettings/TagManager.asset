@@ -18,6 +18,7 @@ TagManager:
   - BowCollectible
   - SwordCollectible
   - SpaceGunCollectible
+  - GameCollectible
   layers:
   - Default
   - TransparentFX

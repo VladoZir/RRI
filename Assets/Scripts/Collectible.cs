@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
@@ -9,16 +9,29 @@ public class Collectible : MonoBehaviour
     [SerializeField] private float floatSpeed = 1f;
     [SerializeField] private float floatHeight = 0.2f;
 
+    [SerializeField] private int levelNumber;    
+    [SerializeField] private int collectibleIndex;
+
     private Vector3 startPosition;
+
+    private string GetKey()
+    {
+        // Jedinstveni ključ za svaki collectible
+        return $"collectible_L{levelNumber}_C{collectibleIndex}";
+    }
 
     private void Start()
     {
         startPosition = transform.position;
+
+        if (PlayerPrefs.GetInt(GetKey(), 0) == 1)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void Update()
     {
-        // Floating effect
         float newY = startPosition.y + Mathf.Sin(Time.time * floatSpeed) * floatHeight;
         transform.position = new Vector3(startPosition.x, newY, startPosition.z);
     }
@@ -38,6 +51,17 @@ public class Collectible : MonoBehaviour
             else if (CompareTag("SpaceGunCollectible")) 
             {
                 GameManager.Instance.UpgradePlayerSpaceGun(playerWithSpaceGunPrefab, other.gameObject);
+            }else if (CompareTag("GameCollectible"))
+            {
+                PlayerPrefs.SetInt(GetKey(), 1);
+                PlayerPrefs.Save();
+                gameObject.SetActive(false);
+
+                LevelCollectibleUI ui = FindFirstObjectByType<LevelCollectibleUI>();
+                if (ui != null)
+                {
+                    ui.UpdateCollectibleUI();
+                }
             }
 
             Destroy(gameObject); 

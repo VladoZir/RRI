@@ -131,8 +131,17 @@ public class MainMenu : MonoBehaviour
     public void ResetProgress()
     {
         PlayerPrefs.DeleteKey("unlockedLevels");
-        // Ako imaš collectables, npr. PlayerPrefs.DeleteKey("coins");
-        // Dodaj još što trebaš resetirati
+
+        int totalLevels = 3; 
+        int collectiblesPerLevel = 2; 
+
+        for (int level = 1; level <= totalLevels; level++)
+        {
+            for (int i = 0; i < collectiblesPerLevel; i++)
+            {
+                PlayerPrefs.DeleteKey($"collectible_L{level}_C{i}");
+            }
+        }
 
         Debug.Log("Progress reset!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
