@@ -16,7 +16,6 @@ public class Collectible : MonoBehaviour
 
     private string GetKey()
     {
-        // Jedinstveni ključ za svaki collectible
         return $"collectible_L{levelNumber}_C{collectibleIndex}";
     }
 
