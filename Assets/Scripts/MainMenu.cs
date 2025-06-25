@@ -24,7 +24,6 @@ public class MainMenu : MonoBehaviour
     public Sprite unmutePressed;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         int unlockedLevels = PlayerPrefs.GetInt("unlockedLevels", 0);
@@ -38,7 +37,6 @@ public class MainMenu : MonoBehaviour
         UpdateMuteButtonSprites(isMuted);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

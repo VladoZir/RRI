@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
         Destroy(oldPlayer);
         currentPlayer = Instantiate(newPrefab, position, Quaternion.identity);
 
-        // Ensure camera follows new player
         if (mainCamera != null)
         {
             CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();

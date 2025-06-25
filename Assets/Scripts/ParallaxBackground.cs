@@ -28,7 +28,6 @@ public class SeamlessParallax : MonoBehaviour
         Vector3 parallaxOffset = new Vector3(-deltaX * parallaxEffectMultiplier, 0, 0);
         transform.position += parallaxOffset;
 
-        // Debug the positions
         //Debug.Log($"Camera Position: {cam.position.x}, Texture Position: {transform.position.x}");
 
         if (Mathf.Abs(transform.position.x - cam.position.x) >= teleportThreshold)
