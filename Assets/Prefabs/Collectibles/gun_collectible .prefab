@@ -170,3 +170,5 @@ MonoBehaviour:
   playerWithSpaceGunPrefab: {fileID: 1754321237269034507, guid: bd6997d355bbe244495292bf94d45d6e, type: 3}
   floatSpeed: 1
   floatHeight: 0.2
+  levelNumber: 0
+  collectibleIndex: 0
