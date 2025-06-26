@@ -118,11 +118,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void changeShieldSprite(int curShield)
     {
-        // Izračunaj postotak od 50
         int shieldPercentage = (curShield * 100) / maxShield;
-        // Na temelju postotka, odaberi odgovarajući sprite
         int spriteIndex = Mathf.FloorToInt(shieldPercentage / 10); // Za svakih 5%
-        // Osiguraj da je spriteIndex u granicama (0 do 10 za 11 spriteova)
         spriteIndex = Mathf.Clamp(spriteIndex, 0, shieldSprites.Count - 1);
 
         shieldContainer.GetComponent<Image>().sprite = shieldSprites[spriteIndex];
@@ -133,7 +130,6 @@ public class PlayerHealth : MonoBehaviour
     {
         int index = Mathf.Clamp(curHealth / 10, 0, healthSprites.Count - 1);
         healthContainer.GetComponent<Image>().sprite = healthSprites[index];
-
     }
 
     private void Die()

@@ -47,7 +47,7 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         originalColor = spriteRenderer.color;
         bossCollider = GetComponent<CircleCollider2D>();
 
-        nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); // First spawn at 75% health
+        nextSpawnThreshold = Mathf.FloorToInt(maxHealth * 0.75f); 
 
         FindPlayer();
     }
@@ -89,24 +89,19 @@ public class FinalBossAI : MonoBehaviour, IEnemy
         {
             animator.SetBool("IsShooting", true);
 
-            // Calculate direction to the player using Transform
             Vector2 direction = (playerTransform.position - shootPoint.position).normalized;
 
-            // Instantiate projectile at shootPoint
             GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
 
-            // Add Rigidbody2D component if it doesn't exist
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             if (rb == null)
             {
                 rb = projectile.AddComponent<Rigidbody2D>();
-                rb.gravityScale = 0f; // Disable gravity for the projectile
+                rb.gravityScale = 0f; 
             }
 
-            // Set the velocity of the projectile
             rb.linearVelocity = direction * projectileSpeed;
 
-            // Optionally, rotate the projectile to face the direction it's moving
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             projectile.transform.rotation = Quaternion.AngleAxis(angle-180f, Vector3.forward);
 
